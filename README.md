@@ -41,6 +41,8 @@ Example designed by Wenting Zhang(me) in huffpost labs, article by Katelyn Boguc
 
 - underline stroke according to font stroke width `done`
 
+- retina support for ghost free underline 
+
 ##Contact
 * Follow [@DesignJokes](http://twitter.com/DesignJokes) on Twitter
 * Email <zhangwenting111@gmail.com>
