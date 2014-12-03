@@ -1,6 +1,6 @@
 # UnderlineJS
 
-###a **pixel-perfect** javascript library for drawing text underline, and maybe `animate` it, `data-viz` it, and more
+######A `pixel-perfect` javascript library for drawing text underline, and maybe animate it, data-viz it, or more
 
 The goal of this project is not to succeed, but fail. 
 
