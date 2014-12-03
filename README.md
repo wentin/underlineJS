@@ -6,6 +6,11 @@ The goal of this project is not to succeed, but fail.
 
 If one day there is absolutely no reason to use this third party js library to render underline, I would be very happy. That means the browser has supported  this feature natively. And that is my goal, to push the W3C further in a pixel-perfect, designer-friendly route.
 
+![GOAL](https://d262ilb51hltx0.cloudfront.net/max/1400/1*5iD2Znv03I2XR5QI3KLJrg.png)
+
+Image by [Marcin Wichary](https://twitter.com/mwichary)
+
+
 ## Example
 [**http://wentin.github.io/underlineJS/article.html**](http://wentin.github.io/underlineJS/article.html)
 
