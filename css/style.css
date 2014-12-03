@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: 'icomoon';
   src: url("../fonts/icomoon.eot?ysqly8");
@@ -24,7 +25,12 @@ body {
   padding: 0;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern";
+  -webkit-font-feature-settings: "kern";
+  -moz-font-feature-settings: "kern";
+  -moz-font-feature-settings: "kern=1"; }
 
 *:before, *:after {
   -moz-box-sizing: border-box;
@@ -131,7 +137,7 @@ section.article {
       float: right; }
 
 h1.title {
-  color: black;
+  color: #000000;
   line-height: 36px;
   margin: 30px 0 15px 0;
   padding: 0;
@@ -140,7 +146,7 @@ h1.title {
   font-weight: 700; }
   h1.title a {
     text-decoration: none;
-    color: black;
+    color: #000000;
     box-sizing: border-box;
     padding-bottom: 2px; }
   h1.title a:hover {
@@ -188,7 +194,7 @@ div.subtitle {
     top: 0; }
 
 p {
-  line-height: 32px;
+  line-height: 1.78;
   font-weight: normal;
   margin: 0 0 18px 0;
   padding: 0; }
@@ -199,21 +205,6 @@ p.excerpt {
 p.excerpt::after {
   content: "... Read More";
   color: #bababa; }
-
-section.list {
-  width: 600px;
-  padding: 0 120px 0 120px;
-  margin-left: 30%; }
-  section.list .entry {
-    border-top: solid 1px #dbdbdb;
-    -webkit-transition: all 0.6s ease;
-    -moz-transition: all 0.6s ease;
-    -ms-transition: all 0.6s ease;
-    -o-transition: all 0.6s ease;
-    transition: all 0.6s ease; }
-  section.list h1.title {
-    font-size: 24px;
-    margin-top: 24px; }
 
 .octa {
   position: relative;
@@ -262,110 +253,4 @@ section.list {
   border-top: solid 1px #dbdbdb;
   border-bottom: solid 1px #dbdbdb; }
 
-section.reading {
-  width: 400px;
-  padding: 10px 50px;
-  position: fixed;
-  height: auto;
-  right: 80px;
-  top: 0;
-  bottom: 0;
-  padding-bottom: 30px;
-  background-color: white;
-  overflow: auto;
-  border-left: solid 1px #dbdbdb; }
-  section.reading .myReadingList {
-    margin-bottom: 20px; }
-  section.reading div.expandBtn {
-    display: none; }
-  section.reading h2 {
-    font-size: 14px;
-    color: #bababa;
-    font-weight: normal;
-    border-bottom: solid 1px #dbdbdb;
-    line-height: 28px;
-    text-transform: uppercase;
-    font-family: "Open Sans", sans-serif; }
-  section.reading .item {
-    position: relative;
-    height: 60px;
-    width: 100%;
-    margin-bottom: 10px;
-    display: table; }
-    section.reading .item h1.title {
-      font-weight: 300;
-      font-size: 18px;
-      line-height: 21px;
-      width: 340px;
-      margin: 0;
-      display: table-cell;
-      text-align: left;
-      vertical-align: middle; }
-      section.reading .item h1.title a {
-        padding-bottom: 0; }
-    section.reading .item .octa {
-      position: absolute;
-      top: 0;
-      right: 0; }
-
-header {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 30%;
-  max-width: 500px;
-  background: url(../i/background.png) #303538 no-repeat center center;
-  background-size: cover;
-  font-family: SourceSansPro,sans-serif;
-  -webkit-box-shadow: inset -100px 0px 160px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: inset -100px 0px 160px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: inset -100px 0px 160px 0px rgba(0, 0, 0, 0.75); }
-  header a.logo {
-    float: right;
-    margin-right: 30px;
-    margin-top: 50px; }
-  header ul.menu {
-    clear: both;
-    font-family: "Open Sans", sans-serif;
-    font-weight: 700;
-    color: white;
-    text-transform: uppercase;
-    font-size: 14px;
-    line-height: 30px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    text-align: right;
-    margin-right: 30px;
-    margin-bottom: 30px; }
-    header ul.menu li {
-      list-style: none;
-      padding: 0;
-      margin: 0; }
-      header ul.menu li a {
-        color: white;
-        text-decoration: none; }
-      header ul.menu li a:hover {
-        color: #a0ad39; }
-    header ul.menu .links {
-      margin-top: 30px; }
-
-.entry.ng-enter.ng-enter-active,
-.entry.ng-leave {
-  opacity: 1; }
-
-.entry.ng-leave.ng-leave-active,
-.entry.ng-enter {
-  opacity: 0; }
-
-@media all and (max-width: 1730px) {
-  section.reading {
-    width: 0px;
-    overflow: hidden; }
-    section.reading div {
-      display: none; }
-    section.reading div.expandBtn {
-      display: block;
-      position: absolute;
-      left: 20px; } }
+/*# sourceMappingURL=style.css.map */
