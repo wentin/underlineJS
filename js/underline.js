@@ -7,6 +7,13 @@ function drawText(canvas, text, fontFamily, fontSize, spanHeight){
 	ctx.font = fontSize + ' ' + fontFamily;
     var metrics = ctx.measureText('.');
     var strokeWidth = metrics['width'];
+    if (strokeWidth/10 <= 2) {
+    	// strokeWidth = strokeWidth/10;
+    	strokeWidth = Math.round( strokeWidth/5 )/2;
+    } else {
+    	strokeWidth = Math.round( strokeWidth/10 );
+    }
+    // strokeWidth = 1;
     console.log(strokeWidth);
 
 	// ctx.font = '18px Georgia';
@@ -15,11 +22,17 @@ function drawText(canvas, text, fontFamily, fontSize, spanHeight){
     canvas.width = metrics['width'];
 	canvas.height = spanHeight;
 
-    var posY = canvas.height * 0.95;
-    posY = Math.round(posY - 0.5) + 0.5;
+    var posY = canvas.height * 0.93;
+    if(strokeWidth <= 1 || (strokeWidth%2 && strokeWidth > 2)) {
+	    posY = Math.round(posY - 0.5) + 0.5;
+    } else {
+    	posY = Math.round(posY);
+    }
+    // posY = 19.5;
+    console.log(posY);
 
 	ctx.strokeStyle = '#666666';
-    ctx.lineWidth = 0.5;
+    ctx.lineWidth = strokeWidth;
 
 	ctx.moveTo(0, posY);
 	ctx.lineTo(canvas.width, posY);
@@ -38,7 +51,6 @@ function drawText(canvas, text, fontFamily, fontSize, spanHeight){
 	ctx.fillText(text, -2.5, 0);
 
 
-	// ctx.font = '18px Georgia';
 	ctx.font = fontSize + ' ' + fontFamily;
 
 	ctx.fillStyle = 'orangered';
@@ -50,7 +62,6 @@ function drawText(canvas, text, fontFamily, fontSize, spanHeight){
 	ctx.fillText(text, 2.5, 0);
 
 	// ctx.globalCompositeOperation = "source-over";
-	// ctx.font = '18px Georgia';
 	ctx.font = fontSize + ' ' + fontFamily;
 	ctx.fillStyle = 'orangered';
 	ctx.textBaseline = 'top';
