@@ -1,6 +1,6 @@
 # UnderlineJS
 
-a **pixel-perfect** javascript library for drawing text underline, and maybe `animate` it, `data-viz` it, and more
+###a **pixel-perfect** javascript library for drawing text underline, and maybe `animate` it, `data-viz` it, and more
 
 The goal of this project is not to succeed, but fail. 
 
@@ -8,8 +8,10 @@ If one day there is absolutely no reason to use this third party js library to r
 
 ## Example
 [**http://wentin.github.io/underlineJS/article.htm**](http://wentin.github.io/underlineJS/article.htm)
-(paragraph "What we’ve got …" text underline is canvas rendered!
-example designed by Wenting Zhang(me) in huffpost labs, article by Katelyn Bogucki from huffpostcode 
+
+Paragraph "What we’ve got …" text underline is canvas rendered!
+
+Example designed by Wenting Zhang(me) in huffpost labs, article by Katelyn Bogucki from huffpostcode 
 
 ## Logs
 ##### Dec 2, 2014
