@@ -87,6 +87,7 @@ $(function(){
 				console.dir(lastSpan);
 				// debugger;
 				console.log(lastSpan.offsetWidth);
+				console.log(lastSpan.getBoundingClientRect());
 			}
 			// drawText(canvas, underlineSpan.innerText);
 			// console.log(window.getComputedStyle(underlineSpan, null).getPropertyValue("height"));
