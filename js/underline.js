@@ -83,12 +83,16 @@ $(function(){
 					lastSpan.classList.add("br");
 					drawText(lastSpan.childNodes[1], lastSpan.innerText.replace(/\s+/g, ''), fontFamily, fontSize, spanHeight);
 				}
+				
+				console.dir(lastSpan);
+				// debugger;
+				console.log(lastSpan.offsetWidth);
+				console.log(lastSpan.getBoundingClientRect());
 			}
 			// drawText(canvas, underlineSpan.innerText);
 			// console.log(window.getComputedStyle(underlineSpan, null).getPropertyValue("height"));
+			
 			lastSpan = underlineSpan;
-			console.log(underlineSpan);
-			console.log(underlineSpan.offsetWidth);
 
 		}		
 		// render the very last word
