@@ -1,3 +1,7 @@
+.text {
+	font-size: 110px;
+	font-weight: 400;
+}
 span.und {
 	display: inline;
 	position: relative;
