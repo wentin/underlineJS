@@ -88,6 +88,7 @@ $(function(){
 			// console.log(window.getComputedStyle(underlineSpan, null).getPropertyValue("height"));
 			lastSpan = underlineSpan;
 			console.dir(underlineSpan);
+			debugger;
 			console.log(underlineSpan.offsetWidth);
 
 		}		
