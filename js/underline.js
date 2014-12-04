@@ -66,7 +66,7 @@ $(function(){
 		for (index = 0; index < total; index ++){
 			var underlineSpan = document.createElement("span");
 			underlineSpan.classList.add("und");
-			underlineSpan.innerHTML = words[index]+' ';
+			underlineSpan.textContent = words[index]+' ';
 			var canvas = document.createElement("canvas");
 			underlineSpan.appendChild(canvas);
 			$(this)[0].appendChild(underlineSpan);
