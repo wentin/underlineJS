@@ -86,10 +86,11 @@ $(function(){
 			}
 			// drawText(canvas, underlineSpan.innerText);
 			// console.log(window.getComputedStyle(underlineSpan, null).getPropertyValue("height"));
+			
+			console.dir(lastSpan);
+			// debugger;
+			console.log(lastSpan.offsetWidth);
 			lastSpan = underlineSpan;
-			console.dir(underlineSpan);
-			debugger;
-			console.log(underlineSpan.offsetWidth);
 
 		}		
 		// render the very last word
