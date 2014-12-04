@@ -14,7 +14,7 @@ function drawText(canvas, text, fontFamily, fontSize, spanHeight){
     	strokeWidth = Math.round( strokeWidth/10 );
     }
     // strokeWidth = 1;
-    console.log(strokeWidth);
+    // console.log(strokeWidth);
 
 	// ctx.font = '18px Georgia';
 	ctx.font = fontSize + ' ' + fontFamily;
@@ -29,7 +29,7 @@ function drawText(canvas, text, fontFamily, fontSize, spanHeight){
     	posY = Math.round(posY);
     }
     // posY = 19.5;
-    console.log(posY);
+    // console.log(posY);
 
 	ctx.strokeStyle = '#666666';
     ctx.lineWidth = strokeWidth;
@@ -39,39 +39,24 @@ function drawText(canvas, text, fontFamily, fontSize, spanHeight){
 	ctx.stroke();
 
 	ctx.globalCompositeOperation = "destination-out";
-	// ctx.font = '18px Georgia';
 	ctx.font = fontSize + ' ' + fontFamily;
-
-	ctx.fillStyle = 'orangered';
 	ctx.textBaseline = 'top';
-	ctx.fillText(text, -0.5, 0);
-	ctx.fillText(text, -1, 0);
-	ctx.fillText(text, -1.5, 0);
-	ctx.fillText(text, -2, 0);
-	ctx.fillText(text, -2.5, 0);
 
-
-	ctx.font = fontSize + ' ' + fontFamily;
-
-	ctx.fillStyle = 'orangered';
-	ctx.textBaseline = 'top';
-	ctx.fillText(text, 0.5, 0);
-	ctx.fillText(text, 1, 0);
-	ctx.fillText(text, 1.5, 0);
-	ctx.fillText(text, 2, 0);
-	ctx.fillText(text, 2.5, 0);
+	ctx.lineWidth = 3;
+	ctx.strokeStyle = 'blue';
+	ctx.strokeText(text, 0, 0);
 
 	// ctx.globalCompositeOperation = "source-over";
-	ctx.font = fontSize + ' ' + fontFamily;
-	ctx.fillStyle = 'orangered';
-	ctx.textBaseline = 'top';
-	ctx.fillText(text, 0, 0);
+	// ctx.font = fontSize + ' ' + fontFamily;
+	// ctx.fillStyle = 'orangered';
+	// ctx.textBaseline = 'top';
+	// ctx.fillText(text, 0, 0);
 
 }
 $(function(){
 	var lastSpan;
 	$('.underline').each(function(){
-		console.log(window.getComputedStyle($(this)[0], null));
+		// console.log(window.getComputedStyle($(this)[0], null));
 		var fontFamily = window.getComputedStyle($(this)[0], null).getPropertyValue("font-family");
 		var fontSize = window.getComputedStyle($(this)[0], null).getPropertyValue("font-size");
 		var words = $(this).text().split(" ");
@@ -102,7 +87,10 @@ $(function(){
 			// drawText(canvas, underlineSpan.innerText);
 			// console.log(window.getComputedStyle(underlineSpan, null).getPropertyValue("height"));
 			lastSpan = underlineSpan;
-		}
+			console.log(underlineSpan);
+			console.log(underlineSpan.offsetWidth);
+
+		}		
 		// render the very last word
 		drawText(lastSpan.childNodes[1], lastSpan.innerText, fontFamily, fontSize, spanHeight);
 	})
