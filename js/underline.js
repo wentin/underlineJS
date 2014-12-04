@@ -83,13 +83,14 @@ $(function(){
 					lastSpan.classList.add("br");
 					drawText(lastSpan.childNodes[1], lastSpan.innerText.replace(/\s+/g, ''), fontFamily, fontSize, spanHeight);
 				}
+				
+				console.dir(lastSpan);
+				// debugger;
+				console.log(lastSpan.offsetWidth);
 			}
 			// drawText(canvas, underlineSpan.innerText);
 			// console.log(window.getComputedStyle(underlineSpan, null).getPropertyValue("height"));
 			
-			console.dir(lastSpan);
-			// debugger;
-			console.log(lastSpan.offsetWidth);
 			lastSpan = underlineSpan;
 
 		}		
