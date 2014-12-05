@@ -91,13 +91,13 @@ function drawText(canvas, text, x, y, maxWidth, lineHeight, fontFamily, fontSize
 	var words = text.split(' ');
     var line = '';
 
-    var count = 0;
+    var firstLineCount = 0;
     for(var n = 0; n < words.length; n++) {
       var testLine = line + words[n] + ' ';
       var testLineMetrics = ctx.measureText(testLine);
       var testLineWidth = testLineMetrics.width;
 
-      if (!count) {
+      if (!firstLineCount) {
       	//the first line, should consider startingPointX
 		if (testLineWidth + x > maxWidth && n > 0) {
 			// 	draw the underline
@@ -105,9 +105,6 @@ function drawText(canvas, text, x, y, maxWidth, lineHeight, fontFamily, fontSize
 			var lineMetrics = ctx.measureText(line);
       		var lineWidth = lineMetrics.width;
 			ctx.globalCompositeOperation = "source-over";
-			// var posY = 24 * 0.9;
-			// console.log(strokeWidth);
-			// console.log(posY);
 
 			ctx.strokeStyle = 'orangered';
 		    ctx.lineWidth = strokeWidth;
@@ -130,7 +127,7 @@ function drawText(canvas, text, x, y, maxWidth, lineHeight, fontFamily, fontSize
 
 			line = words[n] + ' ';
 			y += lineHeight;
-      		count++;
+      		firstLineCount++;
 		} else {
 			line = testLine;
 		}
@@ -175,7 +172,6 @@ function drawText(canvas, text, x, y, maxWidth, lineHeight, fontFamily, fontSize
 	var lineMetrics = ctx.measureText(line);
 	var lineWidth = lineMetrics.width;
 	ctx.globalCompositeOperation = "source-over";
-	// var posY = 24 * 0.9;
 
 	ctx.strokeStyle = 'orangered';
 	ctx.lineWidth = strokeWidth;
@@ -195,13 +191,12 @@ function drawText(canvas, text, x, y, maxWidth, lineHeight, fontFamily, fontSize
 	ctx.strokeText(line, 0, y);
 
 }
+
 window.onload = function() {
 	var underlineElements = document.querySelectorAll(".underline");
-	// console.log(underlineElements.length);
     for(var n = 0; n < underlineElements.length; n++) {
     	$this = underlineElements[n];
 
-		// step 1, single line or multiple line?
 		var lineHeight = parseFloat(window.getComputedStyle($this, null)
 				.getPropertyValue("line-height"));
 		var fontFamily = window.getComputedStyle($this, null)
@@ -225,9 +220,10 @@ window.onload = function() {
 		// console.log(text);
 
 		$this.appendChild(canvas);
+
+		// single line or multiple line?
 		if (height > lineHeight) {
 			// multiple lines
-
 			var offsetLeft = $this.offsetLeft;
 			var parentOffsetLeft = $this.parentNode.offsetLeft;
 			var canvasLeft = parentOffsetLeft - offsetLeft;

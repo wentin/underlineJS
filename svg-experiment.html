@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+body {
+  background-color: black;
+}
+.underline {
+    position: relative;
+}
+    </style>
+</head>
+
+<body>
+    <svg width="1000" height="1000">
+        <defs>
+            <mask id="hole">
+                <rect width="100%" height="100%" fill="white" />
+                <text x="30" y="150" stroke-width="7" stroke="#000000" font-weight="normal" font-family="Times" fill="#000000" font-style="italic" font-size="80">
+                    parapsychologist
+                </text>
+                </g>
+            </mask>
+        </defs>
+
+        <text x="30" y="150" stroke="none" stroke="#000000" font-weight="normal" font-family="Times" fill="#F00" font-style="italic" font-size="80">
+            parapsychologist
+        </text>
+        <!-- <a href="#" class="aInSVG">parapsychologiest</a> -->
+        <rect x="30" y="158" width="550" height="2" fill="red" mask="url(#hole)" />
+    </svg>
+
+    <body>
+
+</html>
