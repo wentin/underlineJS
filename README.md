@@ -17,7 +17,7 @@ In addition to these above, it should also
 * have no ghost pixels 
 
 ![GOAL](https://d262ilb51hltx0.cloudfront.net/max/1400/1*5iD2Znv03I2XR5QI3KLJrg.png)
-`Image by Marcin Wichary`
+*Image by Marcin Wichary*
 
 
 ## Progress Preview
