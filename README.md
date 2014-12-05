@@ -6,12 +6,26 @@ The goal of this project is not to succeed, but fail.
 
 If one day there is absolutely no reason to use this third party js library to render underline, I would be very happy. That means the browser has supported  this feature natively. And that is my goal, to push the W3C further in a pixel-perfect, designer-friendly route.
 
+This is what Marcin Wichary's ideal underline looks like:
 ![GOAL](https://d262ilb51hltx0.cloudfront.net/max/1400/1*5iD2Znv03I2XR5QI3KLJrg.png)
-
 Image by [Marcin Wichary](https://twitter.com/mwichary)
 
+## Progress preview
+red is underline.js, green is browser default underline
+![PROGRESS](https://raw.githubusercontent.com/wentin/underlineJS/master/i/underlineJS.png)
+
+The project is currently under dev. Contact me on [twitter](http://twitter.com/DesignJokes) if you want to contribute!
 
 ## Example
+
+##### New Approach example, add single canvas for each dom element that has classname "underline"
+[**http://wentin.github.io/underlineJS/**](http://wentin.github.io/underlineJS/)
+
+Paragraph "What we’ve got …" text underline is canvas rendered!
+
+Example designed by Wenting Zhang(me) in huffpost labs, article by Katelyn Bogucki from huffpostcode 
+
+##### Old Approach example, add span and canvas to each word
 [**http://wentin.github.io/underlineJS/article.html**](http://wentin.github.io/underlineJS/article.html)
 
 Paragraph "What we’ve got …" text underline is canvas rendered!
