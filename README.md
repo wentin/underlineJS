@@ -10,8 +10,8 @@ This is what Marcin Wichary's ideal underline looks like:
 ![GOAL](https://d262ilb51hltx0.cloudfront.net/max/1400/1*5iD2Znv03I2XR5QI3KLJrg.png)
 Image by [Marcin Wichary](https://twitter.com/mwichary)
 
-## Progress preview
-red is underline.js, green is browser default underline
+## Progress Preview
+`red is underline.js, green is browser default underline`
 ![PROGRESS](https://raw.githubusercontent.com/wentin/underlineJS/master/i/underlineJS.png)
 
 The project is currently under dev. Contact me on [twitter](http://twitter.com/DesignJokes) if you want to contribute!
@@ -21,14 +21,10 @@ The project is currently under dev. Contact me on [twitter](http://twitter.com/D
 ##### New Approach example, add single canvas for each dom element that has classname "underline"
 [**http://wentin.github.io/underlineJS/**](http://wentin.github.io/underlineJS/)
 
-Paragraph "What we’ve got …" text underline is canvas rendered!
-
-Example designed by Wenting Zhang(me) in huffpost labs, article by Katelyn Bogucki from huffpostcode 
-
 ##### Old Approach example, add span and canvas to each word
 [**http://wentin.github.io/underlineJS/article.html**](http://wentin.github.io/underlineJS/article.html)
 
-Paragraph "What we’ve got …" text underline is canvas rendered!
+`Paragraph "What we’ve got …" text underline is canvas rendered!`
 
 Example designed by Wenting Zhang(me) in huffpost labs, article by Katelyn Bogucki from huffpostcode 
 
@@ -36,6 +32,8 @@ Example designed by Wenting Zhang(me) in huffpost labs, article by Katelyn Boguc
 ##### Dec 2, 2014
 * start proof of concept
 * it now works on chrome/safari!
+##### Dec 4, 2014
+* add approach 2, one single canvas for each element.
 
 ## To do list
 
