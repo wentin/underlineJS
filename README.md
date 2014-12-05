@@ -21,20 +21,22 @@ In addition to these above, it should also
 
 
 ## Progress Preview
-`red is underline.js, green is browser default underline`
+`Please click to see large picture. red is underline.js, green is browser default underline`
 ![PROGRESS](https://raw.githubusercontent.com/wentin/underlineJS/master/i/underlineJS.png)
 
 The project is currently under dev. Contact me on [twitter](http://twitter.com/DesignJokes) if you want to contribute!
 
 ## Examples
 
-- New Approach example, add single canvas for each dom element that has classname "underline"
+- **New Approach example, add single canvas for each dom element that has classname "underline"**
+
 [http://wentin.github.io/underlineJS/](http://wentin.github.io/underlineJS/)
 
 `red is underline.js, green is browser default underline`
 
 
-- Old Approach example, add span and canvas to each word
+- **Old Approach example, add span and canvas to each word**
+
 [http://wentin.github.io/underlineJS/article.html](http://wentin.github.io/underlineJS/article.html)
 
 `Paragraph "What we’ve got …" text underline is canvas rendered!`
@@ -45,6 +47,7 @@ The project is currently under dev. Contact me on [twitter](http://twitter.com/D
 ##### Dec 2, 2014
 * start proof of concept
 * it now works on chrome/safari!
+
 ##### Dec 4, 2014
 * add approach 2, one single canvas for each element.
 
