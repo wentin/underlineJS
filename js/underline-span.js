@@ -53,7 +53,7 @@ function drawText(canvas, text, fontFamily, fontSize, spanHeight){
 	// ctx.fillText(text, 0, 0);
 
 }
-$(function(){
+window.onload = function() {
 	var lastSpan;
 	$('.underline').each(function(){
 		// console.log(window.getComputedStyle($(this)[0], null));
@@ -94,4 +94,4 @@ $(function(){
 		// render the very last word
 		drawText(lastSpan.childNodes[1], lastSpan.innerText, fontFamily, fontSize, spanHeight);
 	})
-})
+}

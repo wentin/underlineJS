@@ -1,7 +1,7 @@
 .underline {
 	position: relative;
 }
-canvas {
+.underline canvas {
 	position: absolute;
 	top: 0;
 	left: 0;
