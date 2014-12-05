@@ -1,5 +1,7 @@
 # underline.js
 
+`A javascript library that sets out to do one simple job: draw the most perfect underline`
+
 ######A `pixel-perfect` javascript library for drawing text underline, and maybe animate it, data-viz it, or more
 
 The goal of this project is not to succeed, but fail. 
