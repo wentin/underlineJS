@@ -45,6 +45,7 @@ The project is currently under dev. Contact me on [twitter](http://twitter.com/D
 ##### Dec 2, 2014
 * start proof of concept
 * it now works on chrome/safari!
+
 ##### Dec 4, 2014
 * add approach 2, one single canvas for each element.
 
