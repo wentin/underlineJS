@@ -29,14 +29,14 @@ The project is currently under dev. Contact me on [twitter](http://twitter.com/D
 ## Examples
 
 - New Approach example, add single canvas for each dom element that has classname "underline"
-- 
+
 [http://wentin.github.io/underlineJS/](http://wentin.github.io/underlineJS/)
 
 `red is underline.js, green is browser default underline`
 
 
 - Old Approach example, add span and canvas to each word
-- 
+
 [http://wentin.github.io/underlineJS/article.html](http://wentin.github.io/underlineJS/article.html)
 
 `Paragraph "What we’ve got …" text underline is canvas rendered!`
