@@ -35,6 +35,7 @@ The project is currently under dev. Contact me on [twitter](http://twitter.com/D
 `red is underline.js, green is browser default underline`
 
 - **New New Approach example, use SVG instead of canvas, key is "mask"**
+
 [http://wentin.github.io/underlineJS/svg-experiment.html/](http://wentin.github.io/underlineJS/svg-experiment.html)
 
 - **Old Approach example, add span and canvas to each word**
