@@ -21,7 +21,7 @@ In addition to these above, it should also
 
 
 ## Progress Preview
-`red is underline.js, green is browser default underline`
+`Please click to see large picture. red is underline.js, green is browser default underline`
 ![PROGRESS](https://raw.githubusercontent.com/wentin/underlineJS/master/i/underlineJS.png)
 
 The project is currently under dev. Contact me on [twitter](http://twitter.com/DesignJokes) if you want to contribute!
