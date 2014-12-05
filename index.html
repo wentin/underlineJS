@@ -19,10 +19,11 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-rendering: optimizeLegibility;
-        font-feature-settings: "kern";
-        -webkit-font-feature-settings: "kern";
-        -moz-font-feature-settings: "kern";
-        -moz-font-feature-settings: "kern=1"; 
+        -moz-font-feature-settings: "kern=1", "liga=1", "dlig=1", "hlig=1";
+        -moz-font-feature-settings: "kern" on, "liga" on, "dlig" on, "hlig" on;
+        -webkit-font-feature-settings: "kern","liga","dlig","hlig";
+        -ms-font-feature-settings: "kern","liga","dlig","hlig";
+        font-feature-settings: "kern","liga","dlig","hlig";
     }
     h1 {
         font-weight: 400;
