@@ -7,10 +7,10 @@ The goal of this project is not to succeed, but fail.
 If one day there is absolutely no reason to use this third party js library to render underline, I would be very happy. That means the browser has supported  this feature natively. And that is my goal, to push the W3C further in a pixel-perfect, designer-friendly route.
 
 [Marcin Wichary](https://twitter.com/mwichary)'s ideal underline:
-* change the width of the line (with additional half-pixel/retina support),
-* change the distance from the text,
-* change the color (even if just to simulate thinner width by using lighter grays instead of black),
-* clear the descenders,
+* be able to change the width of the line (with additional half-pixel/retina support),
+* be able to change the distance from the text,
+* be able to change the color (even if just to simulate thinner width by using lighter grays instead of black),
+* be able to clear the descenders,
 * have a separate style for visited links.
 
 In addition to these above, it should also 
