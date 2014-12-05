@@ -31,7 +31,7 @@ In addition to these above, it should also
 
 The project is currently under dev. Contact me on [twitter](http://twitter.com/DesignJokes) if you want to contribute!
 
-## Examples
+## Examples of approaches
 
 - **New Approach example, add single canvas for each dom element that has classname "underline"**
 
