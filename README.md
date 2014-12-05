@@ -39,7 +39,7 @@ The project is currently under dev. Contact me on [twitter](http://twitter.com/D
 
 `Paragraph "What we’ve got …" text underline is canvas rendered!`
 
-Example designed by Wenting Zhang(me) in huffpost labs, article by Katelyn Bogucki from huffpostcode 
+*Example designed by Wenting Zhang(me) in huffpost labs, article by Katelyn Bogucki from huffpostcode *
 
 ## Logs
 ##### Dec 2, 2014
