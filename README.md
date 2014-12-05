@@ -13,6 +13,7 @@ If one day there is absolutely no reason to use this third party js library to r
 * change the color (even if just to simulate thinner width by using lighter grays instead of black),
 * clear the descenders,
 * have a separate style for visited links.
+
 In addition to these above, it should also 
 * have no ghost pixels 
 
