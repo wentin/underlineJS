@@ -1,101 +1,199 @@
-
-function drawText(canvas, text, fontFamily, fontSize, spanHeight){
-	var text = text;
-	var canvas = canvas;
+function drawTextSingleLine (canvas, text, fontFamily, fontSize, fontStyle) {
 	var ctx = canvas.getContext('2d');
 
-	ctx.font = fontSize + ' ' + fontFamily;
-    var metrics = ctx.measureText('.');
-    var strokeWidth = metrics['width'];
-    if (strokeWidth/10 <= 2) {
-    	// strokeWidth = strokeWidth/10;
-    	strokeWidth = Math.round( strokeWidth/5 )/2;
-    } else {
-    	strokeWidth = Math.round( strokeWidth/10 );
-    }
-    // strokeWidth = 1;
-    // console.log(strokeWidth);
+	// 	draw the underline
 
-	// ctx.font = '18px Georgia';
-	ctx.font = fontSize + ' ' + fontFamily;
-    var metrics = ctx.measureText(text);
-    canvas.width = metrics['width'];
-	canvas.height = spanHeight;
+	console.log(text);
+	ctx.font = fontStyle + ' ' + fontSize + ' ' + fontFamily;
+	ctx.fillStyle = 'green';
+	ctx.textBaseline = 'top';
+	var textMetrics = ctx.measureText(text);
+	var textWidth = textMetrics.width;
+	ctx.globalCompositeOperation = "source-over";
+	var posY = canvas.height * 0.9;
+	var strokeWidth = 1;
 
-    var posY = canvas.height * 0.93;
-    if(strokeWidth <= 1 || (strokeWidth%2 && strokeWidth > 2)) {
-	    posY = Math.round(posY - 0.5) + 0.5;
-    } else {
-    	posY = Math.round(posY);
-    }
-    // posY = 19.5;
-    // console.log(posY);
-
-	ctx.strokeStyle = '#666666';
+	ctx.strokeStyle = 'orangered';
     ctx.lineWidth = strokeWidth;
-
+    ctx.beginPath();
 	ctx.moveTo(0, posY);
-	ctx.lineTo(canvas.width, posY);
+	ctx.lineTo(textWidth, posY);
 	ctx.stroke();
 
+	// draw the font stroke				
 	ctx.globalCompositeOperation = "destination-out";
-	ctx.font = fontSize + ' ' + fontFamily;
+	ctx.font = fontStyle + ' ' + fontSize + ' ' + fontFamily;
+	ctx.fillStyle = 'green';
 	ctx.textBaseline = 'top';
-
-	ctx.lineWidth = 3;
+	ctx.fillText(text, 0, 0);
+	ctx.lineWidth = 4;
 	ctx.strokeStyle = 'blue';
 	ctx.strokeText(text, 0, 0);
 
-	// ctx.globalCompositeOperation = "source-over";
-	// ctx.font = fontSize + ' ' + fontFamily;
-	// ctx.fillStyle = 'orangered';
-	// ctx.textBaseline = 'top';
+}
+
+function drawText(canvas, text, x, y, maxWidth, lineHeight, fontFamily, fontSize, fontStyle){
+	var ctx = canvas.getContext('2d');
+	
+	ctx.globalCompositeOperation = "source-over";
+	ctx.font = fontStyle + ' ' + fontSize + ' ' + fontFamily;
+	ctx.fillStyle = 'green';
+	ctx.textBaseline = 'top';
 	// ctx.fillText(text, 0, 0);
+
+	var words = text.split(' ');
+    var line = '';
+
+    var count = 0;
+    for(var n = 0; n < words.length; n++) {
+      var testLine = line + words[n] + ' ';
+      var testLineMetrics = ctx.measureText(testLine);
+      var testLineWidth = testLineMetrics.width;
+
+      if (!count) {
+      	//the first line, should consider startingPointX
+		if (testLineWidth + x > maxWidth && n > 0) {
+			// 	draw the underline
+			console.log(line);
+			var lineMetrics = ctx.measureText(line);
+      		var lineWidth = lineMetrics.width;
+			ctx.globalCompositeOperation = "source-over";
+			var posY = 24 * 0.9;
+			var strokeWidth = 1;
+
+			ctx.strokeStyle = 'orangered';
+		    ctx.lineWidth = strokeWidth;
+
+			ctx.beginPath();
+			ctx.moveTo(x, posY);
+			ctx.lineTo(lineWidth + x, posY);
+			ctx.stroke();
+
+			// draw the font stroke
+	
+			ctx.globalCompositeOperation = "destination-out";
+			ctx.font = fontStyle + ' ' + fontSize + ' ' + fontFamily;
+			ctx.fillStyle = 'green';
+			ctx.textBaseline = 'top';
+			ctx.fillText(line, x, y);
+			ctx.lineWidth = 4;
+			ctx.strokeStyle = 'blue';
+			ctx.strokeText(line, x, y);
+
+			line = words[n] + ' ';
+			y += lineHeight;
+      		count++;
+		} else {
+			line = testLine;
+		}
+      } else {
+		if (testLineWidth > maxWidth && n > 0) {
+			// 	draw the underline
+			console.log(line);
+			var lineMetrics = ctx.measureText(line);
+      		var lineWidth = lineMetrics.width;
+
+			ctx.globalCompositeOperation = "source-over";
+			var posY = 24 * 0.9;
+			var strokeWidth = 1;
+
+			ctx.strokeStyle = 'orangered';
+		    ctx.lineWidth = strokeWidth;
+		    ctx.beginPath();
+			ctx.moveTo(0, y + posY);
+			ctx.lineTo(lineWidth - 4, y + posY);
+			ctx.stroke();
+
+			// draw the font stroke
+	
+			ctx.globalCompositeOperation = "destination-out";
+			ctx.font = fontStyle + ' ' + fontSize + ' ' + fontFamily;
+			ctx.fillStyle = 'green';
+			ctx.textBaseline = 'top';
+			ctx.fillText(line, 0, y);
+			ctx.lineWidth = 4;
+			ctx.strokeStyle = 'blue';
+			ctx.strokeText(line, 0, y);
+
+			line = words[n] + ' ';
+			y += lineHeight;
+		} else {
+			line = testLine;
+		}
+      }
+    }
+    // draw the last line
+	// 	draw the underline
+	console.log(line);
+	var lineMetrics = ctx.measureText(line);
+	var lineWidth = lineMetrics.width;
+	ctx.globalCompositeOperation = "source-over";
+	var posY = 24 * 0.9;
+	var strokeWidth = 1;
+
+	ctx.strokeStyle = 'orangered';
+	ctx.lineWidth = strokeWidth;
+	ctx.beginPath();
+	ctx.moveTo(0, y + posY);
+	ctx.lineTo(lineWidth - 4, y + posY);
+	ctx.stroke();
+
+	// draw the font stroke
+	ctx.globalCompositeOperation = "destination-out";
+	ctx.font = fontStyle + ' ' + fontSize + ' ' + fontFamily;
+	ctx.fillStyle = 'green';
+	ctx.textBaseline = 'top';
+	ctx.fillText(line, 0, y);
+	ctx.lineWidth = 4;
+	ctx.strokeStyle = 'blue';
+	ctx.strokeText(line, 0, y);
 
 }
 $(function(){
-	var lastSpan;
 	$('.underline').each(function(){
-		// console.log(window.getComputedStyle($(this)[0], null));
-		var fontFamily = window.getComputedStyle($(this)[0], null).getPropertyValue("font-family");
-		var fontSize = window.getComputedStyle($(this)[0], null).getPropertyValue("font-size");
-		var words = $(this).text().split(" ");
-		var total = words.length;
-		$(this).empty();
-		var spanHeight = 0;
-		for (index = 0; index < total; index ++){
-			var underlineSpan = document.createElement("span");
-			underlineSpan.classList.add("und");
-			underlineSpan.innerHTML = words[index]+' ';
-			var canvas = document.createElement("canvas");
-			underlineSpan.appendChild(canvas);
-			$(this)[0].appendChild(underlineSpan);
-			if (index == 0) {
-				spanHeight = underlineSpan.offsetHeight;
-			}
-			if(lastSpan) {
-				//not the first span, now check if offsetTop changes from last time
-				if (underlineSpan.offsetTop === lastSpan.offsetTop) {
-					// offsetTop didn't change, no line break
-					drawText(lastSpan.childNodes[1], lastSpan.innerText, fontFamily, fontSize, spanHeight);
-				} else {
-					// offsetTop changes, means the line breaks
-					lastSpan.classList.add("br");
-					drawText(lastSpan.childNodes[1], lastSpan.innerText.replace(/\s+/g, ''), fontFamily, fontSize, spanHeight);
-				}
-				
-				console.dir(lastSpan);
-				// debugger;
-				console.log(lastSpan.offsetWidth);
-				console.log(lastSpan.getBoundingClientRect());
-			}
-			// drawText(canvas, underlineSpan.innerText);
-			// console.log(window.getComputedStyle(underlineSpan, null).getPropertyValue("height"));
-			
-			lastSpan = underlineSpan;
+		$this = $(this)[0];
+		// step 1, single line or multiple line?
+		var lineHeight = parseFloat(window.getComputedStyle($this, null)
+				.getPropertyValue("line-height"));
+		var fontFamily = window.getComputedStyle($(this)[0], null)
+				.getPropertyValue("font-family");
+		var fontSize = window.getComputedStyle($(this)[0], null)
+				.getPropertyValue("font-size");
+		var fontStyle = window.getComputedStyle($(this)[0], null)
+				.getPropertyValue("font-style");
+		var width = $this.getBoundingClientRect().width;
+		var height = $this.getBoundingClientRect().height;
+		var maxWidth = $this.parentNode.getBoundingClientRect().width;
+		var canvas = document.createElement("canvas");
+	    canvas.width = width;
+		canvas.height = height;
+		// console.log("line-height:");
+		// console.log(lineHeight);
+		// console.log("height:");
+		// console.log(height);
 
-		}		
-		// render the very last word
-		drawText(lastSpan.childNodes[1], lastSpan.innerText, fontFamily, fontSize, spanHeight);
+		var text = $this.textContent;
+		// console.log(text);
+
+		$this.appendChild(canvas);
+		if (height > lineHeight) {
+			// multiple lines
+			console.log("multiple lines");
+
+			var offsetLeft = $this.offsetLeft;
+			var parentOffsetLeft = $this.parentNode.offsetLeft;
+			var canvasLeft = parentOffsetLeft - offsetLeft;
+			var startPointX = offsetLeft - parentOffsetLeft;
+			var startPointY = 0;
+			canvas.style.left= canvasLeft + 'px';
+			console.log(lineHeight);
+			drawText(canvas, text, startPointX, startPointY, maxWidth, 
+				lineHeight, fontFamily, fontSize, fontStyle);
+
+		} else {
+			// single line
+			console.log("single line");
+			drawTextSingleLine (canvas, text, fontFamily, fontSize, fontStyle)
+		}
 	})
 })
