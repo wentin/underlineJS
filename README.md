@@ -8,7 +8,7 @@ The goal of this project is not to succeed, but fail.
 
 If one day there is absolutely no one and no reason to use underline.jes, then it reaches its ultimate goal: to fail completely. Because that means the browser has supported  this feature natively. That is what this project is about, to push the W3C further in a pixel-perfect, designer-friendly route.
 
-[Marcin Wichary](https://twitter.com/mwichary)'s ideal underline:
+Marcin Wichary's ideal underline:
 * be able to change the width of the line (with additional half-pixel/retina support),
 * be able to change the distance from the text,
 * be able to change the color (even if just to simulate thinner width by using lighter grays instead of black),
