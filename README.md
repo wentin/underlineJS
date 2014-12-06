@@ -1,7 +1,4 @@
 # underline.js
-Check out [http://wentin.github.io/underlineJS/](http://wentin.github.io/underlineJS/) and 
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="https://github.com/wentin/underlineJS" data-text="A javascript library that sets out to do one simple job: draw the perfect underline" data-via="DesignJokes" data-size="large" data-hashtags="UnderlineJS">Tweet about this project</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
 `A javascript library that sets out to do one simple job: draw the most perfect underline`
 
