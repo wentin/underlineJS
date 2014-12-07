@@ -1,7 +1,7 @@
 // global variables for browser detection
 var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
 
-function drawTextSingleLine (canvas, text, lineHeight, fontFamily, fontSize, fontStyle) {
+function drawTextSingleLine (canvas, text, textUnderlineDistance,  lineHeight, height, ratio, fontFamily, fontSize, fontStyle) {
 	var ctx = canvas.getContext('2d');
 	
 	// calculate the best underline's strokeWidth
@@ -17,8 +17,14 @@ function drawTextSingleLine (canvas, text, lineHeight, fontFamily, fontSize, fon
     }
 
     // calculate the best underline position y
-	var posY = parseFloat(fontSize) * 0.89;
-	console.log(posY);
+	// var posY = parseFloat(fontSize) * 0.89;
+	// console.log(height);
+	// console.log(fontSize);
+	// posY should be baseLinePosY + textUnderlineDistance (could be px or %)
+	var posY = parseFloat(height) * (1 - ratio + textUnderlineDistance);
+
+
+	// console.log(posY);
 	if(strokeWidth <= 1 || (strokeWidth%2 && strokeWidth > 2)) {
 	    posY = Math.round(posY - 0.5) + 0.5;
     } else {
@@ -47,14 +53,14 @@ function drawTextSingleLine (canvas, text, lineHeight, fontFamily, fontSize, fon
 	ctx.fillStyle = 'green';
 	ctx.textBaseline = 'top';
 	ctx.fillText(text, 0, 0);
-	// console.log(strokeWidth);
+	console.log(strokeWidth);
 	ctx.lineWidth = 3 + strokeWidth;
 	ctx.strokeStyle = 'blue';
 	ctx.strokeText(text, 0, 0);
 
 }
 
-function drawText(canvas, text, x, y, maxWidth, lineHeight, fontFamily, fontSize, fontStyle){
+function drawText(canvas, text, x, y, maxWidth, textUnderlineDistance, lineHeight, fontFamily, fontSize, fontStyle){
 	var ctx = canvas.getContext('2d');
 
 	if (is_chrome) {
@@ -77,7 +83,7 @@ function drawText(canvas, text, x, y, maxWidth, lineHeight, fontFamily, fontSize
     
     // calculate the best underline position y
 	var posY = parseFloat(fontSize) * 0.89;
-	console.log(posY);
+	// console.log(posY);
 	if(strokeWidth <= 1 || (strokeWidth%2 && strokeWidth > 2)) {
 	    posY = Math.round(posY - 0.5) + 0.5;
     } else {
@@ -95,9 +101,12 @@ function drawText(canvas, text, x, y, maxWidth, lineHeight, fontFamily, fontSize
 
     var firstLineCount = 0;
     for(var n = 0; n < words.length; n++) {
-      var testLine = line + words[n] + ' ';
+	// add the whitespace after getting the width measurement
+      var testLine = line + words[n];
       var testLineMetrics = ctx.measureText(testLine);
       var testLineWidth = testLineMetrics.width;
+	      testLine = testLine + ' ';
+
 
       if (!firstLineCount) {
       	//the first line, should consider startingPointX
@@ -129,10 +138,10 @@ function drawText(canvas, text, x, y, maxWidth, lineHeight, fontFamily, fontSize
 
 			line = words[n] + ' ';
 			y += lineHeight;
-			console.log("lineHeight:");
-			console.log(lineHeight);
-			console.log("y:");
-			console.log(y);
+			// console.log("lineHeight:");
+			// console.log(lineHeight);
+			// console.log("y:");
+			// console.log(y);
       		firstLineCount++;
 		} else {
 			line = testLine;
@@ -155,7 +164,6 @@ function drawText(canvas, text, x, y, maxWidth, lineHeight, fontFamily, fontSize
 			ctx.stroke();
 
 			// draw the font stroke
-	
 			ctx.globalCompositeOperation = "destination-out";
 			ctx.font = fontStyle + ' ' + fontSize + ' ' + fontFamily;
 			ctx.fillStyle = 'green';
@@ -202,7 +210,8 @@ window.onload = function() {
 	var underlineElements = document.querySelectorAll(".underline");
     for(var n = 0; n < underlineElements.length; n++) {
     	$this = underlineElements[n];
-
+		var ratio = baselineRatio($this);
+		// console.log(ratio);
 		var lineHeight = parseFloat(window.getComputedStyle($this, null)
 				.getPropertyValue("line-height"));
 		var fontFamily = window.getComputedStyle($this, null)
@@ -221,7 +230,7 @@ window.onload = function() {
 		// console.log(lineHeight);
 		// console.log("height:");
 		// console.log(height);
-
+		var textUnderlineDistance = 0.16;
 		var text = $this.textContent;
 		// console.log(text);
 
@@ -237,12 +246,12 @@ window.onload = function() {
 			var startPointY = 0;
 			canvas.style.left= canvasLeft + 'px';
 			// console.log(lineHeight);
-			drawText(canvas, text, startPointX, startPointY, maxWidth, 
+			drawText(canvas, text, startPointX, startPointY, maxWidth, textUnderlineDistance,
 				lineHeight, fontFamily, fontSize, fontStyle);
 
 		} else {
 			// single line
-			drawTextSingleLine (canvas, text, lineHeight, fontFamily, fontSize, fontStyle)
+			drawTextSingleLine (canvas, text, textUnderlineDistance, lineHeight, height, ratio, fontFamily, fontSize, fontStyle)
 		}
 	}
 }
