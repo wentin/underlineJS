@@ -1,4 +1,7 @@
-function drawTextSingleLine (canvas, text, fontFamily, fontSize, fontStyle) {
+// global variables for browser detection
+var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+
+function drawTextSingleLine (canvas, text, lineHeight, fontFamily, fontSize, fontStyle) {
 	var ctx = canvas.getContext('2d');
 	
 	// calculate the best underline's strokeWidth
@@ -29,8 +32,8 @@ function drawTextSingleLine (canvas, text, fontFamily, fontSize, fontStyle) {
 	ctx.textBaseline = 'top';
 	var textMetrics = ctx.measureText(text);
 	var textWidth = textMetrics.width;
-	ctx.globalCompositeOperation = "source-over";
 
+	ctx.globalCompositeOperation = "source-over";
 	ctx.strokeStyle = 'orangered';
     ctx.lineWidth = strokeWidth;
     ctx.beginPath();
@@ -53,6 +56,11 @@ function drawTextSingleLine (canvas, text, fontFamily, fontSize, fontStyle) {
 
 function drawText(canvas, text, x, y, maxWidth, lineHeight, fontFamily, fontSize, fontStyle){
 	var ctx = canvas.getContext('2d');
+
+	if (is_chrome) {
+		// chrome floor the lineheight when it is not a whole number
+		lineHeight = Math.floor(lineHeight);
+	}
 	
 	// calculate the best underline's strokeWidth
 	ctx.font = fontStyle + ' ' + fontSize + ' ' + fontFamily;
@@ -81,12 +89,6 @@ function drawText(canvas, text, x, y, maxWidth, lineHeight, fontFamily, fontSize
     } else {
     	posY = Math.round(posY);
     }
-
-	ctx.globalCompositeOperation = "source-over";
-	ctx.font = fontStyle + ' ' + fontSize + ' ' + fontFamily;
-	ctx.fillStyle = 'green';
-	ctx.textBaseline = 'top';
-	// ctx.fillText(text, 0, 0);
 
 	var words = text.split(' ');
     var line = '';
@@ -127,6 +129,10 @@ function drawText(canvas, text, x, y, maxWidth, lineHeight, fontFamily, fontSize
 
 			line = words[n] + ' ';
 			y += lineHeight;
+			console.log("lineHeight:");
+			console.log(lineHeight);
+			console.log("y:");
+			console.log(y);
       		firstLineCount++;
 		} else {
 			line = testLine;
@@ -236,7 +242,7 @@ window.onload = function() {
 
 		} else {
 			// single line
-			drawTextSingleLine (canvas, text, fontFamily, fontSize, fontStyle)
+			drawTextSingleLine (canvas, text, lineHeight, fontFamily, fontSize, fontStyle)
 		}
 	}
 }
