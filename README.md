@@ -56,6 +56,11 @@ The project is currently under dev. Contact me on [twitter](http://twitter.com/D
 ##### Dec 4, 2014
 * add approach 2, one single canvas for each element.
 
+##### Dec 9, 2014
+* finish finding descenderline with svg/js
+* start guitar string animation! Can you imagine this happen to your text underline! [http://www.google.com/logos/2011/lespaul.html](http://www.google.com/logos/2011/lespaul.html)
+
+
 ## To do list
 
 - firefox bug
