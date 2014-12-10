@@ -1,6 +1,82 @@
 // global variables for browser detection
 var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
 
+var dist = function(x, y, x0, y0){
+    return Math.sqrt((x -= x0) * x + (y -= y0) * y);
+};
+
+var circleCenter = function(startPoint, thirdPoint, endPoint){
+    var dy1 = thirdPoint.y - startPoint.y;
+    var dx1 = thirdPoint.x - startPoint.x;
+    var dy2 = endPoint.y - thirdPoint.y;
+    var dx2 = endPoint.x - thirdPoint.x;
+
+    var aSlope = dy1/dx1;
+    var bSlope = dy2/dx2;  
+
+
+    var centerX = (aSlope*bSlope*(startPoint.y - endPoint.y) + bSlope*(startPoint.x + thirdPoint.x)
+        - aSlope*(thirdPoint.x+endPoint.x) )/( 2* (bSlope-aSlope) );
+    var centerY = -1*(centerX - (startPoint.x+thirdPoint.x)/2)/aSlope +  (startPoint.y+thirdPoint.y)/2;
+    var r = dist(centerX, centerY, startPoint.x, startPoint.y)
+
+    return {
+        x: centerX,
+        y: centerY,
+        r: r
+    };
+}
+
+var Point = function (x,y){
+    this.x=x;
+    this.y=y;
+}
+
+var intersects = function(a, b, c, d, p, q, r, s) {
+    // returns true if the line from (a,b)->(c,d) intersects with (p,q)->(r,s)
+    var det, gamma, lambda;
+    det = (c - a) * (s - q) - (r - p) * (d - b);
+    if (det === 0) {
+        return false;
+    } else {
+        lambda = ((s - q) * (r - a) + (p - r) * (s - b)) / det;
+        gamma = ((b - d) * (r - a) + (c - a) * (s - b)) / det;
+        return (0 < lambda && lambda < 1) && (0 < gamma && gamma < 1);
+    }
+};
+
+
+
+window.requestAnimFrame = (function(callback) {
+	return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+	function(callback) {
+	  window.setTimeout(callback, 1000 / 60);
+	};
+})();
+
+var myStrings = [];
+
+(function animate() {	
+	for(var i = 0; i < myStrings.length; i++) {
+	    var myString = myStrings[i];
+		// update
+		myString.update();
+
+		// clear
+	    myString.clear();
+		
+		// draw stuff
+	    // console.log("run every frame");
+	    myString.draw();
+	}
+
+
+	// request new frame
+	requestAnimFrame(function() {
+	  animate();
+	});
+})()
+
 function drawTextSingleLine (canvas, text, textUnderlineDistance,  lineHeight, height, ratio, fontFamily, fontSize, fontStyle) {
 	var ctx = canvas.getContext('2d');
 	
@@ -46,6 +122,20 @@ function drawTextSingleLine (canvas, text, textUnderlineDistance,  lineHeight, h
 	ctx.moveTo(0, posY);
 	ctx.lineTo(textWidth, posY);
 	ctx.stroke();
+	// var canvas = canvas;
+	// var myString = new String(canvas, new Point(0, posY), new Point(textWidth, posY),
+	// 	strokeWidth, "#bad424");
+	// myStrings.push(myString);
+
+	// update
+	// myString.update();
+
+	// clear
+    // myString.clear();
+	
+	// draw stuff
+    // myString.draw();
+
 
 	// draw the font stroke				
 	ctx.globalCompositeOperation = "destination-out";
@@ -53,7 +143,7 @@ function drawTextSingleLine (canvas, text, textUnderlineDistance,  lineHeight, h
 	ctx.fillStyle = 'green';
 	ctx.textBaseline = 'top';
 	ctx.fillText(text, 0, 0);
-	console.log(strokeWidth);
+	// console.log(strokeWidth);
 	ctx.lineWidth = 3 + strokeWidth;
 	ctx.strokeStyle = 'blue';
 	ctx.strokeText(text, 0, 0);
@@ -210,6 +300,9 @@ window.onload = function() {
 	var underlineElements = document.querySelectorAll(".underline");
     for(var n = 0; n < underlineElements.length; n++) {
     	$this = underlineElements[n];
+
+    	// add string animation to underline 
+
 		var ratio = baselineRatio($this);
 		// console.log(ratio);
 		var lineHeight = parseFloat(window.getComputedStyle($this, null)
