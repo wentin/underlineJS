@@ -56,9 +56,10 @@ The project is currently under dev. Contact me on [twitter](http://twitter.com/D
 ##### Dec 4, 2014
 * add approach 2, one single canvas for each element.
 
-##### Dec 9, 2014
+##### Dec 10, 2014
 * finish finding descenderline with svg/js
-* start guitar string animation! Can you imagine this happen to your text underline! [http://www.google.com/logos/2011/lespaul.html](http://www.google.com/logos/2011/lespaul.html)
+* finish String class to draw underline with guitar string animation, not merged yet.
+* start guitar string animation! Can you imagine this happen to your text underline! [http://wentin.github.io/underlineJS/stringAnimation/](http://wentin.github.io/underlineJS/stringAnimation/)
 
 
 ## To do list
