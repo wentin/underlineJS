@@ -1,23 +1,76 @@
-function String(canvas, startPoint, endPoint, strokeWidth, strokeColor) {
+
+var dist = function(x, y, x0, y0){
+    return Math.sqrt((x -= x0) * x + (y -= y0) * y);
+};
+
+var circleCenter = function(startPoint, thirdPoint, endPoint){
+    var dy1 = thirdPoint.y - startPoint.y;
+    var dx1 = thirdPoint.x - startPoint.x;
+    var dy2 = endPoint.y - thirdPoint.y;
+    var dx2 = endPoint.x - thirdPoint.x;
+
+    var aSlope = dy1/dx1;
+    var bSlope = dy2/dx2;  
+
+
+    var centerX = (aSlope*bSlope*(startPoint.y - endPoint.y) + bSlope*(startPoint.x + thirdPoint.x)
+        - aSlope*(thirdPoint.x+endPoint.x) )/( 2* (bSlope-aSlope) );
+    var centerY = -1*(centerX - (startPoint.x+thirdPoint.x)/2)/aSlope +  (startPoint.y+thirdPoint.y)/2;
+    var r = dist(centerX, centerY, startPoint.x, startPoint.y)
+
+    return {
+        x: centerX,
+        y: centerY,
+        r: r
+    };
+}
+
+var Point = function (x,y){
+    this.x=x;
+    this.y=y;
+}
+
+var intersects = function(a, b, c, d, p, q, r, s) {
+    // returns true if the line from (a,b)->(c,d) intersects with (p,q)->(r,s)
+    var det, gamma, lambda;
+    det = (c - a) * (s - q) - (r - p) * (d - b);
+    if (det === 0) {
+        return false;
+    } else {
+        lambda = ((s - q) * (r - a) + (p - r) * (s - b)) / det;
+        gamma = ((b - d) * (r - a) + (c - a) * (s - b)) / det;
+        return (0 < lambda && lambda < 1) && (0 < gamma && gamma < 1);
+    }
+};
+
+
+
+function GuitarString(ctx, startPoint, endPoint, strokeWidth, strokeColor) {
 	//ctor
 	// this.canvas = document.getElementById(id);
 	// this.ctx = this.canvas.getContext('2d');
-    this.canvas = canvas;
-    this.ctx = this.canvas.getContext('2d');
+
+    // this.canvas = canvas;
+    // console.dir(this.canvas);
+    // console.dir(this.canvas.getContext('2d'));
+    // this.ctx = this.canvas.getContext('2d');
+    this.ctx = ctx;
+    this.canvas = ctx.canvas;
+    console.dir(ctx.canvas);
+    // debugger;
 
     // console.dir(this.canvas);
-    this.canvas.width = this.canvas.clientWidth;
-    this.canvas.height = this.canvas.clientHeight;
+    // this.canvas.width = this.canvas.clientWidth;
+    // this.canvas.height = this.canvas.clientHeight;
 
 	this.startPoint = startPoint;
+    console.log(this.startPoint);
 	this.endPoint = endPoint;
     this.strokeWidth = strokeWidth;
     this.strokeColor = strokeColor;
 	this.controlPoint = new Point(0,0);
     this.thirdPoint = new Point(0,0);
 
-    this.ctx.lineWidth = this.strokeWidth;
-    this.ctx.strokeStyle = this.strokeColor;
     
 
     this.waveInitX = (this.startPoint.x + this.endPoint.x)/2;
@@ -41,9 +94,11 @@ function String(canvas, startPoint, endPoint, strokeWidth, strokeColor) {
 	}, false);
 }
 
-String.prototype.drawArc = function(startPoint, thirdPoint, endPoint, ctx){
-    var ctx = ctx;
-
+GuitarString.prototype.drawArc = function(startPoint, thirdPoint, endPoint){
+    var ctx = this.ctx;
+    ctx.lineWidth = this.strokeWidth;
+    ctx.strokeStyle = this.strokeColor;
+    console.dir(ctx);
     var dy1 = thirdPoint.y - startPoint.y;
     var dx1 = thirdPoint.x - startPoint.x;
     var dy2 = endPoint.y - thirdPoint.y;
@@ -84,28 +139,31 @@ String.prototype.drawArc = function(startPoint, thirdPoint, endPoint, ctx){
     ctx.stroke();
 
 }
-String.prototype.draw = function(){
+GuitarString.prototype.draw = function(){
 	
 	// draw stuff
     var initState = (!this.userInControl) && (!this.waveInControl) && (!this.waveFinished)
     if ( this.waveFinished || initState){
         // console.log('line');
+    this.ctx.lineWidth = this.strokeWidth;
+    this.ctx.strokeStyle = this.strokeColor;
         this.ctx.beginPath();
         this.ctx.moveTo(this.startPoint.x, this.startPoint.y);
         this.ctx.lineTo(this.endPoint.x, this.endPoint.y);
         this.ctx.stroke();
     } else {
-        this.drawArc(this.startPoint, this.thirdPoint, this.endPoint, this.ctx);
+        console.log('drawarc');
+        this.drawArc(this.startPoint, this.thirdPoint, this.endPoint);
     }
 };
 
-String.prototype.clear = function(){
+GuitarString.prototype.clear = function(){
 	// clear
 	this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 };
 
 
-String.prototype.update = function(){
+GuitarString.prototype.update = function(){
 	// update
 	var radius = circleCenter(  new Point(this.startPoint.x, this.startPoint.y), 
                             new Point(this.controlPoint.x, this.controlPoint.y), 
@@ -194,13 +252,14 @@ String.prototype.update = function(){
 
 };
 
-String.prototype.resize = function(){
+GuitarString.prototype.resize = function(){
     // resize canvas
     this.canvas.width = this.canvas.clientWidth;
     this.canvas.height = this.canvas.clientHeight;
 };
 
-String.prototype.mouseMove = function(self, pos){
+GuitarString.prototype.mouseMove = function(self, pos){
+    // console.log(pos);
 	self.controlPoint.x = pos.layerX;
 	self.controlPoint.y = pos.layerY;	
 };
