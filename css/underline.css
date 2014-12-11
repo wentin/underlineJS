@@ -1,14 +1,20 @@
 .underline {
 	position: relative;
 }
+.underline span {
+  pointer-events: none;
+
+}
 .underline canvas {
+  	pointer-events: auto;
 	position: absolute;
 	top: 0;
 	left: 0;
-	/*background-color: rgba(222, 222, 222, 0.5);*/
-	z-index: -1;
+	background-color: rgba(222, 222, 222, 0.1);
+	/*z-index: -1;*/
 	-moz-user-select: none; 
 	-khtml-user-select: none; 
 	-webkit-user-select: none; 
 	-o-user-select: none; 
+	cursor: crosshair;
 }
