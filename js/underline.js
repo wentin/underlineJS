@@ -12,15 +12,24 @@ window.onload = function() {
 
     	var element = underlineElements[n];
 
-
     	var underlineStyles = {
     		'text-underline-color': '#fd471e',
     		'text-underline-position': 0.15, // could be ratio or px 
     		'text-underline-skip': true,
     		'text-underline-width': 'auto' // could be auto or px or ratio
     	}
-    	// debugger;
-    	var myUnderline = new SingleUnderline(element, underlineStyles);
+
+
+    	var elementStyles = getElementStyles(element);
+    	// single line or multiple line?
+		if (elementStyles.height > elementStyles.lineHeight) {
+			// multiple lines
+			console.log('multiple lines');
+    		var myUnderline = new MultipleUnderline(element, underlineStyles, elementStyles);
+		} else {
+			// single line
+    		var myUnderline = new SingleUnderline(element, underlineStyles, elementStyles);
+		}
     	myUnderlines.push(myUnderline);
     }
 }
@@ -37,8 +46,7 @@ function animate() {
 	    myUnderline.clear();
 		
 		// draw stuff
-	    myUnderline.drawUnderline();
-	    myUnderline.drawHoles();
+	    myUnderline.draw();
 	}
 
 	

@@ -180,11 +180,11 @@ function drawText(canvas, text, x, y, maxWidth, textUnderlineDistance, lineHeigh
     	posY = Math.round(posY);
     }
 
-	if(strokeWidth <= 1 || (strokeWidth%2 && strokeWidth > 2)) {
-	    posY = Math.round(posY - 0.5) + 0.5;
-    } else {
-    	posY = Math.round(posY);
-    }
+	// if(strokeWidth <= 1 || (strokeWidth%2 && strokeWidth > 2)) {
+	//     posY = Math.round(posY - 0.5) + 0.5;
+ //    } else {
+ //    	posY = Math.round(posY);
+ //    }
 
 	var words = text.split(' ');
     var line = '';

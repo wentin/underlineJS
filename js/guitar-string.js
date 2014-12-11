@@ -1,3 +1,4 @@
+var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
 
 var dist = function(x, y, x0, y0){
     return Math.sqrt((x -= x0) * x + (y -= y0) * y);
