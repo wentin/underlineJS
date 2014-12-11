@@ -161,28 +161,34 @@ GuitarString.prototype.update = function(){
                             new Point(this.lastMouseX, this.lastMouseY), 
                             new Point(this.endPoint.x, this.endPoint.y) ).r;
     
-    var rGrab = (Math.abs(this.endPoint.x - this.startPoint.x))*49;
-    var rControl = (Math.abs(this.endPoint.x - this.startPoint.x))*4.9;
+    var rGrab = (Math.abs(this.endPoint.x - this.startPoint.x))*19;
+    var rControl = (Math.abs(this.endPoint.x - this.startPoint.x))*1.9;
 
     // if (rGrab > 1600) {
     //     rGrab = 1600;
     //     rControl = 160;
     // }
 
+    var maxGrabDistance = this.strokeWidth * 3;
+    var maxControlDistance = this.strokeWidth * 12;
+    var currentWaveDistance = radius - Math.sqrt( Math.pow(radius, 2) 
+                                    - Math.pow((Math.abs(this.endPoint.x - this.startPoint.x))/2, 2) );
+    var lastWaveDistance = lastRadius - Math.sqrt( Math.pow(lastRadius, 2) 
+                                    - Math.pow((Math.abs(this.endPoint.x - this.startPoint.x))/2, 2) );
 
-    var mouseInGrabRange = radius > rGrab 
+    var mouseInGrabRange = currentWaveDistance < maxGrabDistance 
         && this.controlPoint.x > this.startPoint.x
         && this.controlPoint.x < this.endPoint.x;
 
-    var lastMouseOutGrabRange = !(lastRadius > rGrab
+    var lastMouseOutGrabRange = !(lastWaveDistance > maxGrabDistance
         && this.lastMouseX > this.startPoint.x
         && this.lastMouseY < this.endPoint.x);
 
-    var mouseOutControlRange = !(radius > rControl 
+    var mouseOutControlRange = !(currentWaveDistance < maxControlDistance 
         && this.controlPoint.x > this.startPoint.x
         && this.controlPoint.x < this.endPoint.x);
 
-    var lastMouseInControlRange = lastRadius > rControl
+    var lastMouseInControlRange = lastWaveDistance < maxControlDistance
         && this.lastMouseX > this.startPoint.x
         && this.lastMouseY < this.endPoint.x;
 
@@ -206,7 +212,6 @@ GuitarString.prototype.update = function(){
         this.waveInControl = false;
 
     } else if ( mouseOutControlRange && lastMouseInControlRange){
-
         this.userInControl = false;
         this.waveInControl = true;
         this.waveInitX = this.lastMouseX;
