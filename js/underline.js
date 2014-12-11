@@ -27,8 +27,9 @@ window.onload = function() {
 			// multiple lines
 			// console.log('multiple lines');
     		var myUnderline = new MultipleUnderline(element, underlineStyles, elementStyles);
-    		myUnderline.update();
-    		// myUnderlines.push(myUnderline);
+    		// myUnderline.update();
+    		// myUnderline.draw();
+    		myUnderlines.push(myUnderline);
 		} else {
 			// single line
     		var myUnderline = new SingleUnderline(element, underlineStyles, elementStyles);

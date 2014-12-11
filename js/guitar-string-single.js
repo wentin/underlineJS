@@ -69,7 +69,7 @@ function GuitarString(ctx, startPoint, endPoint, strokeWidth, strokeColor) {
 	this.lastMouseX = this.controlPoint.x;
     this.lastMouseY = this.controlPoint.y;
     this.waveCount = 0;
-    this.damping = 0.95;
+    this.damping = 0.98;
 
     this.userInControl = false;
     this.userPlucked = false;
@@ -161,8 +161,8 @@ GuitarString.prototype.update = function(){
                             new Point(this.lastMouseX, this.lastMouseY), 
                             new Point(this.endPoint.x, this.endPoint.y) ).r;
     
-    var rGrab = (Math.abs(this.endPoint.x - this.startPoint.x))*49;
-    var rControl = (Math.abs(this.endPoint.x - this.startPoint.x))*4.9;
+    var rGrab = (Math.abs(this.endPoint.x - this.startPoint.x))*19;
+    var rControl = (Math.abs(this.endPoint.x - this.startPoint.x))*1.9;
 
     // if (rGrab > 1600) {
     //     rGrab = 1600;
@@ -255,6 +255,6 @@ GuitarString.prototype.mouseMove = function(self, pos){
 GuitarString.prototype.mouseOut = function(self){
     self.userInControl = false;
     self.waveInControl = true;
-    // self.waveInitX = (self.startPoint.x + self.endPoint.x)/2;
-    // self.waveInitY = self.canvas.height;
+    self.waveInitX = (self.startPoint.x + self.endPoint.x)/2;
+    self.waveInitY = self.canvas.height;
 };
