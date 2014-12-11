@@ -203,26 +203,41 @@ function MultipleUnderline(element, underlineStyles, elementStyles) {
 
 MultipleUnderline.prototype.update = function(){
     // update
-    var words = this.text.split(' ');
+    // var words = this.text.split(' ');
+
+    var words = this.text.match(/[^\s-]+-?\s?/g);
     var line = '';
 
     var linePositionY = 0;
     var firstLineCount = 0;
     for(var n = 0; n < words.length; n++) {
-    // add the whitespace after getting the width measurement
-      var testLine = line + words[n];
-      var testLineMetrics = this.ctx.measureText(testLine);
-      var testLineWidth = testLineMetrics.width;
-          testLine = testLine + ' ';
-
+        // add the whitespace after getting the width measurement
+        if ( words[n].match(/\s+$/) ) {
+            // the last character of words[n] is whitespace
+            var newWord = words[n].replace(/\s+$/, '');
+            var testLine = line + newWord;
+            var testLineMetrics = this.ctx.measureText(testLine);
+            var testLineWidth = testLineMetrics.width;
+            testLine = testLine + ' ';
+        } else {  
+            var testLine = line + words[n];
+            var testLineMetrics = this.ctx.measureText(testLine);
+            var testLineWidth = testLineMetrics.width;
+        }
 
       if (!firstLineCount) {
         //the first line, should consider startingPointX
         if (testLineWidth + this.elementStyles.textIndent > this.elementStyles.parentWidth && n > 0) {
             //  draw the underline
-            // console.log(line);
-            var lineMetrics = this.ctx.measureText(line);
-            var lineWidth = lineMetrics.width;
+            if ( line.match(/\s+$/) ) {
+                // the last character of line is whitespace               
+                var lineMetrics = this.ctx.measureText(line.replace(/\s+$/, ''));
+                var lineWidth = lineMetrics.width; 
+            } else {
+                var lineMetrics = this.ctx.measureText(line);
+                var lineWidth = lineMetrics.width; 
+            }
+
             this.ctx.globalCompositeOperation = "source-over";
 
             this.ctx.strokeStyle = this.underlineStyles['text-underline-color'];
@@ -230,7 +245,7 @@ MultipleUnderline.prototype.update = function(){
 
             this.ctx.beginPath();
             this.ctx.moveTo(this.elementStyles.textIndent, this.underlinePosition);
-            this.ctx.lineTo(lineWidth + this.elementStyles.textIndent - 5, this.underlinePosition);
+            this.ctx.lineTo(lineWidth + this.elementStyles.textIndent , this.underlinePosition);
             this.ctx.stroke();
 
             // draw the font stroke
@@ -244,7 +259,7 @@ MultipleUnderline.prototype.update = function(){
             this.ctx.strokeStyle = 'blue';
             this.ctx.strokeText(line, this.elementStyles.textIndent, linePositionY);
 
-            line = words[n] + ' ';
+            line = words[n];
             linePositionY += this.elementStyles.lineHeight;
             firstLineCount++;
         } else {
@@ -253,8 +268,14 @@ MultipleUnderline.prototype.update = function(){
       } else {
         if (testLineWidth > this.elementStyles.parentWidth && n > 0) {
             //  draw the underline
-            var lineMetrics = this.ctx.measureText(line);
-            var lineWidth = lineMetrics.width;
+            if ( line.match(/\s+$/) ) {
+                // the last character of line is whitespace               
+                var lineMetrics = this.ctx.measureText(line.replace(/\s+$/, ''));
+                var lineWidth = lineMetrics.width; 
+            } else {
+                var lineMetrics = this.ctx.measureText(line);
+                var lineWidth = lineMetrics.width; 
+            }
 
             this.ctx.globalCompositeOperation = "source-over";
 
@@ -262,7 +283,7 @@ MultipleUnderline.prototype.update = function(){
             this.ctx.lineWidth = this.strokeWidth;
             this.ctx.beginPath();
             this.ctx.moveTo(0, linePositionY + this.underlinePosition);
-            this.ctx.lineTo(lineWidth - 5, linePositionY + this.underlinePosition);
+            this.ctx.lineTo(lineWidth , linePositionY + this.underlinePosition);
             this.ctx.stroke();
 
             // draw the font stroke
@@ -275,7 +296,7 @@ MultipleUnderline.prototype.update = function(){
             this.ctx.strokeStyle = 'blue';
             this.ctx.strokeText(line, 0, linePositionY);
 
-            line = words[n] + ' ';
+            line = words[n];
             linePositionY += this.elementStyles.lineHeight;
         } else {
             line = testLine;
@@ -284,15 +305,21 @@ MultipleUnderline.prototype.update = function(){
     }
     // draw the last line
     //  draw the underline
-    var lineMetrics = this.ctx.measureText(line);
-    var lineWidth = lineMetrics.width;
+    if ( line.match(/\s+$/) ) {
+        // the last character of line is whitespace               
+        var lineMetrics = this.ctx.measureText(line.replace(/\s+$/, ''));
+        var lineWidth = lineMetrics.width; 
+    } else {
+        var lineMetrics = this.ctx.measureText(line);
+        var lineWidth = lineMetrics.width; 
+    }
     this.ctx.globalCompositeOperation = "source-over";
 
     this.ctx.strokeStyle = 'orangered';
     this.ctx.lineWidth = this.strokeWidth;
     this.ctx.beginPath();
     this.ctx.moveTo(0, linePositionY + this.underlinePosition);
-    this.ctx.lineTo(lineWidth - 5, linePositionY + this.underlinePosition);
+    this.ctx.lineTo(lineWidth , linePositionY + this.underlinePosition);
     this.ctx.stroke();
 
     // draw the font stroke
@@ -308,7 +335,7 @@ MultipleUnderline.prototype.update = function(){
 
 MultipleUnderline.prototype.clear = function(){
     // clear
-    // this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
 };
 
