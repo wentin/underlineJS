@@ -232,7 +232,7 @@ MultipleUnderline.prototype.update = function(){
 
             this.ctx.beginPath();
             this.ctx.moveTo(this.elementStyles.textIndent, this.underlinePosition);
-            this.ctx.lineTo(lineWidth + this.elementStyles.textIndent - 4, this.underlinePosition);
+            this.ctx.lineTo(lineWidth + this.elementStyles.textIndent - 5, this.underlinePosition);
             this.ctx.stroke();
 
             // draw the font stroke
@@ -264,7 +264,7 @@ MultipleUnderline.prototype.update = function(){
             this.ctx.lineWidth = this.strokeWidth;
             this.ctx.beginPath();
             this.ctx.moveTo(0, linePositionY + this.underlinePosition);
-            this.ctx.lineTo(lineWidth - 4, linePositionY + this.underlinePosition);
+            this.ctx.lineTo(lineWidth - 5, linePositionY + this.underlinePosition);
             this.ctx.stroke();
 
             // draw the font stroke
@@ -294,7 +294,7 @@ MultipleUnderline.prototype.update = function(){
     this.ctx.lineWidth = this.strokeWidth;
     this.ctx.beginPath();
     this.ctx.moveTo(0, linePositionY + this.underlinePosition);
-    this.ctx.lineTo(lineWidth - 4, linePositionY + this.underlinePosition);
+    this.ctx.lineTo(lineWidth - 5, linePositionY + this.underlinePosition);
     this.ctx.stroke();
 
     // draw the font stroke
