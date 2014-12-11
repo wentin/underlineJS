@@ -6,6 +6,7 @@ window.requestAnimFrame = (function(callback) {
 })();
 
 var myUnderlines = [];
+var myMultipleUnderlines = [];
 window.onload = function() {
 	var underlineElements = document.querySelectorAll(".underline");
     for(var n = 0; n < underlineElements.length; n++) {
@@ -24,13 +25,15 @@ window.onload = function() {
     	// single line or multiple line?
 		if (elementStyles.height > elementStyles.lineHeight) {
 			// multiple lines
-			console.log('multiple lines');
+			// console.log('multiple lines');
     		var myUnderline = new MultipleUnderline(element, underlineStyles, elementStyles);
+    		myUnderline.update();
+    		// myUnderlines.push(myUnderline);
 		} else {
 			// single line
     		var myUnderline = new SingleUnderline(element, underlineStyles, elementStyles);
+    		myUnderlines.push(myUnderline);
 		}
-    	myUnderlines.push(myUnderline);
     }
 }
 

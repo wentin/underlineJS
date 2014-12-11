@@ -161,8 +161,14 @@ GuitarString.prototype.update = function(){
                             new Point(this.lastMouseX, this.lastMouseY), 
                             new Point(this.endPoint.x, this.endPoint.y) ).r;
     
-    var rGrab = (Math.abs(this.endPoint.x - this.startPoint.x))*25;
-    var rControl = (Math.abs(this.endPoint.x - this.startPoint.x))*3;
+    var rGrab = (Math.abs(this.endPoint.x - this.startPoint.x))*19;
+    var rControl = (Math.abs(this.endPoint.x - this.startPoint.x))*1.9;
+
+    // if (rGrab > 1600) {
+    //     rGrab = 1600;
+    //     rControl = 160;
+    // }
+
 
     var mouseInGrabRange = radius > rGrab 
         && this.controlPoint.x > this.startPoint.x
@@ -193,7 +199,6 @@ GuitarString.prototype.update = function(){
         }
     }*/
 
-           
     if( mouseInGrabRange && lastMouseOutGrabRange ){
         this.waveCount = 0;
         this.waveFinished = false;
@@ -250,4 +255,6 @@ GuitarString.prototype.mouseMove = function(self, pos){
 GuitarString.prototype.mouseOut = function(self){
     self.userInControl = false;
     self.waveInControl = true;
+    self.waveInitX = (self.startPoint.x + self.endPoint.x)/2;
+    self.waveInitY = self.canvas.height;
 };

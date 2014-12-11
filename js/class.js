@@ -110,7 +110,7 @@ SingleUnderline.prototype.clear = function(){
 SingleUnderline.prototype.draw = function(){
     // draw
     this.drawUnderline();
-    this.drawHoles;
+    this.drawHoles();
 };
 
 SingleUnderline.prototype.drawUnderline = function(){
@@ -203,8 +203,6 @@ function MultipleUnderline(element, underlineStyles, elementStyles) {
 
 MultipleUnderline.prototype.update = function(){
     // update
-
-    ////////////////////////
     var words = this.text.split(' ');
     var line = '';
 
