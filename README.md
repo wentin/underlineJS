@@ -1,13 +1,21 @@
 # underline.js
 
-`A javascript library that sets out to do one simple job: draw the most perfect underline`
-
-`A pixel-perfect javascript library for drawing text underline, or maybe even animate it, data-viz it, or more`
+`A javascript library that sets out to do one simple job: draw and animate the most perfect and playful text underline`
 
 The goal of this project is not to succeed, but fail. 
 
 If one day there is absolutely no one and no reason to use underline.jes, then it reaches its ultimate goal: to fail completely. Because that means the browser has supported  this feature natively. That is what this project is about, to push the W3C further in a pixel-perfect, designer-friendly route.
 
+## Example
+
+[http://wentin.github.io/underlineJS/](http://wentin.github.io/underlineJS/)
+
+`Please click to see large picture. red is underline.js, green is browser default underline`
+![PROGRESS](https://raw.githubusercontent.com/wentin/underlineJS/master/i/underlineJS.png)
+
+The project is currently under dev. Contact me on [twitter](http://twitter.com/DesignJokes) if you want to be part of this project!
+
+## Idea
 [Marcin Wichary's ideal underline](https://medium.com/designing-medium/crafting-link-underlines-on-medium-7c03a9274f9):
 * be able to change the width of the line (with additional half-pixel/retina support),
 * be able to change the distance from the text,
@@ -22,12 +30,8 @@ In addition to these above, it should also
 *Image by Marcin Wichary*
 
 
-## Progress Preview
-`Please click to see large picture. red is underline.js, green is browser default underline`
-![PROGRESS](https://raw.githubusercontent.com/wentin/underlineJS/master/i/underlineJS.png)
 
-The project is currently under dev. Contact me on [twitter](http://twitter.com/DesignJokes) if you want to contribute!
-
+<!--
 ## Examples of approaches
 
 - **New Approach example, add single canvas for each dom element that has classname "underline"**
@@ -47,7 +51,7 @@ The project is currently under dev. Contact me on [twitter](http://twitter.com/D
 `Paragraph "What we’ve got …" text underline is canvas rendered!`
 
 *Example designed by Wenting Zhang(me) in huffpost labs, article by Katelyn Bogucki from huffpostcode*
-
+-->
 ## Logs
 ##### Dec 2, 2014
 * start proof of concept
@@ -56,9 +60,10 @@ The project is currently under dev. Contact me on [twitter](http://twitter.com/D
 ##### Dec 4, 2014
 * add approach 2, one single canvas for each element.
 
-##### Dec 9, 2014
+##### Dec 10, 2014
 * finish finding descenderline with svg/js
-* start guitar string animation! Can you imagine this happen to your text underline! [http://www.google.com/logos/2011/lespaul.html](http://www.google.com/logos/2011/lespaul.html)
+* finish String class to draw underline with guitar string animation, not merged yet.
+* start guitar string animation! Can you imagine this happen to your text underline! [http://wentin.github.io/underlineJS/stringAnimation/](http://wentin.github.io/underlineJS/stringAnimation/)
 
 
 ## To do list
