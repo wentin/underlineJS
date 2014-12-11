@@ -51,8 +51,8 @@ function GuitarString(ctx, startPoint, endPoint, strokeWidth, strokeColor) {
     this.ctx = ctx;
     this.canvas = ctx.canvas;
 
-    this.canvas.width = this.canvas.clientWidth;
-    this.canvas.height = this.canvas.clientHeight*1.2;
+    // this.canvas.width = this.canvas.clientWidth;
+    // this.canvas.height = this.canvas.clientHeight*1.2;
 
 	this.startPoint = startPoint;
 	this.endPoint = endPoint;
@@ -161,9 +161,8 @@ GuitarString.prototype.update = function(){
                             new Point(this.lastMouseX, this.lastMouseY), 
                             new Point(this.endPoint.x, this.endPoint.y) ).r;
     
-    var rGrab = (Math.abs(this.endPoint.x - this.startPoint.x))*19;
-    var rControl = (Math.abs(this.endPoint.x - this.startPoint.x))*1.9;
-
+    // var rGrab = (Math.abs(this.endPoint.x - this.startPoint.x))*19;
+    // var rControl = (Math.abs(this.endPoint.x - this.startPoint.x))*1.9;
     // if (rGrab > 1600) {
     //     rGrab = 1600;
     //     rControl = 160;

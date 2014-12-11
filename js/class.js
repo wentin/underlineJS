@@ -49,7 +49,7 @@ function SingleUnderline(element, underlineStyles, elementStyles) {
 
     this.canvas = document.createElement("canvas");
         this.canvas.width = this.elementStyles.width;
-        this.canvas.height = this.elementStyles.height;
+        this.canvas.height = this.elementStyles.height*1.4;
         this.element.appendChild(this.canvas);
 
     this.ctx = this.canvas.getContext('2d');
@@ -156,10 +156,10 @@ function MultipleUnderline(element, underlineStyles, elementStyles) {
     this.elementStyles = elementStyles;
 
     this.canvas = document.createElement("canvas");
-    this.canvas.width = this.elementStyles.width;
-    this.canvas.height = this.elementStyles.height;
-    this.canvas.style.left = this.elementStyles.canvasLeft + 'px';
-    this.element.appendChild(this.canvas);
+        this.canvas.width = this.elementStyles.width;
+        this.canvas.height = this.elementStyles.height*1.4;
+        this.canvas.style.left = this.elementStyles.canvasLeft + 'px';
+        this.element.appendChild(this.canvas);
 
     this.ctx = this.canvas.getContext('2d');
     this.ctx.font = this.font = this.elementStyles.fontStyle + ' ' + this.elementStyles.fontSize + ' ' + this.elementStyles.fontFamily;
