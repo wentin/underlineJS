@@ -1,8 +1,6 @@
 # underline.js
 
-`A javascript library that sets out to do one simple job: draw the most perfect underline`
-
-`A pixel-perfect javascript library for drawing text underline, or maybe even animate it, data-viz it, or more`
+`A javascript library that sets out to do one simple job: draw and animate the most perfect and playful text underline`
 
 The goal of this project is not to succeed, but fail. 
 
@@ -23,11 +21,15 @@ In addition to these above, it should also
 
 
 ## Progress Preview
+
+[http://wentin.github.io/underlineJS/](http://wentin.github.io/underlineJS/)
+
 `Please click to see large picture. red is underline.js, green is browser default underline`
 ![PROGRESS](https://raw.githubusercontent.com/wentin/underlineJS/master/i/underlineJS.png)
 
 The project is currently under dev. Contact me on [twitter](http://twitter.com/DesignJokes) if you want to contribute!
 
+<!--
 ## Examples of approaches
 
 - **New Approach example, add single canvas for each dom element that has classname "underline"**
@@ -47,7 +49,7 @@ The project is currently under dev. Contact me on [twitter](http://twitter.com/D
 `Paragraph "What we’ve got …" text underline is canvas rendered!`
 
 *Example designed by Wenting Zhang(me) in huffpost labs, article by Katelyn Bogucki from huffpostcode*
-
+-->
 ## Logs
 ##### Dec 2, 2014
 * start proof of concept
