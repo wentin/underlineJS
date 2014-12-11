@@ -56,15 +56,15 @@ function GuitarString(ctx, startPoint, endPoint, strokeWidth, strokeColor) {
     // this.ctx = this.canvas.getContext('2d');
     this.ctx = ctx;
     this.canvas = ctx.canvas;
-    console.dir(ctx.canvas);
+    // console.dir(ctx.canvas);
     // debugger;
 
     // console.dir(this.canvas);
-    // this.canvas.width = this.canvas.clientWidth;
-    // this.canvas.height = this.canvas.clientHeight;
+    this.canvas.width = this.canvas.clientWidth;
+    this.canvas.height = this.canvas.clientHeight;
 
 	this.startPoint = startPoint;
-    console.log(this.startPoint);
+    // console.log(this.startPoint);
 	this.endPoint = endPoint;
     this.strokeWidth = strokeWidth;
     this.strokeColor = strokeColor;
@@ -98,7 +98,7 @@ GuitarString.prototype.drawArc = function(startPoint, thirdPoint, endPoint){
     var ctx = this.ctx;
     ctx.lineWidth = this.strokeWidth;
     ctx.strokeStyle = this.strokeColor;
-    console.dir(ctx);
+    // console.dir(ctx);
     var dy1 = thirdPoint.y - startPoint.y;
     var dx1 = thirdPoint.x - startPoint.x;
     var dy2 = endPoint.y - thirdPoint.y;
@@ -144,7 +144,7 @@ GuitarString.prototype.draw = function(){
 	// draw stuff
     var initState = (!this.userInControl) && (!this.waveInControl) && (!this.waveFinished)
     if ( this.waveFinished || initState){
-        // console.log('line');
+    // console.log('line');
     this.ctx.lineWidth = this.strokeWidth;
     this.ctx.strokeStyle = this.strokeColor;
         this.ctx.beginPath();
@@ -152,7 +152,6 @@ GuitarString.prototype.draw = function(){
         this.ctx.lineTo(this.endPoint.x, this.endPoint.y);
         this.ctx.stroke();
     } else {
-        console.log('drawarc');
         this.drawArc(this.startPoint, this.thirdPoint, this.endPoint);
     }
 };
@@ -165,6 +164,7 @@ GuitarString.prototype.clear = function(){
 
 GuitarString.prototype.update = function(){
 	// update
+    
 	var radius = circleCenter(  new Point(this.startPoint.x, this.startPoint.y), 
                             new Point(this.controlPoint.x, this.controlPoint.y), 
                             new Point(this.endPoint.x, this.endPoint.y) ).r;
@@ -259,7 +259,7 @@ GuitarString.prototype.resize = function(){
 };
 
 GuitarString.prototype.mouseMove = function(self, pos){
-    // console.log(pos);
+    // console.log(pos);   
 	self.controlPoint.x = pos.layerX;
 	self.controlPoint.y = pos.layerY;	
 };
