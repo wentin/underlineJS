@@ -6,6 +6,16 @@ The goal of this project is not to succeed, but fail.
 
 If one day there is absolutely no one and no reason to use underline.jes, then it reaches its ultimate goal: to fail completely. Because that means the browser has supported  this feature natively. That is what this project is about, to push the W3C further in a pixel-perfect, designer-friendly route.
 
+## Example
+
+[http://wentin.github.io/underlineJS/](http://wentin.github.io/underlineJS/)
+
+`Please click to see large picture. red is underline.js, green is browser default underline`
+![PROGRESS](https://raw.githubusercontent.com/wentin/underlineJS/master/i/underlineJS.png)
+
+The project is currently under dev. Contact me on [twitter](http://twitter.com/DesignJokes) if you want to be part of this project!
+
+## Idea
 [Marcin Wichary's ideal underline](https://medium.com/designing-medium/crafting-link-underlines-on-medium-7c03a9274f9):
 * be able to change the width of the line (with additional half-pixel/retina support),
 * be able to change the distance from the text,
@@ -20,14 +30,6 @@ In addition to these above, it should also
 *Image by Marcin Wichary*
 
 
-## Progress Preview
-
-[http://wentin.github.io/underlineJS/](http://wentin.github.io/underlineJS/)
-
-`Please click to see large picture. red is underline.js, green is browser default underline`
-![PROGRESS](https://raw.githubusercontent.com/wentin/underlineJS/master/i/underlineJS.png)
-
-The project is currently under dev. Contact me on [twitter](http://twitter.com/DesignJokes) if you want to contribute!
 
 <!--
 ## Examples of approaches
