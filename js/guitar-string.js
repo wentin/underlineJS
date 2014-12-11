@@ -47,24 +47,13 @@ var intersects = function(a, b, c, d, p, q, r, s) {
 
 function GuitarString(ctx, startPoint, endPoint, strokeWidth, strokeColor) {
 	//ctor
-	// this.canvas = document.getElementById(id);
-	// this.ctx = this.canvas.getContext('2d');
-
-    // this.canvas = canvas;
-    // console.dir(this.canvas);
-    // console.dir(this.canvas.getContext('2d'));
-    // this.ctx = this.canvas.getContext('2d');
     this.ctx = ctx;
     this.canvas = ctx.canvas;
-    // console.dir(ctx.canvas);
-    // debugger;
 
-    // console.dir(this.canvas);
     this.canvas.width = this.canvas.clientWidth;
-    this.canvas.height = this.canvas.clientHeight;
+    this.canvas.height = this.canvas.clientHeight*1.2;
 
 	this.startPoint = startPoint;
-    // console.log(this.startPoint);
 	this.endPoint = endPoint;
     this.strokeWidth = strokeWidth;
     this.strokeColor = strokeColor;
@@ -89,9 +78,12 @@ function GuitarString(ctx, startPoint, endPoint, strokeWidth, strokeColor) {
 	//add event listener
 	var self = this;
 	this.canvas.addEventListener('mousemove',  function(pos) { 
-		// console.dir(pos);
-		self.mouseMove(self, pos) 
+		self.mouseMove(self, pos);
 	}, false);
+
+    this.canvas.addEventListener ("mouseout", function(){
+        self.mouseOut(self);
+    }, false);
 }
 
 GuitarString.prototype.drawArc = function(startPoint, thirdPoint, endPoint){
@@ -112,15 +104,11 @@ GuitarString.prototype.drawArc = function(startPoint, thirdPoint, endPoint){
         - aSlope*(thirdPoint.x+endPoint.x) )/( 2* (bSlope-aSlope) );
     var centerY = -1*(centerX - (startPoint.x+thirdPoint.x)/2)/aSlope +  (startPoint.y+thirdPoint.y)/2;
     
-    // var centerX = (aSlope*bSlope*(y0 - y2) + bSlope*(x0 + x1)
-    //     - aSlope*(x1+x2) )/( 2* (bSlope-aSlope) );
-    // var centerY = -1*(centerX - (x0+x1)/2)/aSlope +  (y0+y1)/2;
     var r = dist(centerX, centerY, startPoint.x, startPoint.y)
 
     var angle = Math.atan2(centerX-startPoint.x, centerY-startPoint.y);
 
     if (!angle){
-        // console.log(angle);
         ctx.beginPath();
         ctx.moveTo(startPoint.x, startPoint.y);
         ctx.lineTo(endPoint.x, endPoint.y);
@@ -164,7 +152,6 @@ GuitarString.prototype.clear = function(){
 
 GuitarString.prototype.update = function(){
 	// update
-    
 	var radius = circleCenter(  new Point(this.startPoint.x, this.startPoint.y), 
                             new Point(this.controlPoint.x, this.controlPoint.y), 
                             new Point(this.endPoint.x, this.endPoint.y) ).r;
@@ -172,22 +159,23 @@ GuitarString.prototype.update = function(){
     var lastRadius = circleCenter(  new Point(this.startPoint.x, this.startPoint.y), 
                             new Point(this.lastMouseX, this.lastMouseY), 
                             new Point(this.endPoint.x, this.endPoint.y) ).r;
-    // console.log(r);
+    
+    var rGrab = (Math.abs(this.endPoint.x - this.startPoint.x))*25;
+    var rControl = (Math.abs(this.endPoint.x - this.startPoint.x))*3;
 
-
-    var mouseInGrabRange = radius > 9000 
+    var mouseInGrabRange = radius > rGrab 
         && this.controlPoint.x > this.startPoint.x
         && this.controlPoint.x < this.endPoint.x;
 
-    var lastMouseOutGrabRange = !(lastRadius > 9000
+    var lastMouseOutGrabRange = !(lastRadius > rGrab
         && this.lastMouseX > this.startPoint.x
         && this.lastMouseY < this.endPoint.x);
 
-    var mouseOutControlRange = !(radius > 900 
+    var mouseOutControlRange = !(radius > rControl 
         && this.controlPoint.x > this.startPoint.x
         && this.controlPoint.x < this.endPoint.x);
 
-    var lastMouseInControlRange = lastRadius > 900
+    var lastMouseInControlRange = lastRadius > rControl
         && this.lastMouseX > this.startPoint.x
         && this.lastMouseY < this.endPoint.x;
 
@@ -217,17 +205,13 @@ GuitarString.prototype.update = function(){
         this.waveInControl = true;
         this.waveInitX = this.lastMouseX;
         this.waveInitY = this.lastMouseY;
-        // this.drawArc(this.startPoint, wavePoint, this.endPoint, this.ctx);
     }
 
 
 
     if ( this.userInControl ){
-        // this.drawArc(this.startPoint, this.controlPoint, this.endPoint, this.ctx);
         this.thirdPoint = new Point(this.controlPoint.x, this.controlPoint.y);
     } else if ( this.waveInControl && !this.waveFinished ){
-        // console.log(this.lastMouseY);
-        // console.log(this.waveInitY);
         var waveX = this.waveInitX;
         var waveY = this.startPoint.y + 
                 (this.waveInitY-this.startPoint.y)
@@ -236,7 +220,6 @@ GuitarString.prototype.update = function(){
 
         if ( Math.pow(this.damping, this.waveCount) < 0.01) {
             // wave damped to a straight line, wave is finished
-            // console.log('damp to line');
             this.waveInControl = false;
             this.waveFinished = true;
             // this.userPlucked = false;
@@ -259,7 +242,11 @@ GuitarString.prototype.resize = function(){
 };
 
 GuitarString.prototype.mouseMove = function(self, pos){
-    // console.log(pos);   
 	self.controlPoint.x = pos.layerX;
 	self.controlPoint.y = pos.layerY;	
+};
+
+GuitarString.prototype.mouseOut = function(self){
+    self.userInControl = false;
+    self.waveInControl = true;
 };

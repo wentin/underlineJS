@@ -29,7 +29,7 @@ var getElementStyles = function(element){
 
 
 
-function Underline(element, underlineStyles) {
+function SingleUnderline(element, underlineStyles) {
     //ctor
     this.element = element;
 
@@ -65,8 +65,6 @@ function Underline(element, underlineStyles) {
         this.strokeWidth = parseFloat(this.strokeWidth);
     }
 
-
-
     // determine the text-underline-position / underlinePosition
     // text-underline-position in ratio
     this.underlinePosition = parseFloat(this.styles.height) * 
@@ -81,7 +79,6 @@ function Underline(element, underlineStyles) {
 
     this.textWidth = this.ctx.measureText(this.text).width;
 
-    // debugger;
     this.myString = new GuitarString(this.ctx, 
         new Point(0, this.underlinePosition), 
         new Point(this.textWidth, this.underlinePosition), 
@@ -90,19 +87,19 @@ function Underline(element, underlineStyles) {
 }
 
 
-Underline.prototype.update = function(){
+SingleUnderline.prototype.update = function(){
     // update
     this.myString.update();
 };
 
-Underline.prototype.clear = function(){
+SingleUnderline.prototype.clear = function(){
     // clear
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
 };
 
 
-Underline.prototype.drawUnderline = function(){
+SingleUnderline.prototype.drawUnderline = function(){
     //  draw the underline
     // console.log(text);
     this.ctx.font = this.font;
@@ -120,7 +117,7 @@ Underline.prototype.drawUnderline = function(){
 }
 
 
-Underline.prototype.drawHoles = function(){
+SingleUnderline.prototype.drawHoles = function(){
     
     // draw the font stroke             
     this.ctx.font = this.font;
@@ -129,7 +126,6 @@ Underline.prototype.drawHoles = function(){
     this.ctx.globalCompositeOperation = "destination-out";
     this.ctx.fillStyle = 'green';
     this.ctx.fillText(this.text, 0, 0);
-    // console.log(strokeWidth);
     this.ctx.lineWidth = 3 + this.strokeWidth;
     this.ctx.strokeStyle = 'blue';
     this.ctx.strokeText(this.text, 0, 0);

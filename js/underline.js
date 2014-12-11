@@ -20,7 +20,7 @@ window.onload = function() {
     		'text-underline-width': 'auto' // could be auto or px or ratio
     	}
     	// debugger;
-    	var myUnderline = new Underline(element, underlineStyles);
+    	var myUnderline = new SingleUnderline(element, underlineStyles);
     	myUnderlines.push(myUnderline);
     }
 }
