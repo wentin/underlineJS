@@ -20,19 +20,19 @@ window.onload = function() {
     		'text-underline-width': 'auto' // could be auto or px or ratio
     	}
 
-
+		var devicePixelRatio = window.devicePixelRatio;
     	var elementStyles = getElementStyles(element);
     	// single line or multiple line?
 		if (elementStyles.height > elementStyles.lineHeight) {
 			// multiple lines
 			// console.log('multiple lines');
-    		var myUnderline = new MultipleUnderline(element, underlineStyles, elementStyles);
+    		var myUnderline = new MultipleUnderline(element, underlineStyles, elementStyles, devicePixelRatio);
     		// myUnderline.update();
     		// myUnderline.draw();
     		myUnderlines.push(myUnderline);
 		} else {
 			// single line
-    		var myUnderline = new SingleUnderline(element, underlineStyles, elementStyles);
+    		var myUnderline = new SingleUnderline(element, underlineStyles, elementStyles, devicePixelRatio);
     		myUnderlines.push(myUnderline);
 		}
     }

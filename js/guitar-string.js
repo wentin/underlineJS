@@ -126,6 +126,7 @@ GuitarString.prototype.mouseOver = function(self, event){
 };
 GuitarString.prototype.mouseMove = function(self, event){
     // console.log('mouseMove');
+    console.log(event);
     this.lastMouseX = this.currentMouseX;
     this.lastMouseY = this.currentMouseY;
     this.currentMouseX = event.layerX;
@@ -179,10 +180,10 @@ GuitarString.prototype.mouseMove = function(self, event){
         this.waveInControl = true;
         this.waveFinished = false;
         this.waveCount = 0;
-        // this.waveInitX = this.lastMouseX;
-        // this.waveInitY = this.lastMouseY;
-        this.waveInitX = (this.startPoint.x + this.endPoint.x)/2;
-        this.waveInitY = this.endPoint.y + this.maxControlDistance;
+        this.waveInitX = this.lastMouseX;
+        this.waveInitY = this.lastMouseY;
+        // this.waveInitX = (this.startPoint.x + this.endPoint.x)/2;
+        // this.waveInitY = this.endPoint.y + this.maxControlDistance;
 
 
     } 
@@ -196,7 +197,7 @@ GuitarString.prototype.mouseMove = function(self, event){
         this.redrawActive = true;
         this.waveCount = 0;
         this.waveInitX = (this.startPoint.x + this.endPoint.y)/2;
-        this.waveInitY = this.endPoint.y + this.maxGrabDistance * 2;
+        this.waveInitY = this.endPoint.y + this.maxGrabDistance * 0.4;
 
     }
 };
@@ -250,7 +251,7 @@ GuitarString.prototype.update = function(){
                     *Math.cos(this.waveCount/5*Math.PI)
                     *Math.pow(this.damping, this.waveCount);
     
-            if ( Math.pow(this.damping, this.waveCount) > 0.05) {
+            if ( Math.pow(this.damping, this.waveCount) > 0.1) {
                 // still waving ....
                 this.thirdPoint = new Point(waveX, waveY);
                 this.waveCount++;
@@ -288,28 +289,38 @@ GuitarString.prototype.drawArc = function(startPoint, thirdPoint, endPoint){
     ctx.lineWidth = this.strokeWidth;
     ctx.strokeStyle = this.strokeColor;
 
-    var centerObject = circleCenter( new Point(startPoint.x, startPoint.y), 
-                                     new Point(thirdPoint.x, thirdPoint.y), 
-                                     new Point(endPoint.x, endPoint.y) );
-    var centerX = centerObject.x;
-    var centerY = centerObject.y;
-    var r = centerObject.r
-
-    var angle = Math.atan2(centerX-startPoint.x, centerY-startPoint.y);
-    // console.log(centerObject);
-    if (!angle){
+    var slope = (thirdPoint.y - startPoint.y)/(thirdPoint.x - startPoint.x);
+    // console.log(slope);
+    if ( Math.abs(slope) < 0.001) {
         ctx.beginPath();
         ctx.moveTo(startPoint.x, startPoint.y);
         ctx.lineTo(endPoint.x, endPoint.y);
-    } else {
-    	if( angle > Math.PI/2) {
-	        ctx.beginPath();
-	        ctx.arc(centerX, centerY, r, Math.PI * 1.5-angle, Math.PI * 1.5 + angle, true);
-	    } else {
-	        ctx.beginPath();
-	        ctx.arc(centerX, centerY, r, Math.PI * 1.5-angle, Math.PI * 1.5 + angle, false);
-	    }
+    } else { 
+        var centerObject = circleCenter( new Point(startPoint.x, startPoint.y), 
+                                         new Point(thirdPoint.x, thirdPoint.y), 
+                                         new Point(endPoint.x, endPoint.y) );
+        var centerX = centerObject.x;
+        var centerY = centerObject.y;
+        var r = centerObject.r
+
+        var angle = Math.atan2(centerX-startPoint.x, centerY-startPoint.y);
+        // console.log(centerObject);
+        if (!angle){
+            console.log(angle);
+            ctx.beginPath();
+            ctx.moveTo(startPoint.x, startPoint.y);
+            ctx.lineTo(endPoint.x, endPoint.y);
+        } else {
+            if( angle > Math.PI/2) {
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, r, Math.PI * 1.5-angle, Math.PI * 1.5 + angle, true);
+            } else {
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, r, Math.PI * 1.5-angle, Math.PI * 1.5 + angle, false);
+            }
+        }   
     }
+
     ctx.globalCompositeOperation = "source-over";
     ctx.stroke();
 
