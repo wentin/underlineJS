@@ -1,8 +1,5 @@
 var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
 
-var dist = function(x, y, x0, y0){
-    return Math.sqrt((x -= x0) * x + (y -= y0) * y);
-};
 
 var circleCenter = function(startPoint, thirdPoint, endPoint){
     var dy1 = thirdPoint.y - startPoint.y;
@@ -26,17 +23,22 @@ var circleCenter = function(startPoint, thirdPoint, endPoint){
     };
 }
 
+var dist = function(x, y, x0, y0){
+    return Math.sqrt((x -= x0) * x + (y -= y0) * y);
+};
+
 var Point = function (x,y){
     this.x=x;
     this.y=y;
 }
+
 
 var intersects = function(a, b, c, d, p, q, r, s) {
     // returns true if the line from (a,b)->(c,d) intersects with (p,q)->(r,s)
     var det, gamma, lambda;
     det = (c - a) * (s - q) - (r - p) * (d - b);
     if (det === 0) {
-        return false;
+        return false;                    
     } else {
         lambda = ((s - q) * (r - a) + (p - r) * (s - b)) / det;
         gamma = ((b - d) * (r - a) + (c - a) * (s - b)) / det;
@@ -44,48 +46,239 @@ var intersects = function(a, b, c, d, p, q, r, s) {
     }
 };
 
-
-
 function GuitarString(ctx, startPoint, endPoint, strokeWidth, strokeColor) {
 	//ctor
     this.ctx = ctx;
     this.canvas = ctx.canvas;
-
-    // this.canvas.width = this.canvas.clientWidth;
-    // this.canvas.height = this.canvas.clientHeight*1.2;
-
 	this.startPoint = startPoint;
 	this.endPoint = endPoint;
     this.strokeWidth = strokeWidth;
     this.strokeColor = strokeColor;
-	this.controlPoint = new Point(0,0);
-    this.thirdPoint = new Point(0,0);
+    
+    this.canvas.width = this.canvas.clientWidth;
+    this.canvas.height = this.canvas.clientHeight*1.2;
+    this.maxGrabDistance = this.strokeWidth * 3;
+    this.maxControlDistance = this.strokeWidth * 12;
 
+    this.ctx.lineWidth = this.strokeWidth;
+    this.ctx.strokeStyle = this.strokeColor;
+        this.ctx.beginPath();
+        this.ctx.moveTo(this.startPoint.x, this.startPoint.y);
+        this.ctx.lineTo(this.endPoint.x, this.endPoint.y);
+        this.ctx.stroke();
+
+    this.currentMouseX;
+    this.currentMouseY;
+    this.lastMouseX;
+    this.lastMouseY;
+    this.waveInitX = (this.startPoint.x + this.endPoint.x)/2;
+    this.waveInitY = this.startPoint.y - this.maxControlDistance;
+    this.waveCount = 0;
+    this.damping = 0.9;
+
+	this.thirdPoint = new Point((this.startPoint.x + this.endPoint.x)/2, this.startPoint.y);
     
 
-    this.waveInitX = (this.startPoint.x + this.endPoint.x)/2;
-    this.waveInitY = this.startPoint.y;
-
-	this.lastMouseX = this.controlPoint.x;
-    this.lastMouseY = this.controlPoint.y;
-    this.waveCount = 0;
-    this.damping = 0.95;
-
-    this.userInControl = false;
-    this.userPlucked = false;
-    this.waveInControl = false;
+    // state flags
+	this.userInControl = false;
+	this.userPlucked = false;
+	this.waveInControl = false;
 	this.waveFinished = false;
+	this.initState = true;
+    this.redrawActive = false;
 
-	//add event listener
+    //add event listener
 	var self = this;
-	this.canvas.addEventListener('mousemove',  function(pos) { 
-		self.mouseMove(self, pos);
+    this.canvas.addEventListener('mouseover',  function(event) { 
+        self.mouseOver(self, event);
+    }, false);
+
+	this.canvas.addEventListener('mousemove',  function(event) { 
+		self.mouseMove(self, event);
 	}, false);
 
-    this.canvas.addEventListener ("mouseout", function(){
-        self.mouseOut(self);
+    this.canvas.addEventListener ("mouseleave", function(event){
+        self.mouseLeave(self, event);
     }, false);
+
+    this.canvas.addEventListener ("mouseout", function(event){
+        self.mouseOut(self, event);
+    }, false);
+
+    this.canvas.addEventListener("touchstart", function(event) { 
+        self.touchDown(self, event);
+    }, false);
+    this.canvas.addEventListener("touchmove", function(event) { 
+        self.touchXY(self, event);
+    }, false);
+    this.canvas.addEventListener("touchend", function(event) { 
+        self.touchUp(self, event);
+    }, false);
+
 }
+
+GuitarString.prototype.mouseOver = function(self, event){
+    // console.log('mouseOver');
+    this.currentMouseX = event.layerX;
+    this.currentMouseX = event.layerY;
+};
+GuitarString.prototype.mouseMove = function(self, event){
+    // console.log('mouseMove');
+    this.lastMouseX = this.currentMouseX;
+    this.lastMouseY = this.currentMouseY;
+    this.currentMouseX = event.layerX;
+    this.currentMouseY = event.layerY; 
+
+    var radius = circleCenter(  new Point(this.startPoint.x, this.startPoint.y), 
+                                new Point(this.currentMouseX, this.currentMouseY), 
+                                new Point(this.endPoint.x, this.endPoint.y) ).r;
+    var currentWaveDistance = radius - Math.sqrt( Math.pow(radius, 2) - Math.pow((Math.abs(this.endPoint.x - this.startPoint.x))/2, 2) );
+    var lastRadius = circleCenter(  new Point(this.startPoint.x, this.startPoint.y), 
+                                	new Point(this.lastMouseX, this.lastMouseY), 
+                                	new Point(this.endPoint.x, this.endPoint.y) ).r;
+    var lastWaveDistance = lastRadius - Math.sqrt( Math.pow(lastRadius, 2) 
+                                        - Math.pow((Math.abs(this.endPoint.x - this.startPoint.x))/2, 2) );
+    
+
+
+    var mouseInGrabRange = currentWaveDistance < this.maxGrabDistance 
+        && this.currentMouseX > this.startPoint.x
+        && this.currentMouseX < this.endPoint.x;
+
+    var lastMouseOutGrabRange = !(lastWaveDistance < this.maxGrabDistance
+        && this.lastMouseX > this.startPoint.x
+        && this.lastMouseX < this.endPoint.x);
+
+    var mouseOutControlRange = !(currentWaveDistance < this.maxControlDistance 
+        && this.currentMouseX > this.startPoint.x
+        && this.currentMouseX < this.endPoint.x);
+
+    var lastMouseInControlRange = lastWaveDistance < this.maxControlDistance
+        && this.lastMouseX > this.startPoint.x
+        && this.lastMouseY < this.endPoint.x;
+    
+    var mouseCrossed = intersects(this.lastMouseX, this.lastMouseY, 
+                            this.currentMouseX, this.currentMouseY,
+                            this.startPoint.x, this.startPoint.y,
+                            this.endPoint.x, this.endPoint.y);
+
+    if( mouseInGrabRange && lastMouseOutGrabRange && (!this.userInControl) ){
+        // console.log('omg, grab!');
+        this.initState = false;
+        this.userInControl = true;
+        this.waveInControl = false;
+        this.waveFinished = false;
+
+        this.redrawActive = true;
+    } else if ( mouseOutControlRange && lastMouseInControlRange && this.userInControl){
+        // console.log('boing!');
+        this.initState = false;
+        this.userInControl = false;
+        this.waveInControl = true;
+        this.waveFinished = false;
+        this.waveCount = 0;
+        // this.waveInitX = this.lastMouseX;
+        // this.waveInitY = this.lastMouseY;
+        this.waveInitX = (this.startPoint.x + this.endPoint.x)/2;
+        this.waveInitY = this.endPoint.y + this.maxControlDistance;
+
+
+    } 
+
+    if( (!this.userInControl)&&mouseCrossed ) {
+    	// console.log('i just plucked!');
+        this.initState = false;
+        this.userInControl = false;
+        this.waveInControl = true;
+        this.waveFinished = false;
+        this.redrawActive = true;
+        this.waveCount = 0;
+        this.waveInitX = (this.startPoint.x + this.endPoint.y)/2;
+        this.waveInitY = this.endPoint.y + this.maxControlDistance/4;
+
+    }
+};
+GuitarString.prototype.mouseLeave = function(self, event){
+    // console.log('mouseLeave');
+
+    if( this.userInControl ) {
+        this.initState = false;
+        this.userInControl = false;
+        this.waveInControl = true;
+        this.waveFinished = false;
+        this.redrawActive = true;
+        this.waveCount = 0;
+        // this.waveInitX = (this.startPoint.x + this.endPoint.y)/2;
+        // this.waveInitY = this.endPoint.y + this.maxControlDistance/4;
+        this.waveInitX = event.layerX;
+        this.waveInitY = event.layerY;
+
+    }
+};
+GuitarString.prototype.mouseOut = function(self, event){
+    // console.log('mouseOut');
+};
+GuitarString.prototype.touchDown = function(self, event){
+    // console.log('touchDown');
+};
+GuitarString.prototype.touchXY = function(self, event){
+    // console.log('touchXY');
+};
+GuitarString.prototype.touchUp = function(self, event){
+    // console.log('touchUp');
+};
+
+
+GuitarString.prototype.clear = function(){
+	// clear
+    if(this.redrawActive){
+    	this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+};
+
+GuitarString.prototype.update = function(){
+	// console.log(this.redrawActive);
+	if(this.redrawActive){
+		if ( this.userInControl ){
+            this.thirdPoint = new Point(this.currentMouseX, this.currentMouseY);
+        }
+        if ( this.waveInControl ){
+            var waveX = this.waveInitX;
+            var waveY = this.startPoint.y + 
+                    (this.waveInitY-this.startPoint.y)
+                    *Math.cos(this.waveCount/5*Math.PI)
+                    *Math.pow(this.damping, this.waveCount);
+    
+            if ( Math.pow(this.damping, this.waveCount) > 0.01) {
+                // still waving ....
+                this.thirdPoint = new Point(waveX, waveY);
+                this.waveCount++;
+            } else {
+                // wave damped to a straight line, wave is finished
+                this.waveInControl = false;
+                this.waveFinished = true;
+    			this.redrawActive = false;
+
+    			// draw a line instead of a flat curve when it stops redraw, pixel-perfect	
+	            this.ctx.lineWidth = this.strokeWidth;
+	            this.ctx.strokeStyle = this.strokeColor;
+	                this.ctx.beginPath();
+	                this.ctx.moveTo(this.startPoint.x, this.startPoint.y);
+	                this.ctx.lineTo(this.endPoint.x, this.endPoint.y);
+    				this.ctx.globalCompositeOperation = "source-over";
+	                this.ctx.stroke();
+            }
+        }
+	}
+}
+
+GuitarString.prototype.draw = function(){
+    if(this.redrawActive){	
+    	// draw stuff
+        this.drawArc(this.startPoint, this.thirdPoint, this.endPoint);
+    }
+};
+
 
 GuitarString.prototype.drawArc = function(startPoint, thirdPoint, endPoint){
     var ctx = this.ctx;
@@ -110,6 +303,8 @@ GuitarString.prototype.drawArc = function(startPoint, thirdPoint, endPoint){
     var angle = Math.atan2(centerX-startPoint.x, centerY-startPoint.y);
 
     if (!angle){
+    	// console.log('what!!!');
+    	debugger;
         ctx.beginPath();
         ctx.moveTo(startPoint.x, startPoint.y);
         ctx.lineTo(endPoint.x, endPoint.y);
@@ -122,143 +317,7 @@ GuitarString.prototype.drawArc = function(startPoint, thirdPoint, endPoint){
 	        ctx.arc(centerX, centerY, r, Math.PI * 1.5-angle, Math.PI * 1.5 + angle, false);
 	    }
     }
-    // ctx.rect(centerX, centerY, 2, 2);
-    // ctx.rect(startPoint.x, startPoint.y, 2, 2);
-    // ctx.rect(endPoint.x, endPoint.y, 2, 2);
+    ctx.globalCompositeOperation = "source-over";
     ctx.stroke();
 
 }
-GuitarString.prototype.draw = function(){
-	
-	// draw stuff
-    var initState = (!this.userInControl) && (!this.waveInControl) && (!this.waveFinished)
-    if ( this.waveFinished || initState){
-    // console.log('line');
-    this.ctx.lineWidth = this.strokeWidth;
-    this.ctx.strokeStyle = this.strokeColor;
-        this.ctx.beginPath();
-        this.ctx.moveTo(this.startPoint.x, this.startPoint.y);
-        this.ctx.lineTo(this.endPoint.x, this.endPoint.y);
-        this.ctx.stroke();
-    } else {
-        this.drawArc(this.startPoint, this.thirdPoint, this.endPoint);
-    }
-};
-
-GuitarString.prototype.clear = function(){
-	// clear
-	this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-};
-
-
-GuitarString.prototype.update = function(){
-	// update
-	var radius = circleCenter(  new Point(this.startPoint.x, this.startPoint.y), 
-                            new Point(this.controlPoint.x, this.controlPoint.y), 
-                            new Point(this.endPoint.x, this.endPoint.y) ).r;
-
-    var lastRadius = circleCenter(  new Point(this.startPoint.x, this.startPoint.y), 
-                            new Point(this.lastMouseX, this.lastMouseY), 
-                            new Point(this.endPoint.x, this.endPoint.y) ).r;
-    
-    // var rGrab = (Math.abs(this.endPoint.x - this.startPoint.x))*19;
-    // var rControl = (Math.abs(this.endPoint.x - this.startPoint.x))*1.9;
-    // if (rGrab > 1600) {
-    //     rGrab = 1600;
-    //     rControl = 160;
-    // }
-
-    var maxGrabDistance = this.strokeWidth * 3;
-    var maxControlDistance = this.strokeWidth * 12;
-    var currentWaveDistance = radius - Math.sqrt( Math.pow(radius, 2) 
-                                    - Math.pow((Math.abs(this.endPoint.x - this.startPoint.x))/2, 2) );
-    var lastWaveDistance = lastRadius - Math.sqrt( Math.pow(lastRadius, 2) 
-                                    - Math.pow((Math.abs(this.endPoint.x - this.startPoint.x))/2, 2) );
-
-    var mouseInGrabRange = currentWaveDistance < maxGrabDistance 
-        && this.controlPoint.x > this.startPoint.x
-        && this.controlPoint.x < this.endPoint.x;
-
-    var lastMouseOutGrabRange = !(lastWaveDistance > maxGrabDistance
-        && this.lastMouseX > this.startPoint.x
-        && this.lastMouseY < this.endPoint.x);
-
-    var mouseOutControlRange = !(currentWaveDistance < maxControlDistance 
-        && this.controlPoint.x > this.startPoint.x
-        && this.controlPoint.x < this.endPoint.x);
-
-    var lastMouseInControlRange = lastWaveDistance < maxControlDistance
-        && this.lastMouseX > this.startPoint.x
-        && this.lastMouseY < this.endPoint.x;
-
-    /*if( !this.userPlucked ){
-        this.userPlucked = intersects(this.lastMouseX, this.lastMouseY, 
-                                this.controlPoint.x, this.controlPoint.y,
-                                this.startPoint.x, this.startPoint.y,
-                                this.endPoint.x, this.endPoint.y);
-        if (this.userPlucked) {
-            this.userInControl = false;
-            this.waveInControl = true;
-            this.waveInitX = (this.startPoint.x + this.endPoint.y)/2;
-            this.waveInitY = this.endPoint.y + 15;
-        }
-    }*/
-
-    if( mouseInGrabRange && lastMouseOutGrabRange ){
-        this.waveCount = 0;
-        this.waveFinished = false;
-        this.userInControl = true;
-        this.waveInControl = false;
-
-    } else if ( mouseOutControlRange && lastMouseInControlRange){
-        this.userInControl = false;
-        this.waveInControl = true;
-        this.waveInitX = this.lastMouseX;
-        this.waveInitY = this.lastMouseY;
-    }
-
-
-
-    if ( this.userInControl ){
-        this.thirdPoint = new Point(this.controlPoint.x, this.controlPoint.y);
-    } else if ( this.waveInControl && !this.waveFinished ){
-        var waveX = this.waveInitX;
-        var waveY = this.startPoint.y + 
-                (this.waveInitY-this.startPoint.y)
-                *Math.cos(this.waveCount/5*Math.PI)
-                *Math.pow(this.damping, this.waveCount);
-
-        if ( Math.pow(this.damping, this.waveCount) < 0.01) {
-            // wave damped to a straight line, wave is finished
-            this.waveInControl = false;
-            this.waveFinished = true;
-            // this.userPlucked = false;
-        } else {
-            // still waving ....
-            this.thirdPoint = new Point(waveX, waveY);
-            this.waveCount++;
-        }
-    }
-
-    this.lastMouseX = this.controlPoint.x;
-    this.lastMouseY = this.controlPoint.y;
-
-};
-
-GuitarString.prototype.resize = function(){
-    // resize canvas
-    this.canvas.width = this.canvas.clientWidth;
-    this.canvas.height = this.canvas.clientHeight;
-};
-
-GuitarString.prototype.mouseMove = function(self, pos){
-	self.controlPoint.x = pos.layerX;
-	self.controlPoint.y = pos.layerY;	
-};
-
-GuitarString.prototype.mouseOut = function(self){
-    self.userInControl = false;
-    self.waveInControl = true;
-    // self.waveInitX = (self.startPoint.x + self.endPoint.x)/2;
-    // self.waveInitY = self.canvas.height;
-};

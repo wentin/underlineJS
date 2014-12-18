@@ -43,12 +43,12 @@ function animate() {
 
 	for(var i = 0; i < myUnderlines.length; i++) {
 	    var myUnderline = myUnderlines[i];
+
 		// clear
 	    myUnderline.clear();
 	    
 		// update
 		myUnderline.update();
-
 		
 		// draw stuff
 	    myUnderline.draw();

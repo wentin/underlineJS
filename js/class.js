@@ -49,7 +49,7 @@ function SingleUnderline(element, underlineStyles, elementStyles) {
 
     this.canvas = document.createElement("canvas");
         this.canvas.width = this.elementStyles.width;
-        this.canvas.height = this.elementStyles.height*1.4;
+        this.canvas.height = this.elementStyles.height;
         this.element.appendChild(this.canvas);
 
     this.ctx = this.canvas.getContext('2d');
@@ -94,39 +94,33 @@ function SingleUnderline(element, underlineStyles, elementStyles) {
 
 }
 
+SingleUnderline.prototype.clear = function(){
+    // clear
+    if(this.myString.redrawActive) {
+        this.myString.clear();
+    }
+};
+
 
 SingleUnderline.prototype.update = function(){
     // update
-    this.myString.update();
-};
-
-SingleUnderline.prototype.clear = function(){
-    // clear
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
+    if(this.myString.redrawActive) {
+        this.myString.update();
+        this.drawHoles();
+    }
 };
 
 
 SingleUnderline.prototype.draw = function(){
     // draw
-    this.drawUnderline();
-    this.drawHoles();
+    if(this.myString.redrawActive) {
+        this.drawUnderline();
+        this.drawHoles();
+    }
 };
 
 SingleUnderline.prototype.drawUnderline = function(){
     //  draw the underline
-    // console.log(text);
-    this.ctx.font = this.font;
-    this.ctx.textBaseline = 'top';
-
-    this.ctx.globalCompositeOperation = "source-over";
-    this.ctx.strokeStyle = this.underlineStyles['text-underline-color'];
-    this.ctx.lineWidth = this.strokeWidth;
-
-    // this.ctx.beginPath();
-    // this.ctx.moveTo(0, this.underlinePosition);
-    // this.ctx.lineTo(this.textWidth, this.underlinePosition);
-    // this.ctx.stroke();
     this.myString.draw();
 }
 
@@ -137,10 +131,13 @@ SingleUnderline.prototype.drawHoles = function(){
     this.ctx.textBaseline = 'top';
 
     this.ctx.globalCompositeOperation = "destination-out";
+
     this.ctx.fillStyle = 'green';
+    this.ctx.beginPath();
     this.ctx.fillText(this.text, 0, 0);
     this.ctx.lineWidth = 3 + this.strokeWidth;
     this.ctx.strokeStyle = 'blue';
+    this.ctx.beginPath();
     this.ctx.strokeText(this.text, 0, 0);
 }
 
@@ -157,7 +154,7 @@ function MultipleUnderline(element, underlineStyles, elementStyles) {
 
     this.canvas = document.createElement("canvas");
         this.canvas.width = this.elementStyles.width;
-        this.canvas.height = this.elementStyles.height*1.4;
+        this.canvas.height = this.elementStyles.height;
         this.canvas.style.left = this.elementStyles.canvasLeft + 'px';
         this.element.appendChild(this.canvas);
 
@@ -311,6 +308,8 @@ MultipleUnderline.prototype.clear = function(){
     // clear
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
+    // this.myString.clear();
+
 };
 
 MultipleUnderline.prototype.update = function(){
@@ -349,6 +348,7 @@ MultipleUnderline.prototype.drawUnderline = function(x0, y0, x1, y1){
 
     for(var i = 0; i < this.myStrings.length; i++) {
         var tempString = this.myStrings[i];
+        // tempString.clear();
         tempString.update();
         tempString.draw();
     }
