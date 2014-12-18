@@ -97,7 +97,8 @@ function SingleUnderline(element, underlineStyles, elementStyles) {
 SingleUnderline.prototype.clear = function(){
     // clear
     if(this.myString.redrawActive) {
-        this.myString.clear();
+        // this.myString.clear();
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
 };
 
@@ -161,7 +162,7 @@ function MultipleUnderline(element, underlineStyles, elementStyles) {
     this.ctx = this.canvas.getContext('2d');
     this.ctx.font = this.font = this.elementStyles.fontStyle + ' ' + this.elementStyles.fontSize + ' ' + this.elementStyles.fontFamily;
 
-
+    this.multipleRedrawActive = false;
     if (is_chrome) {
         // chrome floor the lineheight when it is not a whole number
         this.elementStyles.lineHeight = Math.floor(this.elementStyles.lineHeight);
@@ -306,9 +307,27 @@ function MultipleUnderline(element, underlineStyles, elementStyles) {
 
 MultipleUnderline.prototype.clear = function(){
     // clear
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-    // this.myString.clear();
+    var lastMultipleRedrawActive = this.multipleRedrawActive;
+    this.multipleRedrawActive = false;
+    for(var i = 0; i < this.myStrings.length; i++) {
+        var tempString = this.myStrings[i];
+        // this.myString.clear();
+        // console.log(tempString.redrawActive);
+        if(tempString.redrawActive) {
+            this.multipleRedrawActive = true;
+        }
+    }
+    console.log(this.multipleRedrawActive);
+    if (this.multipleRedrawActive) {
+        // debugger;
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+    // if (!lastMultipleRedrawActive && this.multipleRedrawActive) {
+    //     for(var i = 0; i < this.myStrings.length; i++) {
+    //         var tempString = this.myStrings[i];
+    //         tempString.drawLine();
+    //     }
+    // }
 
 };
 
@@ -319,38 +338,31 @@ MultipleUnderline.prototype.update = function(){
 
 MultipleUnderline.prototype.draw = function(){
     // draw
-    this.drawUnderline(0,0,0,0);
+    if (this.multipleRedrawActive) {
+        this.drawUnderline();
 
-    for(var i = 0; i < this.lines.length; i++) {
-        var tempLine = this.lines[i];
-        // this.drawUnderline(tempLine.lineTextIndent, 
-        //                     tempLine.linePositionY + this.underlinePosition,
-        //                     tempLine.lineTextIndent + tempLine.lineMeasureWidth,
-        //                     tempLine.linePositionY + this.underlinePosition);
-        this.drawHoles(tempLine.lineText,
-                            tempLine.lineTextIndent, 
-                            tempLine.linePositionY);
+        for(var i = 0; i < this.lines.length; i++) {
+            var tempLine = this.lines[i];
+            // this.drawUnderline(tempLine.lineTextIndent, 
+            //                     tempLine.linePositionY + this.underlinePosition,
+            //                     tempLine.lineTextIndent + tempLine.lineMeasureWidth,
+            //                     tempLine.linePositionY + this.underlinePosition);
+            this.drawHoles(tempLine.lineText,
+                                tempLine.lineTextIndent, 
+                                tempLine.linePositionY);
 
+        }
     }
 };
 
 
-MultipleUnderline.prototype.drawUnderline = function(x0, y0, x1, y1){
+MultipleUnderline.prototype.drawUnderline = function(){
     // draw the underline
-    this.ctx.globalCompositeOperation = "source-over";
-    this.ctx.strokeStyle = this.underlineStyles['text-underline-color'];
-    this.ctx.lineWidth = this.strokeWidth;
-    // this.ctx.beginPath();
-    // this.ctx.moveTo(x0, y0);
-    // this.ctx.lineTo(x1, y1);
-    // this.ctx.stroke();
-
-
     for(var i = 0; i < this.myStrings.length; i++) {
         var tempString = this.myStrings[i];
         // tempString.clear();
-        tempString.update();
-        tempString.draw();
+            tempString.update();
+            tempString.draw();
     }
 
 };

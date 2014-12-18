@@ -65,6 +65,7 @@ function GuitarString(ctx, startPoint, endPoint, strokeWidth, strokeColor) {
         this.ctx.beginPath();
         this.ctx.moveTo(this.startPoint.x, this.startPoint.y);
         this.ctx.lineTo(this.endPoint.x, this.endPoint.y);
+        this.ctx.globalCompositeOperation = "source-over";
         this.ctx.stroke();
 
     this.currentMouseX;
@@ -231,14 +232,14 @@ GuitarString.prototype.touchUp = function(self, event){
 
 GuitarString.prototype.clear = function(){
 	// clear
-    if(this.redrawActive){
-    	this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    }
+    // if(this.redrawActive){
+    	// this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    // }
 };
 
 GuitarString.prototype.update = function(){
 	// console.log(this.redrawActive);
-	if(this.redrawActive){
+	// if(this.redrawActive){
 		if ( this.userInControl ){
             this.thirdPoint = new Point(this.currentMouseX, this.currentMouseY);
         }
@@ -258,25 +259,30 @@ GuitarString.prototype.update = function(){
                 this.waveInControl = false;
                 this.waveFinished = true;
     			this.redrawActive = false;
-
-    			// draw a line instead of a flat curve when it stops redraw, pixel-perfect	
-	            this.ctx.lineWidth = this.strokeWidth;
-	            this.ctx.strokeStyle = this.strokeColor;
-	                this.ctx.beginPath();
-	                this.ctx.moveTo(this.startPoint.x, this.startPoint.y);
-	                this.ctx.lineTo(this.endPoint.x, this.endPoint.y);
-    				this.ctx.globalCompositeOperation = "source-over";
-	                this.ctx.stroke();
+                this.thirdPoint = new Point(waveX, waveY);
+                this.drawLine();
             }
         }
-	}
+	// }
 }
 
 GuitarString.prototype.draw = function(){
-    if(this.redrawActive){	
-    	// draw stuff
+    // if(this.redrawActive){   
+        // draw stuff
+        // console.log(this.thirdPoint);
         this.drawArc(this.startPoint, this.thirdPoint, this.endPoint);
-    }
+    // }
+};
+GuitarString.prototype.drawLine = function(){
+    // draw a line instead of a flat curve when it stops redraw, pixel-perfect  
+    this.ctx.lineWidth = this.strokeWidth;
+    this.ctx.strokeStyle = this.strokeColor;
+        this.ctx.beginPath();
+        this.ctx.moveTo(this.startPoint.x, this.startPoint.y);
+        this.ctx.lineTo(this.endPoint.x, this.endPoint.y);
+        this.ctx.globalCompositeOperation = "source-over";
+        this.ctx.stroke();
+        // debugger;
 };
 
 
@@ -303,8 +309,9 @@ GuitarString.prototype.drawArc = function(startPoint, thirdPoint, endPoint){
     var angle = Math.atan2(centerX-startPoint.x, centerY-startPoint.y);
 
     if (!angle){
-    	// console.log('what!!!');
-    	debugger;
+    	console.log('what!!!');
+    	// debugger;
+        // ctx.strokeStyle = "#f0f";
         ctx.beginPath();
         ctx.moveTo(startPoint.x, startPoint.y);
         ctx.lineTo(endPoint.x, endPoint.y);
