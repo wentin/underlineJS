@@ -65,6 +65,9 @@ In addition to these above, it should also
 * finish String class to draw underline with guitar string animation, not merged yet.
 * start guitar string animation! Can you imagine this happen to your text underline! [http://wentin.github.io/underlineJS/stringAnimation/](http://wentin.github.io/underlineJS/stringAnimation/)
 
+##### Dec 18, 2014
+*  demo page design
+![GOAL](https://dl.dropboxusercontent.com/u/94520441/underline-web-desktop.png)
 
 ## To do list
 
