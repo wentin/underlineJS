@@ -35,6 +35,8 @@ window.onload = function() {
     		var myUnderline = new SingleUnderline(element, underlineStyles, elementStyles);
     		myUnderlines.push(myUnderline);
 		}
+
+		// if(window.device)
     }
 }
 
