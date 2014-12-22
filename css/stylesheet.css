@@ -147,6 +147,10 @@ p {
   width: 960px;
   padding-bottom: 20px; }
 
+a {
+  color: #212121;
+  text-decoration: none; }
+
 ul {
   font-size: 24px;
   line-height: 36px;
@@ -348,22 +352,5 @@ footer {
       font-size: 54px;
       line-height: 100px;
       text-align: center; }
-
-a {
-  color: #fd471e;
-  text-decoration: none;
-  font-style: italic; }
-
-.social {
-  text-align: center;
-  border-bottom: solid 1px #aaaaaa; }
-
-.social a, .social iframe {
-  display: inline-block;
-  padding: 40px 0 30px 0; }
-
-.tunderline {
-  text-decoration: underline;
-  color: #a0ad39; }
 
 /*# sourceMappingURL=stylesheet.css.map */
