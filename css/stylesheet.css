@@ -228,7 +228,7 @@ header {
       content: '\e603';
       font-size: 27px; }
     header .links .icon-coffee::before {
-      content: '\e600';
+      content: '\e601';
       font-size: 25px; }
   header .logoWrapper {
     position: relative;
