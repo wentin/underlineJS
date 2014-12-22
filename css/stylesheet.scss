@@ -240,6 +240,11 @@ header {
 article{
     width: 960px;
     margin: 100px auto;
+    img {
+        display: block;
+        width: 100%;
+        padding-bottom: 20px;
+    }
 }
 footer {
     width: 100%;

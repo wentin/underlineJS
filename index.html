@@ -38,6 +38,7 @@ with canvas, and music</h1>
     <p>
         The perfect underline should be visible, but unobstrusive — allowing people to realize what’s clickable, but without drawing too much attention to itself. It should be positioned at just the right distance from the text, <a href="#" class="underline">sitting comfortably</a> behind it for when descenders want to occupy the same space:
     </p>
+    <img src="i/example.png" alt="">
     <p>So, the ideal technological solution would allow us to:</p>
     <ul>
         <li>change the width of the line (with additional <a href="#" class="underline">half-pixel/retina support</a>),</li>
@@ -52,7 +53,9 @@ with canvas, and music</h1>
     <blockquote>
         Five years ago, building a layout rendering engine and building an animation engine in JavaScript was ludicrous because JavaScript is nowhere near as fast as Compiled C,” said Newcomb. “Javascript went from maybe being 1000x slower than Compiled C to 80% as fast as <a href="#" class="underline">Compiled C</a> and that was sort of the ah-ha moment for us as deep platform engineers. 
     </blockquote>
-
+    <p>Since the writing of that post, Apple released Safari 8.0 and Safari for iOS 8, which modifies the rendering of the venerable text-decoration: underline property to fulfill Wichary’s fourth goal by clearing the descenders. I grabbed a screenshot of Wichary’s ideal vision with the way the same word as a link is rendered in Safari 8.0:</p>
+    <img src="i/underlineJS.png" alt="">
+    <p>You can see another example of the “native” Safari underline in the screenshot at the top of the page, from <a href="#" class="underline">The New Yorker</a> (with modified text content to illustrate descenders). Overall, the underline is much thicker than Wichary’s ideal and sits too close to the text for my comfort. But most damningly to my mind, the underline does not change weight to adapt to the weight of the font, leading to unfortunate mismatches like with the :hover style on  <a href="#" class="underline">Angel List:</a></p>
 </article>
 <footer>
     <a href="https://twitter.com/share" target="_blank" class="tweet icon-tweet">
