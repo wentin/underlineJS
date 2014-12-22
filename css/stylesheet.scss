@@ -282,7 +282,9 @@ footer {
     .tweet {
         display: block;
         background: #FFFFFF;
-        box-shadow: 0px -4px 10px 0px rgba(32,32,32,0.32);
+        box-shadow: 0px 0px 0px 0px rgba(32,32,32,0.32);
+        transition: all 0.6s ease;
+        -webkit-transition: all 0.6s ease;
         width: 100px;
         height: 100px;
         border-radius: 100%;
@@ -291,6 +293,15 @@ footer {
         position: relative;
         text-align: center;
         cursor: pointer;
+        &:hover {
+            box-shadow: 0px -4px 10px 0px rgba(32,32,32,0.32);
+            span {
+                -ms-transform: translateY(-12px);
+                -webkit-transform: translateY(-12px);
+                transform: translateY(-12px);
+                opacity: 1;
+            }
+        }
         span {
             font-family: $fira;
             font-weight: 300;
@@ -301,6 +312,12 @@ footer {
             top: -45px;
             width: 300px;
             left: -100px;
+            transition: all 0.6s ease;
+            -webkit-transition: all 0.6s ease;
+            -ms-transform: translateY(0px);
+            -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+            opacity: 0;
         }
         &::before {
             content: '\e604';
