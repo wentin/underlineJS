@@ -32,13 +32,73 @@
 with canvas, and music</h1>
 </header>
 <article>
+    <h2>Manifesto</h2>
+
+    <p>A javascript library that sets out to do one simple job: draw and animate the most perfect and playful text underline</p>
+
+    <p>The goal of this project is not to succeed, but fail.</p>
+
+    <p>If one day there is absolutely no one and no reason to use underline.jes, then it reaches its ultimate goal: to fail completely. Because that means the browser has supported this feature natively. That is what this project is about, to push the W3C further in a pixel-perfect, designer-friendly route.</p>
+
+    <h2>Example</h2>
+    <p>
+        <a href="#" class="underline">http://wentin.github.io/underlineJS/</a>
+        <br/> Please click to see large picture. red is underline.js, green is browser default underline </p>
+
+    <img src="i/underlineJS.png" alt="">
+    <p>
+        The project is currently under dev. Contact me on twitter if you want to be part of this project!
+    </p>
+    <h2>Idea</h2>
+    <p>Marcin Wichary's ideal underline:</p>
+    <ul>
+        <li>change the width of the line (with additional <a href="#" class="underline">half-pixel/retina support</a>),</li>
+        <li>change the distance from the text,</li>
+        <li>change the color (even if just to simulate thinner width by using lighter grays instead of black),</li>
+        <li>clear the descenders,</li>
+        <li>(perhaps) have a separate style for visited links.</li>
+    </ul>
+    <p>In addition to these above, it should also
+    </p>
+    <ul>
+        <li>have no ghost pixels</li>
+    </ul>
+    <img src="i/example.png" alt="">
+    <p><i>GOAL Image by Marcin Wichary</i>
+    </p>
+
+    <h2>Logs</h2>
+    <p>Dec 2, 2014 start proof of concept it now works on chrome/safari! Dec 4, 2014 add approach 2, one single canvas for each element. Dec 10, 2014 finish finding descenderline with svg/js finish String class to draw underline with guitar string animation, not merged yet. start guitar string animation! Can you imagine this happen to your text underline! http://wentin.github.io/underlineJS/stringAnimation/ Dec 18, 2014 demo page design
+    </p>
+    <h2>To do list</h2>
+    <p></p>
+    <ul>
+        <li>
+        firefox bug:
+        <br> ctx.textBaseline="top”; render just like hanging
+        </li>
+        <li>detect and deal with line break word done</li>
+        <li>make canvas width precise, 5px offset has to go done</li>
+        <li>css like setting options.</li>
+        <li>dynamic getting font styles done</li>
+        <li>round posY to .5 px done</li>
+        <li>underline stroke according to font stroke width done</li>
+        <li>retina support for ghost free underline</li>
+        <li>guitar sound</li>
+    </ul>
+    <h2>Contact</h2>
+    <p>
+        Follow <a href="https://twitter.com/DesignJokes" target="_blank" class="underline">@DesignJokes</a> on Twitter
+        <br> Email <a href="mailto:zhangwenting111@gmail.com" class="underline">zhangwenting111@gmail.com</a>
+        <br> Visit <a href="http://wentin.cp" target="_blank" class="underline">wentin.co</a>
+    </p>
+
     <h2>
         Finding the perfect underline (dummy text version)
     </h2>
     <p>
         The perfect underline should be visible, but unobstrusive — allowing people to realize what’s clickable, but without drawing too much attention to itself. It should be positioned at just the right distance from the text, <a href="#" class="underline">sitting comfortably</a> behind it for when descenders want to occupy the same space:
     </p>
-    <img src="i/example.png" alt="">
     <p>So, the ideal technological solution would allow us to:</p>
     <ul>
         <li>change the width of the line (with additional <a href="#" class="underline">half-pixel/retina support</a>),</li>
@@ -54,14 +114,14 @@ with canvas, and music</h1>
         Five years ago, building a layout rendering engine and building an animation engine in JavaScript was ludicrous because JavaScript is nowhere near as fast as Compiled C,” said Newcomb. “Javascript went from maybe being 1000x slower than Compiled C to 80% as fast as <a href="#" class="underline">Compiled C</a> and that was sort of the ah-ha moment for us as deep platform engineers. 
     </blockquote>
     <p>Since the writing of that post, Apple released Safari 8.0 and Safari for iOS 8, which modifies the rendering of the venerable text-decoration: underline property to fulfill Wichary’s fourth goal by clearing the descenders. I grabbed a screenshot of Wichary’s ideal vision with the way the same word as a link is rendered in Safari 8.0:</p>
-    <img src="i/underlineJS.png" alt="">
     <p>You can see another example of the “native” Safari underline in the screenshot at the top of the page, from <a href="#" class="underline">The New Yorker</a> (with modified text content to illustrate descenders). Overall, the underline is much thicker than Wichary’s ideal and sits too close to the text for my comfort. But most damningly to my mind, the underline does not change weight to adapt to the weight of the font, leading to unfortunate mismatches like with the :hover style on  <a href="#" class="underline">Angel List:</a></p>
 </article>
 <footer>
     <a href="https://twitter.com/share" target="_blank" class="tweet icon-tweet">
         <span>Tweet about underline.js</span>
-    </a>
-    <a href="#" class="next">Read Next</a>
+    </a><!-- 
+    <a href="#" class="next">Read Next</a> -->
+    <a href="#" class="next">Coming Soon</a>
     <h1>Behind scenes: underline reimagined, <br>
 with Math and Animation  </h1>
 </footer>

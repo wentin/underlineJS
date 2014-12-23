@@ -144,7 +144,6 @@ p {
   font-weight: 400;
   font-size: 24px;
   line-height: 36px;
-  width: 960px;
   padding-bottom: 20px; }
 
 a {
@@ -166,19 +165,29 @@ blockquote {
   font-style: italic;
   color: #212121;
   line-height: 40px;
-  width: 800px;
-  margin: 0px auto 30px auto;
-  padding: 20px 30px; }
-  blockquote::after {
+  width: 960px;
+  margin: 10px -100px 30px -100px;
+  padding: 25px 30px; }
+  blockquote::before {
     content: '';
     position: absolute;
     box-sizing: border-box;
     bottom: 0px;
+    right: 0px;
+    width: 60px;
+    height: 60px;
+    border-right: solid 1px #212121;
+    border-bottom: solid 1px #212121; }
+  blockquote::after {
+    content: '';
+    position: absolute;
+    box-sizing: border-box;
+    top: 0px;
     left: 0px;
     width: 60px;
     height: 60px;
     border-left: solid 1px #212121;
-    border-bottom: solid 1px #212121; }
+    border-top: solid 1px #212121; }
 
 header {
   width: 100%;
@@ -218,7 +227,10 @@ header {
       line-height: 30px;
       padding-left: 36px;
       position: relative;
-      margin-left: 20px; }
+      margin-left: 20px;
+      transition: all 0.8s; }
+    header .links a:hover {
+      color: #CDDC39; }
     header .links a::before {
       font-family: 'underline-icon';
       font-style: normal;
@@ -290,7 +302,7 @@ header {
       border-bottom: solid 1px white; }
 
 article {
-  width: 960px;
+  width: 760px;
   margin: 100px auto; }
   article img {
     display: block;
@@ -301,7 +313,7 @@ footer {
   width: 100%;
   height: 360px;
   position: relative;
-  margin-top: 200px; }
+  margin-top: 100px; }
   footer::before {
     content: '';
     position: absolute;
@@ -326,7 +338,8 @@ footer {
     display: block;
     text-align: center;
     font-style: italic;
-    text-decoration: underline;
+                   /* 
+text-decoration: underline; */
     font-size: 36px;
     color: #FFFFFF;
     line-height: 42px;
