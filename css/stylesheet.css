@@ -270,6 +270,7 @@ header {
       font-size: 120px;
       line-height: 144px;
       color: white;
+      width: 540px;
       top: 4px;
       left: 48px; }
     header .fullLogo::before {
