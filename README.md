@@ -4,7 +4,7 @@
 
 The goal of this project is not to succeed, but fail. 
 
-If one day there is absolutely no one and no reason to use underline.jes, then it reaches its ultimate goal: to fail completely. Because that means the browser has supported  this feature natively. That is what this project is about, to push the W3C further in a pixel-perfect, designer-friendly route.
+If one day there is absolutely no one and no reason to use underline.js, then it reaches its ultimate goal: to fail completely. Because that means the browser has supported  this feature natively. That is what this project is about, to push the W3C further in a pixel-perfect, designer-friendly route.
 
 ## Example
 
