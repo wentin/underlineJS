@@ -1,10 +1,41 @@
-var multiplyValue = function(value, multiplier){
-    var str = value;
-    var m = multiplier;
-    var result = str.match(/(\d*\.?\d*)(.*)/);
-    //http://stackoverflow.com/questions/2868947/split1px-into-1px-1-px-in-javascript
-    return result[1] * m + result[2];
-}
+var getElementStyles = function(element){
+ // lineHeight, height, ratio, fontFamily, fontSize, fontStyle
+    var $this = element;
+
+    var baselinePositionRatio = baselineRatio(element);
+    var lineHeight = parseFloat(window.getComputedStyle($this, null)
+            .getPropertyValue("line-height"));
+    var fontFamily = window.getComputedStyle($this, null)
+            .getPropertyValue("font-family");
+    var fontSize = window.getComputedStyle($this, null)
+            .getPropertyValue("font-size");
+    var fontStyle = window.getComputedStyle($this, null)
+            .getPropertyValue("font-style");
+    var width = $this.getBoundingClientRect().width;
+    var height = $this.getBoundingClientRect().height;
+    var parentWidth = $this.parentNode.getBoundingClientRect().width;
+
+
+    var offsetLeft = $this.offsetLeft;
+    var parentOffsetLeft = $this.parentNode.offsetLeft;
+    var canvasLeft = parentOffsetLeft - offsetLeft;
+    var textIndent = offsetLeft - parentOffsetLeft;
+
+    // canvas.style.left= canvasLeft + 'px';   
+    return {
+        lineHeight: lineHeight,
+        width: width,
+        height: height,
+        parentWidth: parentWidth,
+        fontFamily: fontFamily,
+        fontSize: fontSize,
+        fontStyle: fontStyle,
+        baselinePositionRatio: baselinePositionRatio,
+        canvasLeft: canvasLeft,
+        textIndent: textIndent
+    }
+};
+
 function SingleUnderline(element, underlineStyles, elementStyles) {
     //ctor
     this.element = element;
@@ -17,22 +48,19 @@ function SingleUnderline(element, underlineStyles, elementStyles) {
     this.redrawActive = false;
 
     this.canvas = document.createElement("canvas");
-    this.ctx = this.canvas.getContext('2d');
-    
-    this.ratio = window.devicePixelRatio;
-        this.canvas.width = this.elementStyles.width*this.ratio;
-        this.canvas.height = this.elementStyles.height*this.ratio;
+        this.canvas.width = this.elementStyles.width;
+        this.canvas.height = this.elementStyles.height;
         this.element.appendChild(this.canvas);
-        this.canvas.style.width =  this.elementStyles.width + 'px';
+        this.canvas.width = this.canvas.clientWidth;
+        this.canvas.height = this.canvas.clientHeight*1.2;
 
+    this.ctx = this.canvas.getContext('2d');
         this.ctx.font = this.font = this.elementStyles.fontStyle + ' ' 
-                        + multiplyValue(this.elementStyles.fontSize, this.ratio) + ' ' 
+                        + this.elementStyles.fontSize + ' ' 
                         + this.elementStyles.fontFamily;
 
-    // console.log(this.ratio);
     // determine the text-underline-width / strokeWidth
     this.dotWidth = this.ctx.measureText('.')['width'];
-
     if (this.underlineStyles['text-underline-width'] == "auto") {
         // if set to auto, calculate the optimized width based on font
         if (this.dotWidth/6 <= 2) {
@@ -40,18 +68,16 @@ function SingleUnderline(element, underlineStyles, elementStyles) {
         } else {
             this.strokeWidth = Math.round( this.dotWidth/6 );
         }
-        // console.log(this.strokeWidth);
     } else {
         //if set to px value
         this.strokeWidth = this.underlineStyles['text-underline-width'];
         //get number value
-        this.strokeWidth = parseFloat(this.strokeWidth)*this.ratio;
+        this.strokeWidth = parseFloat(this.strokeWidth);
     }
-    console.log(this.strokeWidth);
 
     // determine the text-underline-position / underlinePosition
     // text-underline-position in ratio
-    this.underlinePosition = parseFloat(this.elementStyles.height) * this.ratio * 
+    this.underlinePosition = parseFloat(this.elementStyles.height) * 
             (1 - this.elementStyles.baselinePositionRatio 
                 + this.underlineStyles['text-underline-position']);
 
@@ -66,7 +92,7 @@ function SingleUnderline(element, underlineStyles, elementStyles) {
     this.myString = new GuitarString(this.ctx, 
         new Point(0, this.underlinePosition), 
         new Point(this.textWidth, this.underlinePosition), 
-        this.strokeWidth, this.underlineStyles['text-underline-color'], this.ratio);
+        this.strokeWidth, this.underlineStyles['text-underline-color']);
     this.drawHoles();
 
 }
@@ -114,7 +140,7 @@ SingleUnderline.prototype.drawHoles = function(){
     this.ctx.fillStyle = 'green';
     this.ctx.beginPath();
     this.ctx.fillText(this.text, 0, 0);
-    this.ctx.lineWidth = 3*this.ratio + this.strokeWidth;
+    this.ctx.lineWidth = 3 + this.strokeWidth;
     this.ctx.strokeStyle = 'blue';
     this.ctx.beginPath();
     this.ctx.strokeText(this.text, 0, 0);
@@ -278,7 +304,7 @@ function MultipleUnderline(element, underlineStyles, elementStyles) {
                 this.ctx, 
                 new Point(tempLine.lineTextIndent, tempLine.linePositionY + this.underlinePosition), 
                 new Point(tempLine.lineTextIndent + tempLine.lineMeasureWidth, tempLine.linePositionY + this.underlinePosition), 
-                this.strokeWidth, this.underlineStyles['text-underline-color'], 1);
+                this.strokeWidth, this.underlineStyles['text-underline-color']);
         this.myStrings.push(myString);
     }
 

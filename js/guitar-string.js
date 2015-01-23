@@ -46,7 +46,7 @@ var intersects = function(a, b, c, d, p, q, r, s) {
     }
 };
 
-function GuitarString(ctx, startPoint, endPoint, strokeWidth, strokeColor) {
+function GuitarString(ctx, startPoint, endPoint, strokeWidth, strokeColor, ratio) {
 	//ctor
     this.ctx = ctx;
     this.canvas = ctx.canvas;
@@ -54,12 +54,12 @@ function GuitarString(ctx, startPoint, endPoint, strokeWidth, strokeColor) {
 	this.endPoint = endPoint;
     this.strokeWidth = strokeWidth;
     this.strokeColor = strokeColor;
-    
+    this.ratio = ratio;
     // this.canvas.width = this.canvas.clientWidth;
     // this.canvas.height = this.canvas.clientHeight*1.2;
     
-    this.maxGrabDistance = 1;
-    this.maxControlDistance = this.strokeWidth * 6;
+    this.maxGrabDistance = this.strokeWidth * this.ratio;
+    this.maxControlDistance = this.strokeWidth * 3 * this.ratio;
 
     this.ctx.lineWidth = this.strokeWidth;
     this.ctx.strokeStyle = this.strokeColor;
@@ -121,15 +121,15 @@ function GuitarString(ctx, startPoint, endPoint, strokeWidth, strokeColor) {
 
 GuitarString.prototype.mouseOver = function(self, event){
     // console.log('mouseOver');
-    this.currentMouseX = event.layerX;
-    this.currentMouseX = event.layerY;
+    this.currentMouseX = event.layerX*this.ratio;
+    this.currentMouseX = event.layerY*this.ratio;
 };
 GuitarString.prototype.mouseMove = function(self, event){
     // console.log('mouseMove');
     this.lastMouseX = this.currentMouseX;
     this.lastMouseY = this.currentMouseY;
-    this.currentMouseX = event.layerX;
-    this.currentMouseY = event.layerY; 
+    this.currentMouseX = event.layerX * this.ratio;
+    this.currentMouseY = event.layerY * this.ratio; 
 
     var radius = circleCenter(  new Point(this.startPoint.x, this.startPoint.y), 
                                 new Point(this.currentMouseX, this.currentMouseY), 
@@ -165,7 +165,7 @@ GuitarString.prototype.mouseMove = function(self, event){
                             this.endPoint.x, this.endPoint.y);
 
     if( mouseInGrabRange && lastMouseOutGrabRange && (!this.userInControl) ){
-        // console.log('omg, grab!');
+        console.log('omg, grab!');
         this.initState = false;
         this.userInControl = true;
         this.waveInControl = false;
@@ -173,7 +173,7 @@ GuitarString.prototype.mouseMove = function(self, event){
 
         this.redrawActive = true;
     } else if ( mouseOutControlRange && lastMouseInControlRange && this.userInControl){
-        // console.log('boing!');
+        console.log('boing!');
         this.initState = false;
         this.userInControl = false;
         this.waveInControl = true;
@@ -188,7 +188,7 @@ GuitarString.prototype.mouseMove = function(self, event){
     } 
 
     if( (!this.userInControl)&&mouseCrossed ) {
-    	// console.log('i just plucked!');
+    	console.log('i just plucked!');
         this.initState = false;
         this.userInControl = false;
         this.waveInControl = true;
@@ -209,10 +209,9 @@ GuitarString.prototype.mouseLeave = function(self, event){
         this.waveFinished = false;
         this.redrawActive = true;
         this.waveCount = 0;
-        // this.waveInitX = (this.startPoint.x + this.endPoint.y)/2;
-        // this.waveInitY = this.endPoint.y + this.maxControlDistance/4;
-        this.waveInitX = event.layerX;
-        this.waveInitY = event.layerY;
+
+        this.waveInitX = event.layerX*this.ratio;
+        this.waveInitY = event.layerY*this.ratio;
 
     }
 };

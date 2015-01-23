@@ -1,3 +1,41 @@
+var getElementStyles = function(element){
+ // lineHeight, height, ratio, fontFamily, fontSize, fontStyle
+    var $this = element;
+
+    var baselinePositionRatio = baselineRatio(element);
+    var lineHeight = parseFloat(window.getComputedStyle($this, null)
+            .getPropertyValue("line-height"));
+    var fontFamily = window.getComputedStyle($this, null)
+            .getPropertyValue("font-family");
+    var fontSize = window.getComputedStyle($this, null)
+            .getPropertyValue("font-size");
+    var fontStyle = window.getComputedStyle($this, null)
+            .getPropertyValue("font-style");
+    var width = $this.getBoundingClientRect().width;
+    var height = $this.getBoundingClientRect().height;
+    var parentWidth = $this.parentNode.getBoundingClientRect().width;
+
+
+    var offsetLeft = $this.offsetLeft;
+    var parentOffsetLeft = $this.parentNode.offsetLeft;
+    var canvasLeft = parentOffsetLeft - offsetLeft;
+    var textIndent = offsetLeft - parentOffsetLeft;
+
+    // canvas.style.left= canvasLeft + 'px';   
+    return {
+        lineHeight: lineHeight,
+        width: width,
+        height: height,
+        parentWidth: parentWidth,
+        fontFamily: fontFamily,
+        fontSize: fontSize,
+        fontStyle: fontStyle,
+        baselinePositionRatio: baselinePositionRatio,
+        canvasLeft: canvasLeft,
+        textIndent: textIndent
+    }
+};
+
 window.requestAnimFrame = (function(callback) {
 	return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
 	function(callback) {
@@ -14,7 +52,7 @@ window.onload = function() {
     	var element = underlineElements[n];
 
     	var underlineStyles = {
-    		'text-underline-color': '#999',
+    		'text-underline-color': '#000',
     		'text-underline-position': 0.15, // could be ratio or px 
     		'text-underline-skip': true,
     		'text-underline-width': 'auto' // could be auto or px or ratio
