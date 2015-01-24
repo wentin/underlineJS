@@ -53,7 +53,7 @@ function SingleUnderline(element, underlineStyles, elementStyles) {
     dotWidth = this.ctx.measureText('.')['width'];
     if (this.underlineStyles['text-underline-width'] == "auto") {
         // if set to auto, calculate the optimized width based on font
-        this.strokeWidth = dotWidth/6;
+        this.strokeWidth = dotWidth/10;
     } else {
         //if set to px value, todo: other unit such as em?
         this.strokeWidth = this.underlineStyles['text-underline-width'];
@@ -64,22 +64,59 @@ function SingleUnderline(element, underlineStyles, elementStyles) {
 
     // determine the text-underline-position / underlinePosition
     // text-underline-position in ratio, todo: default and user set position ratio
-    this.underlinePosition = parseFloat(this.elementStyles.height) * this.ratio * 
-            (1 - this.elementStyles.baselinePositionRatio 
-                + this.underlineStyles['text-underline-position']);
+    if (this.underlineStyles['text-underline-position'] == "auto") {
+        // if set to auto, calculate the optimized width based on font
+        this.underlinePosition = parseFloat(this.elementStyles.height) * this.ratio * 
+                ( 1 - this.elementStyles.baselinePositionRatio + 
+                    this.elementStyles.baselinePositionRatio * 0.382)
+                + this.strokeWidth/2;
+    } else {
+        //if set to ratio value, todo: other unit such as em, px?
+        var userUnderlinePosition = parseFloat(this.underlineStyles['text-underline-position']);
+        console.log(parseFloat(userUnderlinePosition));
+        this.underlinePosition = parseFloat(this.elementStyles.height) * this.ratio * 
+                ( 1 - this.elementStyles.baselinePositionRatio + 
+                    this.elementStyles.baselinePositionRatio * userUnderlinePosition)
+                + this.strokeWidth/2;
+    }
 
     var adjustValue = optimalStrokeWidthPos(this.strokeWidth, this.underlinePosition);
     this.strokeWidth = adjustValue.strokeWidth;
     this.underlinePosition = adjustValue.posY;
 
-    this.textWidth = this.ctx.measureText(this.text).width;
+    // todo: if last character is a space, remove the space
+    textWidth = this.ctx.measureText(this.text).width;
 
     this.myString = new GuitarString(this.ctx, 
         new Point(0, this.underlinePosition), 
-        new Point(this.textWidth, this.underlinePosition), 
+        new Point(textWidth, this.underlinePosition), 
         this.strokeWidth, this.underlineStyles['text-underline-color'], this.ratio);
     this.drawHoles();
 
+}
+
+SingleUnderline.prototype.drawUnderline = function(){
+    //  draw the underline
+    this.myString.draw();
+}
+
+SingleUnderline.prototype.drawHoles = function(){
+    
+    // draw the font stroke             
+    this.ctx.font = this.font;
+    this.ctx.textBaseline = 'top';
+
+    this.ctx.globalCompositeOperation = "destination-out";   
+
+    this.ctx.lineWidth = 2*this.ratio + this.strokeWidth*2;
+    // console.log(this.ctx.lineWidth);
+    this.ctx.strokeStyle = 'blue';
+    this.ctx.beginPath();
+    this.ctx.strokeText(this.text, 0, 0);  
+
+    this.ctx.fillStyle = 'green';
+    this.ctx.beginPath();
+    this.ctx.fillText(this.text, -1, 0);
 }
 
 SingleUnderline.prototype.clear = function(){
@@ -96,7 +133,6 @@ SingleUnderline.prototype.update = function(){
     // update
     if(this.myString.redrawActive) {
         this.myString.update();
-        // this.drawHoles();
     }
 };
 
@@ -109,27 +145,4 @@ SingleUnderline.prototype.draw = function(){
     }
 };
 
-SingleUnderline.prototype.drawUnderline = function(){
-    //  draw the underline
-    this.myString.draw();
-}
-
-SingleUnderline.prototype.drawHoles = function(){
-    
-    // draw the font stroke             
-    this.ctx.font = this.font;
-    this.ctx.textBaseline = 'top';
-
-    this.ctx.globalCompositeOperation = "destination-out";   
-
-    this.ctx.lineWidth = 2*this.ratio + this.strokeWidth*2;
-    console.log(this.ctx.lineWidth);
-    this.ctx.strokeStyle = 'blue';
-    this.ctx.beginPath();
-    this.ctx.strokeText(this.text, 0, 0);  
-
-    this.ctx.fillStyle = 'green';
-    this.ctx.beginPath();
-    this.ctx.fillText(this.text, -1, 0);
-}
 

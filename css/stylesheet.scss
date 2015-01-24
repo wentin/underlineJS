@@ -200,9 +200,9 @@ header {
         display: block;
         margin: 200px auto 0 auto;
         position: relative;
-        -webkit-animation: iconAnimation 8s 0s linear infinite none;
-        -moz-animation: iconAnimation 8s 0s linear infinite none;
-        animation: iconAnimation 8s 0s linear infinite none;
+        -webkit-animation: iconAnimation 0.5s 0s ease-out none;
+        -moz-animation: iconAnimation 0.5s 0s ease-out none;
+        animation: iconAnimation 0.5s 0s ease-out none;
         span {
             position: absolute;
             display: inline;
@@ -226,7 +226,7 @@ header {
             left: 0;
             top: 0;
             background: url(../i/grid.svg) no-repeat right bottom;
-            opacity: 0.5;
+            opacity: 0;
             -webkit-animation: opacityAnimation 8s 0s linear infinite none;
             -moz-animation: opacityAnimation 8s 0s linear infinite none;
             animation: opacityAnimation 8s 0s linear infinite none;

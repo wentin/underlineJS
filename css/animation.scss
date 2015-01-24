@@ -34,10 +34,7 @@
 
 @-webkit-keyframes iconAnimation {
     0% {
-        -webkit-transform: translateY(0px);
-    }
-    50% {
-        -webkit-transform: translateY(-20px);
+        -webkit-transform: translateY(-40px);
     }
     90% {
         -webkit-transform: translateY(0px);
@@ -45,10 +42,7 @@
 }
 @-moz-keyframes iconAnimation {
     0% {
-        -moz-transform: translateY(0px);
-    }
-    50% {
-        -moz-transform: translateY(-20px);
+        -moz-transform: translateY(-40px);
     }
     90% {
         -moz-transform: translateY(0px);
@@ -56,10 +50,7 @@
 }
 @keyframes iconAnimation {
     0% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-20px);
+        transform: translateY(-40px);
     }
     90% {
         transform: translateY(0px);

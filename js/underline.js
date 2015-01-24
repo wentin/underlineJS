@@ -53,7 +53,7 @@ window.onload = function() {
 
     	var underlineStyles = {
     		'text-underline-color': '#000',
-    		'text-underline-position': 0.15, // could be ratio or px 
+    		'text-underline-position': 'auto', // could be ratio or todo: px 
     		'text-underline-skip': true,
     		'text-underline-width': 'auto' // could be auto or px or ratio
     	}
