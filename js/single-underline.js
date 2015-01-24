@@ -66,6 +66,7 @@ function SingleUnderline(element, underlineStyles, elementStyles) {
     // text-underline-position in ratio, todo: default and user set position ratio
     if (this.underlineStyles['text-underline-position'] == "auto") {
         // if set to auto, calculate the optimized width based on font
+        // console.log(this.elementStyles.baselinePositionRatio);
         this.underlinePosition = parseFloat(this.elementStyles.height) * this.ratio 
                 * ( 1 - this.elementStyles.baselinePositionRatio + 
                     this.elementStyles.baselinePositionRatio * 0.4)
@@ -73,7 +74,7 @@ function SingleUnderline(element, underlineStyles, elementStyles) {
     } else {
         //if set to ratio value, todo: other unit such as em, px?
         var userUnderlinePosition = parseFloat(this.underlineStyles['text-underline-position']);
-        console.log(userUnderlinePosition);
+        // console.log(this.elementStyles.baselinePositionRatio);
         this.underlinePosition = parseFloat(this.elementStyles.height) * this.ratio * 
                 ( 1 - this.elementStyles.baselinePositionRatio + 
                     this.elementStyles.baselinePositionRatio * userUnderlinePosition)
