@@ -53,7 +53,7 @@ function SingleUnderline(element, underlineStyles, elementStyles) {
     dotWidth = this.ctx.measureText('.')['width'];
     if (this.underlineStyles['text-underline-width'] == "auto") {
         // if set to auto, calculate the optimized width based on font
-        this.strokeWidth = dotWidth/10;
+        this.strokeWidth = dotWidth/12;
     } else {
         //if set to px value, todo: other unit such as em?
         this.strokeWidth = this.underlineStyles['text-underline-width'];
@@ -68,7 +68,7 @@ function SingleUnderline(element, underlineStyles, elementStyles) {
         // if set to auto, calculate the optimized width based on font
         this.underlinePosition = parseFloat(this.elementStyles.height) * this.ratio * 
                 ( 1 - this.elementStyles.baselinePositionRatio + 
-                    this.elementStyles.baselinePositionRatio * 0.382)
+                    this.elementStyles.baselinePositionRatio * 0.4)
                 + this.strokeWidth/2;
     } else {
         //if set to ratio value, todo: other unit such as em, px?
@@ -108,11 +108,10 @@ SingleUnderline.prototype.drawHoles = function(){
 
     this.ctx.globalCompositeOperation = "destination-out";   
 
-    this.ctx.lineWidth = 2*this.ratio + this.strokeWidth*2;
-    // console.log(this.ctx.lineWidth);
+    this.ctx.lineWidth = 2*this.ratio + this.strokeWidth*3;
     this.ctx.strokeStyle = 'blue';
     this.ctx.beginPath();
-    this.ctx.strokeText(this.text, 0, 0);  
+    this.ctx.strokeText(this.text, -1, 0);  
 
     this.ctx.fillStyle = 'green';
     this.ctx.beginPath();
