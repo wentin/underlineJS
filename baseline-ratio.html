@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href='http://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/EB+Garamond:400,400i/Open+Sans:400,700">
+    <style>
+    body {
+        margin: 0;
+        font-family: 'EB Garamond';
+        width: 5000px;
+        /* font-family: 'Dancing Script', cursive; */
+        /* font-family: 'Open Sans'; */
+   
+        text-rendering: optimizeLegibility;
+        -moz-font-feature-settings: "kern=1", "liga=1", "dlig=1", "hlig=1";
+        -moz-font-feature-settings: "kern" on, "liga" on, "dlig" on, "hlig" on;
+        -webkit-font-feature-settings: "kern","liga","dlig","hlig";
+        -ms-font-feature-settings: "kern","liga","dlig","hlig";
+        font-feature-settings: "kern","liga","dlig","hlig";
+    }
+    text {
+        fill: green;
+        /*font-family: 'EB Garamond';*/
+        
+         font-family: 'Dancing Script', cursive; 
+         /*font-family: 'Open Sans'; */
+    }
+    svg {
+        background-color: #ccc;
+    }
+    span {
+        width: 100%;
+        position: absolute;
+        top: 120px;
+        left: 0;
+        height: 1px;
+        background-color: red;
+    }
+    </style>
+</head>
+
+<body>
+    <span id="aline"></span>
+    <span id="dline"></span>
+    <svg width="5000" height="5000" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+        <rect x="0" y="120" width="5000" height="1" fill="red" />
+        <rect x="0" y="30" width="5000" height="1" fill="red" />
+        <text id="baseline" fill="#000000" alignment-baseline="alphabetic" stroke="#000000" stroke-width="0" x="60" y="120" font-size="15" text-anchor="">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</text>
+        <!--baseline | before-edge | text-before-edge | middle | central | after-edge | text-after-edge | ideographic | alphabetic | hanging | mathematical | inherit-->
+ 
+        <g x="15" y="30" font-size="15" width="5000">
+            <text y="30" x="15" id="ideographic" dominant-baseline="ideographic">Mpgykjq ideographic</text>
+            <text y="30" x="115" dominant-baseline="alphabetic">Mpgykjq alphabetic</text>
+            <text y="30" x="215" dominant-baseline="hanging">Mpgykjq hanging</text>
+
+
+            <text y="30" x="315" dominant-baseline="baseline">Mpgykjq baseline</text>
+            <text y="30" x="415" id="before-edge" dominant-baseline="before-edge">Mpgykjq before-edge</text>
+            <text y="30" x="515" id="text-before-edge" dominant-baseline="text-before-edge">Mpgykjq text-before-edge</text>
+
+            <text y="30" x="615" id="middle" dominant-baseline="middle">Mpgykjq middle</text>
+            <text y="30" x="715" dominant-baseline="central">Mpgykjq central</text>
+            <text y="30" x="815" dominant-baseline="after-edge">Mpgykjq after-edge</text>
+
+            <text y="30" x="915" dominant-baseline="text-after-edge">Mpgykjq text-after-edge</text>
+            <text y="30" x="1015" dominant-baseline="ideographic">Mpgykjq ideographic</text>
+            <text y="30" x="1115" id="alphabetic" dominant-baseline="alphabetic">Mpgykjq alphabetic</text>
+
+            <text y="30" x="1215" dominant-baseline="hanging">Mpgykjq hanging</text>
+            <text y="30" x="1315" dominant-baseline="mathematical">Mpgykjq mathematical</text>
+        </g>
+    </svg>
+    <script>
+
+var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+
+var beforeEdge = document.getElementById("text-before-edge");
+    console.log(beforeEdge.getBoundingClientRect().top);
+
+    var alphabetic = document.getElementById("alphabetic");
+    console.log(alphabetic.getBoundingClientRect().top);
+
+    var ideographic = document.getElementById("ideographic");
+    console.log(ideographic.getBoundingClientRect().top);
+
+    var middle = document.getElementById("middle");
+   console.dir(middle); console.log(middle.getBoundingClientRect().top);
+    var textHeight
+      if (is_chrome) {
+      textHeight = beforeEdge.getBoundingClientRect().top - ideographic.getBoundingClientRect().top;
+    } else {
+      textHeight = (beforeEdge.getBoundingClientRect().top - middle.getBoundingClientRect().top)*2;
+      
+    }
+        var ascenderHeight = beforeEdge.getBoundingClientRect().top - alphabetic.getBoundingClientRect().top;
+        var descenderHeight = textHeight - ascenderHeight;
+
+    console.log('textHeight:' +
+        (beforeEdge.getBoundingClientRect().top - ideographic.getBoundingClientRect().top));
+
+     console.log('textHeightMiddle:' +
+        textHeight);
+
+    console.log('descenderHeight:' +
+        (alphabetic.getBoundingClientRect().top - ideographic.getBoundingClientRect().top));
+
+
+    console.log('descenderHeightMiddel:' +
+        descenderHeight);
+
+    console.log('ascenderHeight:' +
+        ascenderHeight);
+    
+        var aline = document.getElementById("aline");
+    aline.style.top = (120 - ascenderHeight) + 'px';
+    dline.style.top = (120 + descenderHeight) + 'px';
+
+    </script>
+</body>
+
+</html>

@@ -102,21 +102,20 @@ SingleUnderline.prototype.drawUnderline = function(){
 }
 
 SingleUnderline.prototype.drawHoles = function(){
-    
     // draw the font stroke             
     this.ctx.font = this.font;
     this.ctx.textBaseline = 'top';
 
     this.ctx.globalCompositeOperation = "destination-out";   
 
-    this.ctx.lineWidth = 2*this.ratio + this.strokeWidth*3;
+    this.ctx.lineWidth = 2*this.ratio + this.strokeWidth*3.6;
     this.ctx.strokeStyle = 'blue';
     this.ctx.beginPath();
-    this.ctx.strokeText(this.text, -1, 0);  
+    this.ctx.strokeText(this.text, -0.2, 0);  
 
     this.ctx.fillStyle = 'green';
     this.ctx.beginPath();
-    this.ctx.fillText(this.text, -1, 0);
+    this.ctx.fillText(this.text, -0.2, 0);
 }
 
 SingleUnderline.prototype.clear = function(){

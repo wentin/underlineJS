@@ -108,7 +108,7 @@ function MultipleUnderline(element, underlineStyles, elementStyles) {
 
                 var tempLine = {
                     lineText: line,
-                    lineTextIndent: this.elementStyles.textIndent * this.ratio - 1,
+                    lineTextIndent: this.elementStyles.textIndent * this.ratio - 0.2,
                     linePositionY: linePositionY,
                     lineMeasureWidth: lineWidth
                 }
@@ -134,7 +134,7 @@ function MultipleUnderline(element, underlineStyles, elementStyles) {
 
                 var tempLine = {
                     lineText: line,
-                    lineTextIndent: -1,
+                    lineTextIndent: -0.2,
                     linePositionY: linePositionY,
                     lineMeasureWidth: lineWidth
                 }
@@ -160,7 +160,7 @@ function MultipleUnderline(element, underlineStyles, elementStyles) {
 
     var tempLine = {
         lineText: line,
-        lineTextIndent: 0,
+        lineTextIndent: -0.2,
         linePositionY: linePositionY,
         lineMeasureWidth: lineWidth
     }
