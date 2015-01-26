@@ -58,8 +58,8 @@ function GuitarString(ctx, startPoint, endPoint, strokeWidth, strokeColor, ratio
     // this.canvas.width = this.canvas.clientWidth;
     // this.canvas.height = this.canvas.clientHeight*1.2;
     
-    this.maxGrabDistance = this.strokeWidth * this.ratio;
-    this.maxControlDistance = this.strokeWidth * 3 * this.ratio;
+    this.maxGrabDistance = this.strokeWidth * 2;
+    this.maxControlDistance = this.strokeWidth * 6;
 
     this.ctx.lineWidth = this.strokeWidth;
     this.ctx.strokeStyle = this.strokeColor;
