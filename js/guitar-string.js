@@ -76,7 +76,7 @@ function GuitarString(ctx, startPoint, endPoint, strokeWidth, strokeColor, ratio
     this.waveInitX = (this.startPoint.x + this.endPoint.x)/2;
     this.waveInitY = this.startPoint.y - this.maxControlDistance;
     this.waveCount = 0;
-    this.damping = 0.9;
+    this.damping = 0.94;
 
 	this.thirdPoint = new Point((this.startPoint.x + this.endPoint.x)/2, this.startPoint.y);
     
@@ -87,6 +87,7 @@ function GuitarString(ctx, startPoint, endPoint, strokeWidth, strokeColor, ratio
 	this.waveInControl = false;
 	this.waveFinished = false;
 	this.initState = true;
+    this.lastRedraw = false;
     this.redrawActive = false;
 
     //add event listener
@@ -249,7 +250,7 @@ GuitarString.prototype.update = function(){
                     *Math.cos(this.waveCount/5*Math.PI)
                     *Math.pow(this.damping, this.waveCount);
     
-            if ( Math.pow(this.damping, this.waveCount) > 0.05) {
+            if ( Math.pow(this.damping, this.waveCount) > 0.03) {
                 // still waving ....
                 this.thirdPoint = new Point(waveX, waveY);
                 this.waveCount++;
@@ -257,7 +258,7 @@ GuitarString.prototype.update = function(){
                 // wave damped to a straight line, wave is finished
                 this.waveInControl = false;
                 this.waveFinished = true;
-    			this.redrawActive = false;
+                this.lastRedraw = true;
                 this.thirdPoint = new Point(waveX, waveY);
             }
         }
@@ -267,8 +268,14 @@ GuitarString.prototype.update = function(){
 GuitarString.prototype.draw = function(){
     // if(this.redrawActive){   
         // draw stuff
-        this.drawArc(this.startPoint, this.thirdPoint, this.endPoint);
     // }
+    if(this.lastRedraw) {
+        this.drawLine();
+        this.lastRedraw = false;
+        this.redrawActive = false;
+    } else {
+        this.drawArc(this.startPoint, this.thirdPoint, this.endPoint);
+    }
 };
 GuitarString.prototype.drawLine = function(){
     // draw a line instead of a flat curve when it stops redraw, pixel-perfect  
