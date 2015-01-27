@@ -46,6 +46,19 @@ var intersects = function(a, b, c, d, p, q, r, s) {
     }
 };
 
+var musicLevel = function(startPoint, endPoint, ratio){
+    var length = dist(startPoint.x, startPoint.y, endPoint.x, endPoint.y)/ratio;
+
+    level = Math.floor(length/30);
+    if (level > 19 ) {
+        level = 19;
+    }
+    level = 19 - level 
+    if (level < 10) {
+        level = '0' + level 
+    }
+    return level;
+};
 function GuitarString(ctx, startPoint, endPoint, strokeWidth, strokeColor, ratio) {
 	//ctor
     this.ctx = ctx;
@@ -55,6 +68,9 @@ function GuitarString(ctx, startPoint, endPoint, strokeWidth, strokeColor, ratio
     this.strokeWidth = strokeWidth;
     this.strokeColor = strokeColor;
     this.ratio = ratio;
+
+    this.level = musicLevel(this.startPoint, this.endPoint, this.ratio);
+
     // this.canvas.width = this.canvas.clientWidth;
     // this.canvas.height = this.canvas.clientHeight*1.2;
     
@@ -76,7 +92,7 @@ function GuitarString(ctx, startPoint, endPoint, strokeWidth, strokeColor, ratio
     this.waveInitX = (this.startPoint.x + this.endPoint.x)/2;
     this.waveInitY = this.startPoint.y - this.maxControlDistance;
     this.waveCount = 0;
-    this.damping = 0.94;
+    this.damping = 0.95;
 
 	this.thirdPoint = new Point((this.startPoint.x + this.endPoint.x)/2, this.startPoint.y);
     
@@ -184,7 +200,8 @@ GuitarString.prototype.mouseMove = function(self, event){
         // this.waveInitY = this.lastMouseY;
         this.waveInitX = (this.startPoint.x + this.endPoint.x)/2;
         this.waveInitY = this.endPoint.y + this.maxControlDistance;
-
+        // play audio
+        play_multi_sound('audio' + this.level);
 
     } 
 
@@ -197,7 +214,9 @@ GuitarString.prototype.mouseMove = function(self, event){
         this.redrawActive = true;
         this.waveCount = 0;
         this.waveInitX = (this.startPoint.x + this.endPoint.y)/2;
-        this.waveInitY = this.endPoint.y + this.maxGrabDistance * 2;
+        this.waveInitY = this.endPoint.y + this.maxGrabDistance * 2 / 3;
+        // play audio
+        play_multi_sound('audio' + this.level);
 
     }
 };
