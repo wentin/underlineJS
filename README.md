@@ -4,7 +4,7 @@
 
 The goal of this project is not to succeed, but fail. 
 
-If one day there is absolutely no one and no reason to use underline.jes, then it reaches its ultimate goal: to fail completely. Because that means the browser has supported  this feature natively. That is what this project is about, to push the W3C further in a pixel-perfect, designer-friendly route.
+If one day there is absolutely no one and no reason to use underline.js, then it reaches its ultimate goal: to fail completely. Because that means the browser has supported  this feature natively. That is what this project is about, to push the W3C further in a pixel-perfect, designer-friendly route.
 
 ## Example
 
@@ -65,6 +65,9 @@ In addition to these above, it should also
 * finish String class to draw underline with guitar string animation, not merged yet.
 * start guitar string animation! Can you imagine this happen to your text underline! [http://wentin.github.io/underlineJS/stringAnimation/](http://wentin.github.io/underlineJS/stringAnimation/)
 
+##### Dec 18, 2014
+*  demo page design
+![GOAL](https://dl.dropboxusercontent.com/u/94520441/underline-web-desktop.png)
 
 ## To do list
 
