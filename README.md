@@ -44,7 +44,7 @@ text-underline-animation: true
 ```
 ## Reference
 
-[Marcin Wichary on crafting Medium.com's unserline](https://medium.com/designing-medium/crafting-link-underlines-on-medium-7c03a9274f9):
+[Marcin Wichary on crafting Medium.com's unserline](https://medium.com/designing-medium/crafting-link-underlines-on-medium-7c03a9274f9)
 
 ##Contact
 * Follow [@DesignJokes](http://twitter.com/DesignJokes) on Twitter
