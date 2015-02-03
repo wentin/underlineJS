@@ -201,8 +201,8 @@ GuitarString.prototype.mouseMove = function (self, event){
         this.waveInitX = (this.startPoint.x + this.endPoint.x)/2;
         this.waveInitY = this.endPoint.y + this.maxControlDistance;
         // play audio
-        // play_multi_sound('audio' + this.level);
-        createjs.Sound.play('cello_' + this.level);
+        play_multi_sound('audio' + this.level);
+        // createjs.Sound.play('cello_' + this.level);
 
     } 
 
@@ -216,9 +216,6 @@ GuitarString.prototype.mouseMove = function (self, event){
         this.waveCount = 0;
         this.waveInitX = (this.startPoint.x + this.endPoint.y)/2;
         this.waveInitY = this.endPoint.y + this.maxGrabDistance * 2 / 3;
-        // play audio
-        // play_multi_sound('audio' + this.level);
-
     }
 };
 GuitarString.prototype.mouseLeave = function(self, event){
@@ -285,7 +282,7 @@ GuitarString.prototype.touchXY = function (self, event){
                             this.endPoint.x, this.endPoint.y);
 
     if( mouseInGrabRange && lastMouseOutGrabRange && (!this.userInControl) ){
-        console.log('omg, grab!');
+        // console.log('grab!');
         this.initState = false;
         this.userInControl = true;
         this.waveInControl = false;
@@ -293,7 +290,7 @@ GuitarString.prototype.touchXY = function (self, event){
 
         this.redrawActive = true;
     } else if ( mouseOutControlRange && lastMouseInControlRange && this.userInControl){
-        console.log('boing!');
+        // console.log('boing!');
         this.initState = false;
         this.userInControl = false;
         this.waveInControl = true;
@@ -309,7 +306,7 @@ GuitarString.prototype.touchXY = function (self, event){
     } 
 
     if( (!this.userInControl)&&mouseCrossed ) {
-        console.log('i just plucked!');
+        // console.log('i just plucked!');
         this.initState = false;
         this.userInControl = false;
         this.waveInControl = true;

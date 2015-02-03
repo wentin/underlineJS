@@ -76,49 +76,6 @@ window.onload = function() {
 
 		// if(window.device)
     }
-    var sound00 = "cello_00";
-    var sound01 = "cello_01";
-    var sound02 = "cello_02";
-    var sound03 = "cello_03";
-    var sound04 = "cello_04";
-    var sound05 = "cello_05";
-    var sound06 = "cello_06";
-    var sound07 = "cello_07";
-    var sound08 = "cello_08";
-    var sound09 = "cello_09";
-    var sound10 = "cello_10";
-    var sound11 = "cello_11";
-    var sound12 = "cello_12";
-    var sound13 = "cello_13";
-    var sound14 = "cello_14";
-    var sound15 = "cello_15";
-    var sound16 = "cello_16";
-    var sound17 = "cello_17";
-    var sound18 = "cello_18";
-    var sound19 = "cello_19";
-    function loadSound () {
-        createjs.Sound.registerSound("audio/cello_00.mp3", sound00);
-        createjs.Sound.registerSound("audio/cello_01.mp3", sound01);
-        createjs.Sound.registerSound("audio/cello_02.mp3", sound02);
-        createjs.Sound.registerSound("audio/cello_03.mp3", sound03);
-        createjs.Sound.registerSound("audio/cello_04.mp3", sound04);
-        createjs.Sound.registerSound("audio/cello_05.mp3", sound05);
-        createjs.Sound.registerSound("audio/cello_06.mp3", sound06);
-        createjs.Sound.registerSound("audio/cello_07.mp3", sound07);
-        createjs.Sound.registerSound("audio/cello_08.mp3", sound08);
-        createjs.Sound.registerSound("audio/cello_09.mp3", sound09);
-        createjs.Sound.registerSound("audio/cello_10.mp3", sound10);
-        createjs.Sound.registerSound("audio/cello_11.mp3", sound11);
-        createjs.Sound.registerSound("audio/cello_12.mp3", sound12);
-        createjs.Sound.registerSound("audio/cello_13.mp3", sound13);
-        createjs.Sound.registerSound("audio/cello_14.mp3", sound14);
-        createjs.Sound.registerSound("audio/cello_15.mp3", sound15);
-        createjs.Sound.registerSound("audio/cello_16.mp3", sound16);
-        createjs.Sound.registerSound("audio/cello_17.mp3", sound17);
-        createjs.Sound.registerSound("audio/cello_18.mp3", sound18);
-        createjs.Sound.registerSound("audio/cello_19.mp3", sound19);
-    };
-    loadSound();
 }
 
 
@@ -145,7 +102,7 @@ function animate() {
 }
 animate();
 
-/*//audio play multiple channels at the same time: http://www.storiesinflight.com/html5/audio.html
+//audio play multiple channels at the same time: http://www.storiesinflight.com/html5/audio.html
 var channel_max = 10; // number of channels
 audiochannels = new Array();
 for (a = 0; a < channel_max; a++) { // prepare the channels
@@ -165,4 +122,4 @@ function play_multi_sound(s) {
             break;
         }
     }
-}*/
+}
