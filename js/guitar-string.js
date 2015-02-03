@@ -182,7 +182,7 @@ GuitarString.prototype.mouseMove = function (self, event){
                             this.endPoint.x, this.endPoint.y);
 
     if( mouseInGrabRange && lastMouseOutGrabRange && (!this.userInControl) ){
-        console.log('omg, grab!');
+        // console.log('grab!');
         this.initState = false;
         this.userInControl = true;
         this.waveInControl = false;
@@ -190,7 +190,7 @@ GuitarString.prototype.mouseMove = function (self, event){
 
         this.redrawActive = true;
     } else if ( mouseOutControlRange && lastMouseInControlRange && this.userInControl){
-        console.log('boing!');
+        // console.log('boing!');
         this.initState = false;
         this.userInControl = false;
         this.waveInControl = true;
@@ -207,7 +207,7 @@ GuitarString.prototype.mouseMove = function (self, event){
     } 
 
     if( (!this.userInControl)&&mouseCrossed ) {
-    	console.log('i just plucked!');
+    	// console.log('i just plucked!');
         this.initState = false;
         this.userInControl = false;
         this.waveInControl = true;
