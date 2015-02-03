@@ -201,7 +201,8 @@ GuitarString.prototype.mouseMove = function (self, event){
         this.waveInitX = (this.startPoint.x + this.endPoint.x)/2;
         this.waveInitY = this.endPoint.y + this.maxControlDistance;
         // play audio
-        play_multi_sound('audio' + this.level);
+        // play_multi_sound('audio' + this.level);
+        createjs.Sound.play('cello_' + this.level);
 
     } 
 
