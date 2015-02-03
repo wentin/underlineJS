@@ -141,7 +141,7 @@ GuitarString.prototype.mouseOver = function(self, event){
     this.currentMouseX = event.layerX*this.ratio;
     this.currentMouseX = event.layerY*this.ratio;
 };
-GuitarString.prototype.mouseMove = function(self, event){
+GuitarString.prototype.mouseMove = function (self, event){
     // console.log('mouseMove');
     this.lastMouseX = this.currentMouseX;
     this.lastMouseY = this.currentMouseY;
@@ -216,7 +216,7 @@ GuitarString.prototype.mouseMove = function(self, event){
         this.waveInitX = (this.startPoint.x + this.endPoint.y)/2;
         this.waveInitY = this.endPoint.y + this.maxGrabDistance * 2 / 3;
         // play audio
-        play_multi_sound('audio' + this.level);
+        // play_multi_sound('audio' + this.level);
 
     }
 };
@@ -240,12 +240,102 @@ GuitarString.prototype.mouseOut = function(self, event){
 };
 GuitarString.prototype.touchDown = function(self, event){
     // console.log('touchDown');
+    this.currentMouseX = event.layerX*this.ratio;
+    this.currentMouseX = event.layerY*this.ratio;
 };
-GuitarString.prototype.touchXY = function(self, event){
-    // console.log('touchXY');
+GuitarString.prototype.touchXY = function (self, event){
+    // console.log('touchMove');
+    this.lastMouseX = this.currentMouseX;
+    this.lastMouseY = this.currentMouseY;
+    this.currentMouseX = event.layerX * this.ratio;
+    this.currentMouseY = event.layerY * this.ratio; 
+
+    var radius = circleCenter(  new Point(this.startPoint.x, this.startPoint.y), 
+                                new Point(this.currentMouseX, this.currentMouseY), 
+                                new Point(this.endPoint.x, this.endPoint.y) ).r;
+    var currentWaveDistance = radius - Math.sqrt( Math.pow(radius, 2) - Math.pow((Math.abs(this.endPoint.x - this.startPoint.x))/2, 2) );
+    var lastRadius = circleCenter(  new Point(this.startPoint.x, this.startPoint.y), 
+                                    new Point(this.lastMouseX, this.lastMouseY), 
+                                    new Point(this.endPoint.x, this.endPoint.y) ).r;
+    var lastWaveDistance = lastRadius - Math.sqrt( Math.pow(lastRadius, 2) 
+                                        - Math.pow((Math.abs(this.endPoint.x - this.startPoint.x))/2, 2) );
+    
+
+
+    var mouseInGrabRange = currentWaveDistance < this.maxGrabDistance 
+        && this.currentMouseX > this.startPoint.x
+        && this.currentMouseX < this.endPoint.x;
+
+    var lastMouseOutGrabRange = !(lastWaveDistance < this.maxGrabDistance
+        && this.lastMouseX > this.startPoint.x
+        && this.lastMouseX < this.endPoint.x);
+
+    var mouseOutControlRange = !(currentWaveDistance < this.maxControlDistance 
+        && this.currentMouseX > this.startPoint.x
+        && this.currentMouseX < this.endPoint.x);
+
+    var lastMouseInControlRange = lastWaveDistance < this.maxControlDistance
+        && this.lastMouseX > this.startPoint.x
+        && this.lastMouseY < this.endPoint.x;
+    
+    var mouseCrossed = intersects(this.lastMouseX, this.lastMouseY, 
+                            this.currentMouseX, this.currentMouseY,
+                            this.startPoint.x, this.startPoint.y,
+                            this.endPoint.x, this.endPoint.y);
+
+    if( mouseInGrabRange && lastMouseOutGrabRange && (!this.userInControl) ){
+        console.log('omg, grab!');
+        this.initState = false;
+        this.userInControl = true;
+        this.waveInControl = false;
+        this.waveFinished = false;
+
+        this.redrawActive = true;
+    } else if ( mouseOutControlRange && lastMouseInControlRange && this.userInControl){
+        console.log('boing!');
+        this.initState = false;
+        this.userInControl = false;
+        this.waveInControl = true;
+        this.waveFinished = false;
+        this.waveCount = 0;
+        // this.waveInitX = this.lastMouseX;
+        // this.waveInitY = this.lastMouseY;
+        this.waveInitX = (this.startPoint.x + this.endPoint.x)/2;
+        this.waveInitY = this.endPoint.y + this.maxControlDistance;
+        // play audio
+        play_multi_sound('audio' + this.level);
+
+    } 
+
+    if( (!this.userInControl)&&mouseCrossed ) {
+        console.log('i just plucked!');
+        this.initState = false;
+        this.userInControl = false;
+        this.waveInControl = true;
+        this.waveFinished = false;
+        this.redrawActive = true;
+        this.waveCount = 0;
+        this.waveInitX = (this.startPoint.x + this.endPoint.y)/2;
+        this.waveInitY = this.endPoint.y + this.maxGrabDistance * 2 / 3;
+        // play audio
+        // play_multi_sound('audio' + this.level);
+
+    }
 };
 GuitarString.prototype.touchUp = function(self, event){
     // console.log('touchUp');
+    if( this.userInControl ) {
+        this.initState = false;
+        this.userInControl = false;
+        this.waveInControl = true;
+        this.waveFinished = false;
+        this.redrawActive = true;
+        this.waveCount = 0;
+
+        this.waveInitX = event.layerX*this.ratio;
+        this.waveInitY = event.layerY*this.ratio;
+
+    }
 };
 
 

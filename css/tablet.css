@@ -1,0 +1,23 @@
+/* iPads (portrait) ----------- */
+@media only screen and (min-width: 801px) and (max-width: 960px) {
+  body header .menu {
+    right: 20px; }
+  body header .logo {
+    left: 20px; }
+  body ul.comment {
+    width: 100%;
+    margin: 40px 0 40px 0;
+    padding: 40px 0px; }
+    body ul.comment::before {
+      width: 120px;
+      height: 24px; }
+    body ul.comment::after {
+      width: 120px;
+      height: 24px; } }
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+  .collapse header .logo #ackpad {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+    opacity: 0; } }
+
+/*# sourceMappingURL=tablet.css.map */

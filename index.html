@@ -2,19 +2,23 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<title>UnderlineJS - a pixel perfect javascript library for drawing underline</title>
-<link rel="stylesheet" href="http://brick.a.ssl.fastly.net/EB+Garamond:400,400i/Fira+Sans:300,400,500,700">
+    <title>Hack the Hackpad - a hack to transform hackpad to a blog CMS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/EB+Garamond:400,400i/Fira+Sans:300,400,500,700/Source+Code+Pro:300,400">
+    <link rel="icon" href="favicon.png" type="image/x-icon"/>
 
-<link type="text/css" rel="stylesheet" href="css/underline.css" />
-<link type="text/css" rel="stylesheet" href="css/stylesheet.css" />
-<script type="text/javascript" src="js/baseline-ratio.js"></script>
-<script type="text/javascript" src="js/underline.js"></script>
-<script type="text/javascript" src="js/guitar-string.js"></script>
-<script type="text/javascript" src="js/single-underline.js"></script>
-<script type="text/javascript" src="js/multiple-underline.js"></script>
+	<link type="text/css" rel="stylesheet" href="css/underline.css" />
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+    
+	<script type="text/javascript" src="js/classie.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/baseline-ratio.js"></script>
+	<script type="text/javascript" src="js/underline.js"></script>
+	<script type="text/javascript" src="js/guitar-string.js"></script>
+	<script type="text/javascript" src="js/single-underline.js"></script>
+	<script type="text/javascript" src="js/multiple-underline.js"></script>
 </head>
-<body>
+<body class="">
 <div class="audio">
     <audio id="audio00" src="audio/cello_00.mp3" preload="auto"></audio>
     <audio id="audio01" src="audio/cello_01.mp3" preload="auto"></audio>
@@ -36,191 +40,220 @@
     <audio id="audio17" src="audio/cello_17.mp3" preload="auto"></audio>
     <audio id="audio18" src="audio/cello_18.mp3" preload="auto"></audio>
     <audio id="audio19" src="audio/cello_19.mp3" preload="auto"></audio>
-    <!-- 
-    <audio id="audio00" src="audio/harp_20.mp3" preload="auto"></audio>
-    <audio id="audio01" src="audio/harp_21.mp3" preload="auto"></audio>
-    <audio id="audio02" src="audio/harp_22.mp3" preload="auto"></audio>
-    <audio id="audio03" src="audio/harp_23.mp3" preload="auto"></audio>
-    <audio id="audio04" src="audio/harp_24.mp3" preload="auto"></audio>
-    <audio id="audio05" src="audio/harp_25.mp3" preload="auto"></audio>
-    <audio id="audio06" src="audio/harp_26.mp3" preload="auto"></audio>
-    <audio id="audio07" src="audio/harp_27.mp3" preload="auto"></audio>
-    <audio id="audio08" src="audio/harp_28.mp3" preload="auto"></audio>
-    <audio id="audio09" src="audio/harp_29.mp3" preload="auto"></audio>
-
-    <audio id="audio00" src="audio/harp_30.mp3" preload="auto"></audio>
-    <audio id="audio01" src="audio/harp_31.mp3" preload="auto"></audio>
-    <audio id="audio02" src="audio/harp_32.mp3" preload="auto"></audio>
-    <audio id="audio03" src="audio/harp_33.mp3" preload="auto"></audio>
-    <audio id="audio04" src="audio/harp_34.mp3" preload="auto"></audio>
-    <audio id="audio05" src="audio/harp_35.mp3" preload="auto"></audio>
-    <audio id="audio06" src="audio/harp_36.mp3" preload="auto"></audio>
-    <audio id="audio07" src="audio/harp_37.mp3" preload="auto"></audio>
-    <audio id="audio08" src="audio/harp_38.mp3" preload="auto"></audio>
-    <audio id="audio09" src="audio/harp_39.mp3" preload="auto"></audio>
-
-    <audio id="audio00" src="audio/harp_40.mp3" preload="auto"></audio>
-    <audio id="audio01" src="audio/harp_41.mp3" preload="auto"></audio>
-    <audio id="audio02" src="audio/harp_42.mp3" preload="auto"></audio>
-    <audio id="audio03" src="audio/harp_43.mp3" preload="auto"></audio>
-    <audio id="audio04" src="audio/harp_44.mp3" preload="auto"></audio>
-    <audio id="audio05" src="audio/harp_45.mp3" preload="auto"></audio>
-    <audio id="audio06" src="audio/harp_46.mp3" preload="auto"></audio>
-    <audio id="audio07" src="audio/harp_47.mp3" preload="auto"></audio>
-    <audio id="audio08" src="audio/harp_48.mp3" preload="auto"></audio>
-    <audio id="audio09" src="audio/harp_49.mp3" preload="auto"></audio>
-
-    <audio id="audio00" src="audio/harp_50.mp3" preload="auto"></audio>
-    <audio id="audio01" src="audio/harp_51.mp3" preload="auto"></audio>
-    <audio id="audio02" src="audio/harp_52.mp3" preload="auto"></audio>
-    <audio id="audio03" src="audio/harp_53.mp3" preload="auto"></audio>
-    <audio id="audio04" src="audio/harp_54.mp3" preload="auto"></audio>
-    <audio id="audio05" src="audio/harp_55.mp3" preload="auto"></audio>
-    <audio id="audio06" src="audio/harp_56.mp3" preload="auto"></audio>
-    <audio id="audio07" src="audio/harp_57.mp3" preload="auto"></audio>
-    <audio id="audio08" src="audio/harp_58.mp3" preload="auto"></audio>
-    <audio id="audio09" src="audio/harp_59.mp3" preload="auto"></audio> -->
-
 </div>
 <header>
-    <div class="logoWrapper">
+	<a href="http://wentin.github.io/Hack-the-Hackpad/" class="logo">
         <img src="i/logo.svg" alt="">
-    </div>
-    <div class="links">
-        <a href="https://github.com/wentin/underlineJS" target="_blank" class="icon-github">Star underline.js</a>
-        <a href="https://github.com/wentin/underlineJS" target="_blank" class="icon-download">Download library</a><!-- 
-        <a href="#" class="icon-coffee">Buy me a coffee</a> -->
-    </div>
-    <div class="fullLogo">
-        <span class="underlin">
-            underline.js
-        </span>
-    </div>
-    <h1>A quest to pixel-perfect underline <br>
-with canvas, and music</h1>
+	</a>
+	<div class="hamburger"><i></i></div>
+	<div class="menu">
+        <a href="https://github.com/wentin/underlineJS" target="_blank" class="github icon-github">Star underline.js</a>
+	</div>
 </header>
+<div class="trigger"></div>
 <article>
-<a href="#" class="underline" style="line-height: 1.4em; font-size: 124px">parapsychologist</a><!-- 
-<a href="#" class="underline" style="line-height: 1.4em; font-size: 124px">gypsy queen</a> -->
-<a href="#" class="underline" style="font-style: italic; line-height: 1.4em; font-size: 120px">underline.js</a>
-    <p>
-<a href="#" class="underline" style="line-height: 1.4em; font-size: 35px">Make me a willow cabin</a><br>
-<a href="#" class="underline" style="line-height: 1.4em; font-size: 35px">at your gate</a><br>
-<a href="#" class="underline" style="line-height: 1.4em; font-size: 35px">And call upon my soul within the house.</a><br>
-<a href="#" class="underline" style="line-height: 1.4em; font-size: 35px">Write loyal cantons of</a><br>
-<a href="#" class="underline" style="line-height: 1.4em; font-size: 35px">contemned love</a><br>
-<a href="#" class="underline" style="line-height: 1.4em; font-size: 35px">And sing them loud</a><br>
-<a href="#" class="underline" style="line-height: 1.4em; font-size: 35px">even in the dead of night.</a><br>
-<a href="#" class="underline" style="line-height: 1.4em; font-size: 35px">Halloo your name</a><br>
-<a href="#" class="underline" style="line-height: 1.4em; font-size: 35px">to the reverberate hills</a><br>
-<a href="#" class="underline" style="line-height: 1.4em; font-size: 35px">And make the babbling gossip of the air</a><br>
-<a href="#" class="underline" style="line-height: 1.4em; font-size: 35px">Cry out “Olivia!”</a><br>
-<a href="#" class="underline" style="line-height: 1.4em; font-size: 35px">Oh,</a><br>
-<a href="#" class="underline" style="line-height: 1.4em; font-size: 35px">you should not rest</a><br>
-<a href="#" class="underline" style="line-height: 1.4em; font-size: 35px">Between the elements of air and earth,</a><br>
-<a href="#" class="underline" style="line-height: 1.4em; font-size: 35px">But you should pity me.</a><br>
+<h1>Live Demo</h1>
+<p>
+<a href="#" class="underline title">Twelfth Night</a>
+</p>
+<p class="text">
+    <a href="#" class="underline">Make me a willow cabin</a>
+    <br>
+    <a href="#" class="underline">at your gate</a>
+    <br>
+    <a href="#" class="underline">And call upon my soul within the house.</a>
+    <br>
+    <a href="#" class="underline">Write loyal cantons of</a>
+    <br>
+    <a href="#" class="underline">contemned love</a>
+    <br>
+    <a href="#" class="underline">And sing them loud</a>
+    <br>
+    <a href="#" class="underline">even in the dead of night.</a>
+    <br>
+    <a href="#" class="underline">Halloo your name</a>
+    <br>
+    <a href="#" class="underline">to the reverberate hills</a>
+    <br>
+    <a href="#" class="underline">And make the babbling gossip of the air</a>
+    <br>
+    <a href="#" class="underline">Cry out &ldquo;Olivia!&rdquo;</a>
+    <br>
+    <a href="#" class="underline">Oh,</a>
+    <br>
+    <a href="#" class="underline">you should not rest</a>
+    <br>
+    <a href="#" class="underline">Between the elements of air and earth,</a>
+    <br>
+    <a href="#" class="underline">But you should pity me.</a>
+    <br>
 
-    </p>
-    <h2>Manifesto</h2>
+</p>
 
-    <p>A javascript library that sets out to do one simple job: draw and animate the most perfect and playful text underline</p>
-
-    <p>The goal of this project is not to succeed, but fail.</p>
-
-    <p>If one day there is absolutely no one and no reason to use underline.js, then it reaches its ultimate goal: to fail completely. Because that means the browser has supported this feature natively. That is what this project is about, to push the W3C further in a pixel-perfect, designer-friendly route.</p>
-
-    <h2>Example</h2>
-    <p>
-        <a href="#" class="underline">http://wentin.github.io/underlineJS/</a>
-        <br/> Please click to see large picture. red is underline.js, green is browser default underline </p>
-
-    <img src="i/underlineJS.png" alt="">
-    <p>
-        The project is currently under dev. Contact me on twitter if you want to be part of this project!
-    </p>
-    <h2>Idea</h2>
-    <p>Marcin Wichary's ideal underline:</p>
-    <ul>
-        <li>change the width of the line (with additional <a href="#" class="underline">half-pixel/retina support</a>),</li>
-        <li>change the distance from the text,</li>
-        <li>change the color (even if just to simulate thinner width by using lighter grays instead of black),</li>
-        <li>clear the descenders,</li>
-        <li>(perhaps) have a separate style for visited links.</li>
-    </ul>
-    <p>In addition to these above, it should also 
-    </p>
-    <ul>
-        <li>have no ghost pixels</li>
-    </ul>
-    <img src="i/example.png" alt="">
-    <p><i>GOAL Image by Marcin Wichary</i>
-    </p>
-
-    <h2>Logs</h2>
-    <p>Dec 2, 2014 <br>
-    start proof of concept it now works on chrome/safari! <br>
-    Dec 4, 2014 <br>
-    add approach 2, one single canvas for each element. <br>
-    Dec 10, 2014 <br>
-    finish finding descenderline with svg/js finish String class to draw underline with guitar string animation, not merged yet. start guitar string animation! Can you imagine this happen to your text underline! <br>
-    <a href="http://wentin.github.io/underlineJS/stringAnimation/" class="underline">http://wentin.github.io/underlineJS/stringAnimation/</a> <br>
-    Dec 18, 2014 <br>
-    demo page design
-    </p>
-    <h2>To do list</h2>
-    <p></p>
-    <ul>
-        <li>
-        firefox bug:
-        <br> ctx.textBaseline="top”; render just like hanging
-        </li>
-        <li>detect and deal with line break word done</li>
-        <li>make canvas width precise, 5px offset has to go done</li>
-        <li>css like setting options.</li>
-        <li>dynamic getting font styles done</li>
-        <li>round posY to .5 px done</li>
-        <li>underline stroke according to font stroke width done</li>
-        <li>retina support for ghost free underline</li>
-        <li>guitar sound</li>
-    </ul>
-    <h2>Contact</h2>
-    <p>
-        Follow <a href="https://twitter.com/DesignJokes" target="_blank" class="underline">@DesignJokes</a> on Twitter
-        <br> Email <a href="mailto:zhangwenting111@gmail.com" class="underline">zhangwenting111@gmail.com</a>
-        <br> Visit <a href="http://wentin.co" target="_blank" class="underline">wentin.co</a>
-    </p>
-
-    <h2>
-        Dummy text version below
-    </h2>
-    <p>
-        The perfect underline should be visible, but unobstrusive — allowing people to realize what’s clickable, but without drawing too much attention to itself. It should be positioned at just the right distance from the text, <a href="#" class="underline">sitting comfortably</a> behind it for when descenders want to occupy the same space:
-    </p>
-    <p>So, the ideal technological solution would allow us to:</p>
-    <ul>
-        <li>change the width of the line (with additional <a href="#" class="underline">half-pixel/retina support</a>),</li>
-        <li>change the distance from the text,</li>
-        <li>change the color (even if just to simulate thinner width by using lighter grays instead of black),</li>
-        <li>clear the descenders,</li>
-        <li>(perhaps) have a separate style for visited links.</li>
-    </ul>
-    <p>There were several roads near by, but it did not take her long to find the one paved with yellow bricks. Within a short time she was <a href="#" class="underline">walking briskly toward the Emerald City, her silver shoes tinkling merrily on the hard, yellow road-bed. The sun shone bright and the birds sang sweetly, and Dorothy did not feel nearly so bad as you might think a little girl would who had been suddenly</a> whisked away from her own country and set down in the midst of a strange land.</p>
-    <p>She was surprised, as she walked along, to see how pretty the country was about her. There were neat fences at the sides of the road, painted a dainty blue color, and beyond them were fields of grain and vegetables in abundance. Evidently the Munchkins were good farmers and able to raise large crops. <a href="#" class="underline">Once in a while she would pass a house, and the people came out to look at her and bow low as she went by; for everyone knew she had been the means of destroying the Wicked Witch and setting them free from bondage. The houses of the Munchkins were odd-looking dwellings, for each was round, with a big dome for a roof. All were painted blue, for in this country of the East blue was the favorite color.</a>
-    </p>
-    <blockquote>
-        Five years ago, building a layout <a href="#" class="underline">rendering engine</a> and building an animation engine in JavaScript was ludicrous because JavaScript is nowhere near as fast as Compiled C,” said Newcomb. “Javascript went from maybe being 1000x slower than Compiled C to 80% as fast as <a href="#" class="underline">Compiled C</a> and that was sort of the ah-ha moment for us as deep platform engineers. 
-    </blockquote>
-    <p>Since the writing of that post, Apple released Safari 8.0 and Safari for iOS 8, which modifies the rendering of the venerable text-decoration: underline property to fulfill Wichary’s fourth goal by clearing the descenders. I grabbed a screenshot of Wichary’s ideal vision with the way the same word as a link is rendered in Safari 8.0:</p>
-    <p>You can see another example of the “native” Safari underline in the screenshot at the top of the page, from <a href="#" class="underline">The New Yorker</a> (with modified text content to illustrate descenders). Overall, the underline is much thicker than Wichary’s ideal and sits too close to the text for my comfort. But most damningly to my mind, the underline does not change weight to adapt to the weight of the font, leading to unfortunate mismatches like with the :hover style on  <a href="#" class="underline">Angel List:</a></p>
 </article>
 <footer>
-    <a href="https://twitter.com/share" target="_blank" class="tweet icon-tweet">
-        <span>Tweet about underline.js</span>
-    </a><!-- 
-    <a href="#" class="next">Read Next</a> -->
-    <a href="#" class="next">Coming Soon</a>
-    <h1>Behind scenes: underline reimagined, <br>
-with Math and Animation  </h1>
+	<a href="https://twitter.com/intent/tweet?text=underline.js: A quest to pixel-perfect underline with canvas, and music&via=DesignJokes&url=http://wentin.github.io/underlinejs/&hashtags=UnderlineJS" target="_blank" class="share icon-share">
+		
+	</a>
 </footer>
+		<script>
+			(function() {
+				// detect if IE : from http://stackoverflow.com/a/16657946		
+				var ie = (function(){
+					var undef,rv = -1; // Return value assumes failure.
+					var ua = window.navigator.userAgent;
+					var msie = ua.indexOf('MSIE ');
+					var trident = ua.indexOf('Trident/');
+
+					if (msie > 0) {
+						// IE 10 or older => return version number
+						rv = parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+					} else if (trident > 0) {
+						// IE 11 (or newer) => return version number
+						var rvNum = ua.indexOf('rv:');
+						rv = parseInt(ua.substring(rvNum + 3, ua.indexOf('.', rvNum)), 10);
+					}
+
+					return ((rv > -1) ? rv : undef);
+				}());
+
+
+				// disable/enable scroll (mousewheel and keys) from http://stackoverflow.com/a/4770179					
+				// left: 37, up: 38, right: 39, down: 40,
+				// spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
+				var keys = [32, 37, 38, 39, 40], wheelIter = 0;
+
+				function preventDefault(e) {
+					e = e || window.event;
+					if (e.preventDefault)
+					e.preventDefault();
+					e.returnValue = false;  
+				}
+
+				function keydown(e) {
+					for (var i = keys.length; i--;) {
+						if (e.keyCode === keys[i]) {
+							preventDefault(e);
+							return;
+						}
+					}
+				}
+
+				function touchmove(e) {
+					preventDefault(e);
+				}
+
+				function wheel(e) {
+					// for IE 
+					//if( ie ) {
+						//preventDefault(e);
+					//}
+				}
+
+				function disable_scroll() {
+					window.onmousewheel = document.onmousewheel = wheel;
+					document.onkeydown = keydown;
+					document.body.ontouchmove = touchmove;
+				}
+
+				function enable_scroll() {
+					window.onmousewheel = document.onmousewheel = document.onkeydown = document.body.ontouchmove = null;  
+				}
+
+				var docElem = window.document.documentElement,
+					scrollVal,
+					isRevealed, 
+					noscroll, 
+					isAnimating,
+					container = document.body,
+					trigger = container.querySelector( '.trigger' );
+
+				function scrollY() {
+					return window.pageYOffset || docElem.scrollTop;
+				}
+				
+				function scrollPage() {
+
+					var bodyWidth = document.body.clientWidth;
+
+					if (bodyWidth >= 800) {
+						scrollVal = scrollY();
+						
+						if( noscroll && !ie ) {
+							if( scrollVal < 0 ) return false;
+							// keep it that way
+							window.scrollTo( 0, 0 );
+						}
+
+						if( classie.has( container, 'notrans' ) ) {
+							classie.remove( container, 'notrans' );
+							return false;
+						}
+
+						if( isAnimating ) {
+							return false;
+						}
+						
+						if( scrollVal <= 0 && isRevealed ) {
+							toggle(0);
+						}
+						else if( scrollVal > 0 && !isRevealed ){
+							toggle(1);
+						}
+					}
+
+				}
+
+				function toggle( reveal ) {
+					isAnimating = true;
+					if( reveal ) {
+						classie.add( container, 'collapse' );
+					}
+					else {
+						noscroll = true;
+						disable_scroll();
+						classie.remove( container, 'collapse' );
+					}
+
+					// simulating the end of the transition:
+					setTimeout( function() {
+						isRevealed = !isRevealed;
+						isAnimating = false;
+						if( reveal ) {
+							noscroll = false;
+							enable_scroll();
+						}
+					}, 1200 );
+				}
+
+				var bodyWidth = document.body.clientWidth;
+				if (bodyWidth >= 800) {
+					// refreshing the page...
+					var pageScroll = scrollY();
+					noscroll = pageScroll === 0;
+					disable_scroll();
+			
+					if( pageScroll ) {
+						isRevealed = true;
+						classie.add( container, 'notrans' );
+						classie.add( container, 'collapse' );
+					}
+
+					window.addEventListener( 'scroll', scrollPage );
+					trigger.addEventListener( 'click', function() { toggle( 'reveal' ); } );
+				}
+
+			})();
+		</script>
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-59293417-1', 'auto');
+		  ga('send', 'pageview');
+
+		</script>
 </body>
 </html>

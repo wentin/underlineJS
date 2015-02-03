@@ -1,0 +1,643 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+@font-face {
+  font-family: 'EB Garamond SC';
+  src: url("../fonts/ebgaramond12-sc.eot");
+  src: url("../fonts/ebgaramond12-sc.eot?#iefix") format("embedded-opentype"), url("../fonts/ebgaramond12-sc.woff2") format("woff2"), url("../fonts/ebgaramond12-sc.woff") format("woff"), url("../fonts/ebgaramond12-sc.ttf") format("truetype"), url("../fonts/ebgaramond12-sc.svg#eb_garamond12_sc_regular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'hack-the-hackpad-icon';
+  src: url("../fonts/hack-the-hackpad-icon.eot?ksq0g9");
+  src: url("../fonts/hack-the-hackpad-icon.eot?#iefixksq0g9") format("embedded-opentype"), url("../fonts/hack-the-hackpad-icon.woff?ksq0g9") format("woff"), url("../fonts/hack-the-hackpad-icon.ttf?ksq0g9") format("truetype"), url("../fonts/hack-the-hackpad-icon.svg?ksq0g9#hack-the-hackpad-icon") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+[class^="icon-"]::before, [class*=" icon-"]::before {
+  font-family: "hack-the-hackpad-icon";
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+::selection {
+  background: rgba(205, 220, 57, 0.5); }
+
+::-moz-selection {
+  background: rgba(205, 220, 57, 0.5); }
+
+input[type=text], textarea {
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  outline: none;
+  border: none; }
+
+input[type=text]:focus, textarea:focus {
+  box-shadow: inset 0 0 5px rgba(205, 220, 57, 0);
+  border: 1px solid rgba(205, 220, 57, 0); }
+
+body {
+  font-family: "EB Garamond" !important;
+  font-size: 24px;
+  line-height: 36px;
+  color: #212121;
+  margin: 0;
+  padding: 0;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-feature-settings: "kern=1", "liga=1", "dlig=1", "hlig=1";
+  -moz-font-feature-settings: "kern" on, "liga" on, "dlig" on, "hlig" on;
+  -webkit-font-feature-settings: "kern","liga","dlig","hlig";
+  -ms-font-feature-settings: "kern","liga","dlig","hlig";
+  font-feature-settings: "kern","liga","dlig","hlig"; }
+
+a {
+  text-decoration: none;
+  color: #212121; }
+
+img {
+  max-width: 100%; }
+
+header {
+  width: 100%;
+  height: 60px;
+  border-top: solid 4px #CDDC39;
+  position: fixed;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.92);
+  z-index: 1; }
+  header .logo {
+    z-index: 2;
+    position: absolute;
+    cursor: pointer;
+    top: 20px;
+    left: 40px;
+    overflow: hidden;
+    width: 325px;
+    transition: all 0.6s cubic-bezier(0.7, 0, 0.3, 1); }
+    header .logo #bg, header .logo #Hu, header .logo #Hd, header .logo #ackthe, header .logo #ackpad {
+      transition: all 0.6s cubic-bezier(0.7, 0, 0.3, 1); }
+    header .logo #Hu {
+      fill: #CDDC39; }
+    header .logo #Hd {
+      -webkit-transform: translate(0, 0);
+      transform: translate(0, 0);
+      fill: #212121; }
+    header .logo #ackthe {
+      opacity: 1; }
+    header .logo #ackpad {
+      -webkit-transform: translate(0, 0);
+      transform: translate(0, 0);
+      opacity: 1; }
+    header .logo:hover {
+      -webkit-transition-delay: 0.25s;
+      transition-delay: 0.25s; }
+      header .logo:hover #Hu {
+        fill: #212121; }
+      header .logo:hover #Hd {
+        fill: #CDDC39; }
+      header .logo:hover #ackthe {
+        fill: #212121; }
+      header .logo:hover #ackpad {
+        fill: #CDDC39; }
+    .collapse header .logo {
+      width: 82px; }
+      .collapse header .logo #Hd {
+        -webkit-transform: translate(-143px, 0);
+        transform: translate(-143px, 0); }
+      .collapse header .logo #ackthe {
+        opacity: 0; }
+      .collapse header .logo #ackpad {
+        -webkit-transform: translate(-143px, 0);
+        transform: translate(-143px, 0);
+        opacity: 0; }
+  header .hamburger {
+    display: none;
+    width: 64px;
+    height: 64px;
+    z-index: 2;
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none; }
+    header .hamburger i {
+      display: block;
+      width: 24px;
+      height: 3px;
+      position: absolute;
+      left: 20px;
+      top: 28px;
+      background-color: #CDDC39;
+      transition: all 0.4s ease; }
+      header .hamburger i::before {
+        content: '';
+        display: block;
+        width: 24px;
+        height: 3px;
+        position: absolute;
+        left: 0px;
+        top: -8px;
+        background-color: #CDDC39;
+        transition: all 0.4s ease; }
+      header .hamburger i::after {
+        content: '';
+        display: block;
+        width: 24px;
+        height: 3px;
+        position: absolute;
+        left: 0px;
+        top: 8px;
+        background-color: #CDDC39;
+        transition: all 0.4s ease; }
+  header .menu {
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 60px;
+    position: absolute;
+    top: 2px;
+    right: 53px;
+    height: 60px; }
+    header .menu a {
+      font-family: "Fira Sans";
+      position: relative;
+      display: inline-block;
+      margin-left: 30px;
+      padding-left: 28px;
+      color: #212121;
+      transition: color 0.4s; }
+      header .menu a::before {
+        transition: color 0.4s;
+        font-family: "hack-the-hackpad-icon";
+        font-style: normal;
+        position: absolute;
+        width: 20px;
+        text-align: right;
+        left: 0px;
+        font-size: 24px;
+        color: #212121; }
+    header .menu a:hover {
+      color: #CDDC39; }
+      header .menu a:hover::before {
+        color: #CDDC39; }
+    header .menu .icon-edit {
+      display: inline-block; }
+    header .menu .icon-question {
+      display: none; }
+    header .menu .icon-github::before {
+      content: '\e60b';
+      top: -2px; }
+    header .menu .icon-edit::before {
+      content: '\e611';
+      top: -2px; }
+    header .menu .icon-question::before {
+      content: '\e612';
+      top: -2px; }
+
+.trigger {
+  width: 100%;
+  height: 40px;
+  position: fixed;
+  bottom: 20px;
+  cursor: pointer;
+  z-index: 3;
+  transition: all 0.4s ease;
+  -webkit-transition-delay: 0.6s;
+  transition-delay: 0.6s; }
+  .trigger::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    margin-top: -20px;
+    transition: all 0.4s ease;
+    border-bottom: solid 1px #212121;
+    border-right: solid 1px #212121;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg); }
+  .trigger:hover::before {
+    border-bottom: solid 1px #cddc39;
+    border-right: solid 1px #cddc39; }
+
+article {
+  width: 760px;
+  margin: 0 auto;
+  font-size: 24px;
+  line-height: 36px;
+  position: relative; }
+
+footer {
+  height: 360px;
+  width: 760px;
+  margin: 0 auto; }
+  footer .share {
+    display: block;
+    position: relative;
+    top: 150px;
+    margin: 0 auto 0 auto;
+    width: 240px;
+    height: 1px;
+    background-color: rgba(33, 33, 33, 0.4);
+    cursor: pointer; }
+    footer .share::before {
+      content: '\e615';
+      text-align: center;
+      font-size: 32px;
+      line-height: 82px;
+      display: block;
+      position: absolute;
+      left: 79px;
+      top: -40px;
+      width: 80px;
+      height: 80px;
+      border-radius: 100%;
+      border: solid 1px rgba(33, 33, 33, 0.4);
+      background-color: white;
+      transition: all 0.4s ease; }
+    footer .share:hover::before {
+      color: #CDDC39; }
+
+/********** Title ***********/
+h1 {
+  width: 100%;
+  height: 100vh;
+  padding-top: 38.2vh;
+  box-sizing: border-box;
+  font-family: "Fira Sans";
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 60px;
+  text-align: center;
+  margin-bottom: 100px;
+  position: absolute;
+  top: 0px; }
+  h1::after {
+    display: block;
+    position: absolute;
+    width: 240px;
+    height: 1px;
+    background-color: rgba(33, 33, 33, 0.4);
+    margin: 0 auto;
+    bottom: -1px;
+    left: 260px; }
+
+/********** Heading 1 ***********/
+h2 {
+  font-family: "Fira Sans";
+  font-weight: 500;
+  color: #212121;
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  padding-top: 40px; }
+
+/********** Heading 2 ***********/
+p.heading2 {
+  padding: 16px 0; }
+  p.heading2 strong {
+    font-family: "Fira Sans";
+    font-size: 24px;
+    line-height: 36px;
+    display: block;
+    letter-spacing: -0.8px;
+    text-shadow: none; }
+
+p {
+  font-family: "EB Garamond";
+  margin-top: 24px; }
+
+p.text a {
+  font-size: 42px;
+  line-height: 1.4em; }
+
+p a.title {
+  font-size: 112px;
+  line-height: 1.4em; }
+
+p strong {
+  font-family: "EB Garamond SC";
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.3); }
+
+p em {
+  font-style: italic; }
+
+p:empty {
+  margin-top: 0px; }
+
+/* -------------------------- */
+/* Push */
+/* -------------------------- */
+@-webkit-keyframes rotating {
+  from {
+    -webkit-transform: rotate(0deg); }
+  to {
+    -webkit-transform: rotate(360deg); } }
+@media screen and (min-width: 801px) {
+  body article > * {
+    -webkit-transition-property: opacity, -webkit-transform;
+    transition-property: opacity, transform;
+    -webkit-transition-duration: 1s;
+    transition-duration: 1s; }
+  body article > *:not(h1) {
+    -webkit-transform: translateY(400px);
+    transform: translateY(400px);
+    opacity: 0; }
+  body article h1 {
+    -webkit-transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+    transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+    -webkit-transition-duration: 1.2s;
+    transition-duration: 1.2s; }
+  body article h1 + * {
+    padding-top: 105px !important;
+    margin-top: 0px; }
+  body footer {
+    -webkit-transition-property: opacity, -webkit-transform;
+    transition-property: opacity, transform;
+    -webkit-transition-duration: 1s;
+    transition-duration: 1s;
+    -webkit-transform: translateY(400px);
+    transform: translateY(400px);
+    opacity: 0; }
+
+  body.collapse .trigger {
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+    -webkit-transform: translateY(-150%) scale(0.9);
+    transform: translateY(-150%) scale(0.9);
+    opacity: 0;
+    z-index: -1; }
+  body.collapse article > *:not(h1) {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1; }
+  body.collapse article h1 {
+    opacity: 0;
+    -webkit-transform: translateY(-100%) scale(0.9);
+    transform: translateY(-100%) scale(0.9); }
+  body.collapse article *:not(h1) {
+    -webkit-transition-delay: 0.98s;
+    transition-delay: 0.98s; }
+  body.collapse article > *:not(h1):nth-child(8) {
+    -webkit-transition-delay: 0.5s;
+    transition-delay: 0.5s; }
+  body.collapse article > *:nth-child(9) {
+    -webkit-transition-delay: 0.62s;
+    transition-delay: 0.62s; }
+  body.collapse article > *:nth-child(10) {
+    -webkit-transition-delay: 0.74s;
+    transition-delay: 0.74s; }
+  body.collapse article > *:nth-child(11) {
+    -webkit-transition-delay: 0.86s;
+    transition-delay: 0.86s; }
+  body.collapse footer {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+    -webkit-transition-delay: 0.8s;
+    transition-delay: 0.8s; } }
+/* Smartphones (portrait and landscape) ----------- */
+@media screen and (min-width: 320px) and (max-width: 800px) {
+  body {
+    font-size: 20px;
+    line-height: 28px;
+    /********** Title ***********/
+    /********** Heading 1 ***********/
+    /********** Heading 2 ***********/ }
+    body header {
+      width: 100%;
+      height: 90px;
+      border-top: solid 3px #CDDC39;
+      border-bottom: none;
+      position: relative;
+      z-index: 1; }
+      body header .logo {
+        width: 82px;
+        -webkit-transform: scale(0.75, 0.75);
+        transform: scale(0.75, 0.75);
+        left: -1px;
+        top: -4px; }
+        body header .logo #bg {
+          opacity: 0; }
+        body header .logo #Hd {
+          -webkit-transform: translate(-143px, 0);
+          transform: translate(-143px, 0); }
+        body header .logo #ackthe {
+          opacity: 0; }
+        body header .logo #ackpad {
+          opacity: 0; }
+      body header .hamburger {
+        display: none; }
+      body header .menu {
+        display: block;
+        right: 20px; }
+        body header .menu a {
+          width: 0px;
+          overflow: hidden;
+          padding-left: 32px; }
+          body header .menu a::before {
+            font-size: 32px; }
+      body header.mobile-menu-open {
+        height: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px; }
+        body header.mobile-menu-open .hamburger i {
+          width: 0px; }
+          body header.mobile-menu-open .hamburger i::before {
+            top: 0;
+            -webkit-transform: rotate(45deg);
+            transform: rotate(45deg); }
+          body header.mobile-menu-open .hamburger i::after {
+            top: 0;
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg); }
+        body header.mobile-menu-open .menu {
+          display: block;
+          opacity: 1;
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          box-sizing: border-box;
+          left: 0px;
+          top: 0px;
+          padding-top: 28vh;
+          background-color: rgba(255, 255, 255, 0.5);
+          z-index: 1; }
+          body header.mobile-menu-open .menu a {
+            font-size: 28px;
+            line-height: 100px;
+            position: relative;
+            display: block;
+            margin-left: 0px;
+            padding-left: 70px;
+            transition: background-color 0.4s; }
+            body header.mobile-menu-open .menu a::before {
+              position: absolute;
+              left: 20px;
+              width: 30px;
+              text-align: center;
+              font-size: 30px;
+              line-height: 100px;
+              transition: none; }
+          body header.mobile-menu-open .menu .icon-edit {
+            display: block; }
+          body header.mobile-menu-open .menu .icon-question {
+            display: none; }
+          body header.mobile-menu-open .menu a:hover,
+          body header.mobile-menu-open .menu a:active {
+            background-color: #CDDC39;
+            color: white; }
+            body header.mobile-menu-open .menu a:hover::before,
+            body header.mobile-menu-open .menu a:active::before {
+              color: white; }
+          body header.mobile-menu-open .menu .icon-github::before {
+            top: -2px; }
+          body header.mobile-menu-open .menu .icon-edit::before {
+            top: -2px; }
+    body header.mobile-menu-open ~ article {
+      margin-top: 93px; }
+    body .trigger {
+      opacity: 0;
+      -webkit-transition-delay: 0s;
+      transition-delay: 0s;
+      -webkit-transform: translateY(-100%) scale(0.9);
+      transform: translateY(-100%) scale(0.9);
+      z-index: -1; }
+    body article {
+      padding: 0 20px;
+      width: 100%;
+      box-sizing: border-box; }
+    body footer {
+      height: 240px;
+      width: 100%; }
+      body footer .share {
+        width: 160px;
+        top: 120px; }
+        body footer .share::before {
+          font-size: 24px;
+          line-height: 62px;
+          left: 49px;
+          top: -30px;
+          width: 60px;
+          height: 60px; }
+    body h1 {
+      font-size: 28px;
+      line-height: 36px;
+      height: auto;
+      text-align: left;
+      position: relative;
+      padding: 24px 0;
+      margin-bottom: 0px;
+      border-bottom: solid 1px rgba(33, 33, 33, 0.4); }
+      body h1::after {
+        display: none; }
+    body h2 {
+      font-size: 24px;
+      line-height: 36px;
+      font-weight: 500;
+      padding-top: 40px; }
+    body h1 + * {
+      padding-top: 24px !important;
+      margin-top: 0px; }
+    body p.heading2 {
+      padding: 12px 0; }
+      body p.heading2 strong {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 28px;
+        letter-spacing: 0px; }
+    body p {
+      font-size: 20px;
+      line-height: 28px; }
+    body p.text a {
+      font-size: 32px;
+      line-height: 1.4em; }
+    body p a.title {
+      font-size: 48px;
+      line-height: 1.4em; }
+    body p strong {
+      font-family: "EB Garamond SC";
+      text-shadow: 0 0 1px rgba(0, 0, 0, 0.2); } }
+/* iPads (portrait) ----------- */
+@media only screen and (min-width: 801px) and (max-width: 960px) {
+  body header .menu {
+    right: 20px; }
+  body header .logo {
+    left: 20px; }
+  body ul.comment {
+    width: 100%;
+    margin: 40px 0 40px 0;
+    padding: 40px 0px; }
+    body ul.comment::before {
+      width: 120px;
+      height: 24px; }
+    body ul.comment::after {
+      width: 120px;
+      height: 24px; } }
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+  .collapse header .logo #ackpad {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+    opacity: 0; } }
+
+/*# sourceMappingURL=style.css.map */
