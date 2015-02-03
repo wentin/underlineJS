@@ -124,44 +124,39 @@ header {
     top: 20px;
     left: 40px;
     overflow: hidden;
-    width: 325px;
+    width: 264px;
     transition: all 0.6s cubic-bezier(0.7, 0, 0.3, 1); }
-    header .logo #bg, header .logo #Hu, header .logo #Hd, header .logo #ackthe, header .logo #ackpad {
+    header .logo #underline, header .logo #js, header .logo #line {
       transition: all 0.6s cubic-bezier(0.7, 0, 0.3, 1); }
-    header .logo #Hu {
-      fill: #CDDC39; }
-    header .logo #Hd {
+    header .logo #underline {
+      fill: #212121; }
+    header .logo #js {
       -webkit-transform: translate(0, 0);
       transform: translate(0, 0);
       fill: #212121; }
-    header .logo #ackthe {
-      opacity: 1; }
-    header .logo #ackpad {
-      -webkit-transform: translate(0, 0);
-      transform: translate(0, 0);
-      opacity: 1; }
+    header .logo #line {
+      fill: #212121; }
     header .logo:hover {
       -webkit-transition-delay: 0.25s;
       transition-delay: 0.25s; }
-      header .logo:hover #Hu {
-        fill: #212121; }
-      header .logo:hover #Hd {
+      header .logo:hover #underline {
         fill: #CDDC39; }
-      header .logo:hover #ackthe {
-        fill: #212121; }
-      header .logo:hover #ackpad {
+      header .logo:hover #js {
+        fill: #CDDC39; }
+      header .logo:hover #line {
         fill: #CDDC39; }
     .collapse header .logo {
-      width: 82px; }
-      .collapse header .logo #Hd {
-        -webkit-transform: translate(-143px, 0);
-        transform: translate(-143px, 0); }
-      .collapse header .logo #ackthe {
+      width: 45px; }
+      .collapse header .logo #line {
+        -webkit-transform: translate(-218.7px, 0);
+        transform: translate(-218.7px, 0);
+        fill: #CDDC39; }
+      .collapse header .logo #underline {
         opacity: 0; }
-      .collapse header .logo #ackpad {
-        -webkit-transform: translate(-143px, 0);
-        transform: translate(-143px, 0);
-        opacity: 0; }
+      .collapse header .logo #js {
+        -webkit-transform: translate(-218.7px, 0);
+        transform: translate(-218.7px, 0);
+        fill: #CDDC39; }
   header .hamburger {
     display: none;
     width: 64px;
@@ -211,7 +206,7 @@ header {
     line-height: 60px;
     position: absolute;
     top: 2px;
-    right: 53px;
+    right: 40px;
     height: 60px; }
     header .menu a {
       font-family: "Fira Sans";
@@ -364,11 +359,12 @@ p {
   margin-top: 24px; }
 
 p.text a {
-  font-size: 42px;
-  line-height: 1.4em; }
+  font-size: 48px;
+  line-height: 1.4em;
+  font-style: italic; }
 
 p a.title {
-  font-size: 112px;
+  font-size: 126px;
   line-height: 1.4em; }
 
 p strong {
@@ -468,20 +464,21 @@ p:empty {
       position: relative;
       z-index: 1; }
       body header .logo {
-        width: 82px;
-        -webkit-transform: scale(0.75, 0.75);
-        transform: scale(0.75, 0.75);
-        left: -1px;
-        top: -4px; }
-        body header .logo #bg {
+        width: 60px;
+        left: 20px;
+        top: 6px; }
+        body header .logo #underline {
           opacity: 0; }
-        body header .logo #Hd {
-          -webkit-transform: translate(-143px, 0);
-          transform: translate(-143px, 0); }
-        body header .logo #ackthe {
-          opacity: 0; }
-        body header .logo #ackpad {
-          opacity: 0; }
+        body header .logo #js {
+          -webkit-transform: translate(-218.7px, 0);
+          transform: translate(-218.7px, 0);
+          fill: #CDDC39; }
+        body header .logo #line {
+          -webkit-transform: translate(-218.7px, 0);
+          transform: translate(-218.7px, 0);
+          fill: #CDDC39; }
+        body header .logo:hover #js, body header .logo:hover #line {
+          fill: #212121; }
       body header .hamburger {
         display: none; }
       body header .menu {

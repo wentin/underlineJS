@@ -101,68 +101,55 @@ header {
         top: 20px;
         left: 40px;
         overflow: hidden;
-        width: 325px;
+        width: 264px;
         transition: all 0.6s cubic-bezier(0.7,0,0.3,1);
         // -webkit-transition-delay: 0.25s;
         // transition-delay: 0.25s;
-        #bg, #Hu, #Hd, #ackthe, #ackpad {
+        #underline, #js, #line {
             transition: all 0.6s cubic-bezier(0.7,0,0.3,1);
         }
-        #bg {
-
+        #underline {
+            fill: $darkGreen;
         }
-        #Hu {
-            fill: $green;
-        }
-        #Hd {
+        #js {
             -webkit-transform: translate(0, 0);        
             transform: translate(0, 0);
             fill: $darkGreen;
         }
-        #ackthe {
-            opacity: 1;
-        }
-        #ackpad {
-            -webkit-transform: translate(0, 0);        
-            transform: translate(0, 0);
-            opacity: 1;
+        #line {
+            fill: $darkGreen;
         }
         &:hover {
             -webkit-transition-delay: 0.25s;
             transition-delay: 0.25s;
-            #Hu {
-                fill: $darkGreen;
-            }
-            #Hd {
+            #underline {
                 fill: $green;
             }
-            #ackthe {
-                fill: $darkGreen;
+            #js {
+                fill: $green;
             }
-            #ackpad {
+            #line {
                 fill: $green;
             }
         }
         .collapse & {
-            width: 82px;
-            #bg, #Hu, #Hd, #ackthe, #ackpad {
+            width: 45px;
+            #underline, #js, #line {
             }
-            #bg { 
-            }
-            #Hu {
+            #line { 
+                -webkit-transform: translate(-218.7px, 0);        
+                transform: translate(-218.7px, 0);
+                fill: $green;
 
             }
-            #Hd {
-                -webkit-transform: translate(-143px, 0);        
-                transform: translate(-143px, 0);
-            }
-            #ackthe {
+            #underline {
                 opacity: 0;
+
             }
-            #ackpad {
-                -webkit-transform: translate(-143px, 0);
-                transform: translate(-143px, 0);
-                opacity: 0;
+            #js {
+                -webkit-transform: translate(-218.7px, 0);        
+                transform: translate(-218.7px, 0);
+                fill: $green;
             }
         }
     }
@@ -220,7 +207,7 @@ header {
         line-height: 60px;
         position: absolute;
         top: 2px;
-        right: 53px;
+        right: 40px;
         height: 60px;
         a {
             font-family: $fira;
@@ -395,11 +382,12 @@ p {
     margin-top: 24px;
 }
 p.text a {
-    font-size: 42px;
+    font-size: 48px;
     line-height: 1.4em;
+    font-style: italic;
 }
 p a.title {
-    font-size: 112px;
+    font-size: 126px;
     line-height: 1.4em;
 }
 p strong {

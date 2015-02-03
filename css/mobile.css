@@ -12,7 +12,7 @@ Error: Undefined variable: "$green".
 14:     position: relative;
 15:     z-index: 1;
 16: 	.logo {
-17: 		width: 82px;
+17: 		width: 60px;
 
 Backtrace:
 ./mobile.scss:12
@@ -97,4 +97,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$green\".\A         on line 12 of ./mobile.scss\A \A 7: font-size: 20px;\A 8: line-height: 28px;\A 9: header {\A 10:     width: 100%;\A 11:     height: 90px;\A 12:     border-top: solid 3px $green;\A 13:     border-bottom: none;\A 14:     position: relative;\A 15:     z-index: 1;\A 16: 	.logo {\A 17: 		width: 82px;"; }
+  content: "Error: Undefined variable: \"$green\".\A         on line 12 of ./mobile.scss\A \A 7: font-size: 20px;\A 8: line-height: 28px;\A 9: header {\A 10:     width: 100%;\A 11:     height: 90px;\A 12:     border-top: solid 3px $green;\A 13:     border-bottom: none;\A 14:     position: relative;\A 15:     z-index: 1;\A 16: 	.logo {\A 17: 		width: 60px;"; }

@@ -14,33 +14,25 @@ header {
     position: relative;
     z-index: 1;
 	.logo {
-		width: 82px;
-		-webkit-transform: scale(0.75, 0.75);        
-		transform: scale(0.75, 0.75);
-		left: -1px;
-		top: -4px;
-        #bg { 
+		width: 60px;
+        left: 20px;
+        top: 6px;
+        #underline {
             opacity: 0;
         }
-        #Hu {
-
+        #js {
+            -webkit-transform: translate(-218.7px, 0);        
+            transform: translate(-218.7px, 0);
+            fill: $green;
         }
-        #Hd {
-            -webkit-transform: translate(-143px, 0);        
-            transform: translate(-143px, 0);
-        }
-        #ackthe {
-            opacity: 0;
-        }
-        #ackpad {
-            opacity: 0;
-        }
-        #bg, #Hu, #Hd, #ackthe, #ackpad {
+        #line {
+            -webkit-transform: translate(-218.7px, 0);        
+            transform: translate(-218.7px, 0);
+            fill: $green;
         }
         &:hover {
-            #Hu {
-            }
-            #Hd {
+            #js, #line {
+                fill: $darkGreen;
             }
         }
     }
