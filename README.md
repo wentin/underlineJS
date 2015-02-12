@@ -48,3 +48,7 @@ Underline.js is not designed to be the most useful javascript library. It is mor
 * Follow [@DesignJokes](http://twitter.com/DesignJokes) on Twitter
 * Email <zhangwenting111@gmail.com>
 * Visit [wentin.co](http://wentin.co)
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/wentin/underlinejs/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
