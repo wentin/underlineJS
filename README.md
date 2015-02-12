@@ -21,7 +21,7 @@ Underline.js has following features:
  4. It has holes around descenders. Completely respect the type's shape. If you ask, the size of the holes are also optimized to the perfection.
 ![descender-holes](https://cloud.githubusercontent.com/assets/2474904/6017361/fdf3f4f0-ab5a-11e4-89a4-f6e6e0588c2b.png)
 
-### CSS4 Propasal to W3C
+### CSS4 Proposal to W3C
 
 Underline.js is not designed to be the most useful javascript library. It is more exploratory, and it is trying to push the boundary of web typography. I want to propose these new css rules to W3C for css4 edition:
 
