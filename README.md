@@ -47,22 +47,15 @@ Underline.js is not designed to be the most useful javascript library. It is mor
 ### Mentions (thank you!)
 
 [technical.ly](https://technical.ly/brooklyn/2015/02/12/wenting-zhang-underline-js/)<br/>
-[Tweets](https://storify.com/DesignJokes/underline-js-tweets)
-
-[beautifulopen.com](http://beautifulopen.com/2015/01/06/underline-js/)
-
+[Tweets](https://storify.com/DesignJokes/underline-js-tweets)<br/>
+[beautifulopen.com](http://beautifulopen.com/2015/01/06/underline-js/)<br/>
 [jquery-plugins.net](http://jquery-plugins.net/underlinejs-javascript-library-to-draw-and-animate-text-underline)
-`note: underline.js doesn't have dependency on jquery`
-
-[decodering.com](http://decodering.com/post/110635667154/underline-js-a-javascript-library-that-sets-out)
-
-[Parsons Alumni news](http://amt.parsons.edu/blog/mfa-dt-alum-wenting-zhang-presents-underline-js-project-to-ny-tech-meetup/)
-
-[softpedia.com](http://webscripts.softpedia.com/script/Text-Management/Text-Tools/underline-js-84277.html)
-
-[lafermeduweb.net](http://www.lafermeduweb.net/veille/underline-js-soulignez-a-la-perfection-vos-textes-sans-couper-les-lettres-565407442654482432.html)
-
-[githunt.io](https://githunt.io/#/wentin/underlineJS)
+`note: underline.js doesn't have dependency on jquery`<br/>
+[decodering.com](http://decodering.com/post/110635667154/underline-js-a-javascript-library-that-sets-out)<br/>
+[Parsons Alumni news](http://amt.parsons.edu/blog/mfa-dt-alum-wenting-zhang-presents-underline-js-project-to-ny-tech-meetup/)<br/>
+[softpedia.com](http://webscripts.softpedia.com/script/Text-Management/Text-Tools/underline-js-84277.html)<br/>
+[lafermeduweb.net](http://www.lafermeduweb.net/veille/underline-js-soulignez-a-la-perfection-vos-textes-sans-couper-les-lettres-565407442654482432.html)<br/>
+[githunt.io](https://githunt.io/#/wentin/underlineJS)<br/>
 
 
 ###Contact
