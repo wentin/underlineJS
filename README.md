@@ -45,6 +45,9 @@ Underline.js is not designed to be the most useful javascript library. It is mor
 [Marcin Wichary's article on crafting Medium.com's underline](https://medium.com/designing-medium/crafting-link-underlines-on-medium-7c03a9274f9)
 
 ### Mentions (thank you!)
+
+[technical.ly](https://technical.ly/brooklyn/2015/02/12/wenting-zhang-underline-js/)
+
 [Tweets](https://storify.com/DesignJokes/underline-js-tweets)
 
 [beautifulopen.com](http://beautifulopen.com/2015/01/06/underline-js/)
