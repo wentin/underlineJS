@@ -46,8 +46,7 @@ Underline.js is not designed to be the most useful javascript library. It is mor
 
 ### Mentions (thank you!)
 
-[technical.ly](https://technical.ly/brooklyn/2015/02/12/wenting-zhang-underline-js/)
-
+[technical.ly](https://technical.ly/brooklyn/2015/02/12/wenting-zhang-underline-js/)<br/>
 [Tweets](https://storify.com/DesignJokes/underline-js-tweets)
 
 [beautifulopen.com](http://beautifulopen.com/2015/01/06/underline-js/)
