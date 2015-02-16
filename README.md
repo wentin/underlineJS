@@ -57,6 +57,7 @@ Underline.js is not designed to be the most useful javascript library. It is mor
 [softpedia.com](http://webscripts.softpedia.com/script/Text-Management/Text-Tools/underline-js-84277.html)<br/>
 [lafermeduweb.net](http://www.lafermeduweb.net/veille/underline-js-soulignez-a-la-perfection-vos-textes-sans-couper-les-lettres-565407442654482432.html)<br/>
 [githunt.io](https://githunt.io/#/wentin/underlineJS)<br/>
+[DesignerNews](https://news.layervault.com/stories/43897-underlinejs----beauty-tricks-for-underline-text)<br/>
 [wykop.pl](http://www.wykop.pl/wpis/11426174/https-github-com-wentin-underlinejs-fajna-bibliote/)<br/>
 
 
