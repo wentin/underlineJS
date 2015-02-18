@@ -14,7 +14,7 @@ The project is currently under development.
 Underline.js has following features:
  1. It doesn't have ghost pixels. It is not just pixel perfect, but also pixel perfect on half pixel level for retina display
 ![pixel-perfect](https://cloud.githubusercontent.com/assets/2474904/6017363/fdf6ab3c-ab5a-11e4-936a-f7657532df50.png)
- 2. It has an optimized thin stroke-width. It is always 1/4 of width of the period mark.
+ 2. It has an optimized thin stroke-width. It is always 1/6 of width of the period mark.
 ![optimal-stroke-width](https://cloud.githubusercontent.com/assets/2474904/6017364/fdf7ca62-ab5a-11e4-976e-285dd759b59b.png)
  3. It sits on the optimal Y position between the baseline and descender line, that optimal Y positon is the golden ratio point.
 ![golden-ratio](https://cloud.githubusercontent.com/assets/2474904/6017362/fdf60510-ab5a-11e4-9965-4e8a6b0a9f4c.png)
@@ -25,19 +25,19 @@ Underline.js has following features:
 
 Underline.js is not designed to be the most useful javascript library. It is more exploratory, and it is trying to push the boundary of web typography. I want to propose these new css rules to W3C for css4 edition:
 
-    text-underline-color: #000000; 
+    text-underline-color: #000000;
     // auto means the same color as the text color, or hex value
-    
-    text-underline-position: auto; 
+
+    text-underline-position: auto;
     // could be ratio or px or auto
-    
-    text-underline-skip: true; 
+
+    text-underline-skip: true;
     // true to set holes around descenders, false to turn it off
-    
-    text-underline-width: auto; 
+
+    text-underline-width: auto;
     // could be auto or px or ratio
-    
-    text-underline-animation: true 
+
+    text-underline-animation: true
     // true or false, this one is only for underline.js
 
 ### Reference
