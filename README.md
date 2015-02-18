@@ -59,6 +59,8 @@ Underline.js is not designed to be the most useful javascript library. It is mor
 [lafermeduweb.net](http://www.lafermeduweb.net/veille/underline-js-soulignez-a-la-perfection-vos-textes-sans-couper-les-lettres-565407442654482432.html)<br/>
 [wykop.pl](http://www.wykop.pl/wpis/11426174/https-github-com-wentin-underlinejs-fajna-bibliote/)<br/>
 
+[NY Tech Meetup video](http://embed.wirewax.com/8013554/7bafa8/)<br/>
+
 
 ###Contact
 * Follow [@DesignJokes](http://twitter.com/DesignJokes) on Twitter
