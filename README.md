@@ -62,7 +62,8 @@ Underline.js is not designed to be the most useful javascript library. It is mor
 [`Parsons Alumni news`](http://amt.parsons.edu/blog/mfa-dt-alum-wenting-zhang-presents-underline-js-project-to-ny-tech-meetup/)
 [`softpedia.com`](http://webscripts.softpedia.com/script/Text-Management/Text-Tools/underline-js-84277.html)
 [`lafermeduweb.net`](http://www.lafermeduweb.net/veille/underline-js-soulignez-a-la-perfection-vos-textes-sans-couper-les-lettres-565407442654482432.html)
-[`wykop.pl`](http://www.wykop.pl/wpis/11426174/https-github-com-wentin-underlinejs-fajna-bibliote/)<br/>
+[`wykop.pl`](http://www.wykop.pl/wpis/11426174/https-github-com-wentin-underlinejs-fajna-bibliote/)
+
 [`NY Tech Meetup video`](http://embed.wirewax.com/8013554/7bafa8/)
 
 
