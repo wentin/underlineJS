@@ -46,22 +46,23 @@ Underline.js is not designed to be the most useful javascript library. It is mor
 
 ### Mentions (thank you!)
 
-[Tweets](https://storify.com/DesignJokes/underline-js-tweets)<br/>
-[technical.ly article](https://technical.ly/brooklyn/2015/02/12/wenting-zhang-underline-js/)<br/>
-[codrops collective](http://tympanus.net/codrops/collective/collective-155/)<br/>
-[beautifulopen.com](http://beautifulopen.com/2015/01/06/underline-js/)<br/>
-[freebiesbug.com](http://freebiesbug.com/code-stuff/underline-js-animate-text-underline/)<br/>
-[jquery-plugins.net](http://jquery-plugins.net/underlinejs-javascript-library-to-draw-and-animate-text-underline)
-`Note: underline.js doesn't have dependency on jquery`<br/>
-[decodering.com](http://decodering.com/post/110635667154/underline-js-a-javascript-library-that-sets-out)<br/>
-[ipixel.com.sg](http://www.ipixel.com.sg/blog/freebies/underline-js-animate-text-underline/)<br/>
-[freede.ru](http://freede.ru/koding/animatsionnoe-podchyorkivanie-tekst-so-zvukom-pri-navedenii.html)<br/>
-[gaetanpautler.com](http://gaetanpautler.com/weekly-links-and-websites-89/)<br/>
-[designmeltdown.com](http://designmeltdown.com/#s=9406)<br/>
-[Parsons Alumni news](http://amt.parsons.edu/blog/mfa-dt-alum-wenting-zhang-presents-underline-js-project-to-ny-tech-meetup/)<br/>
-[softpedia.com](http://webscripts.softpedia.com/script/Text-Management/Text-Tools/underline-js-84277.html)<br/>
-[lafermeduweb.net](http://www.lafermeduweb.net/veille/underline-js-soulignez-a-la-perfection-vos-textes-sans-couper-les-lettres-565407442654482432.html)<br/>
-[wykop.pl](http://www.wykop.pl/wpis/11426174/https-github-com-wentin-underlinejs-fajna-bibliote/)<br/>
+[`Tweets`](https://storify.com/DesignJokes/underline-js-tweets) 
+[`technical.ly article`](https://technical.ly/brooklyn/2015/02/12/wenting-zhang-underline-js/) 
+[`codrops collective`](http://tympanus.net/codrops/collective/collective-155/)
+[`speckyboy.com`](http://speckyboy.com/2015/02/24/weekly-news-for-designers-n-273/)
+[`beautifulopen.com`](http://beautifulopen.com/2015/01/06/underline-js/)
+[`freebiesbug.com`](http://freebiesbug.com/code-stuff/underline-js-animate-text-underline/)
+[`jquery-plugins.net`](http://jquery-plugins.net/underlinejs-javascript-library-to-draw-and-animate-text-underline)
+`Note: underline.js doesn't have dependency on jquery`
+[`decodering.com`](http://decodering.com/post/110635667154/underline-js-a-javascript-library-that-sets-out)
+[`ipixel.com.sg`](http://www.ipixel.com.sg/blog/freebies/underline-js-animate-text-underline/)
+[`freede.ru`](http://freede.ru/koding/animatsionnoe-podchyorkivanie-tekst-so-zvukom-pri-navedenii.html)
+[`gaetanpautler.com`](http://gaetanpautler.com/weekly-links-and-websites-89/)
+[`designmeltdown.com`](http://designmeltdown.com/#s=9406)
+[`Parsons Alumni news`](http://amt.parsons.edu/blog/mfa-dt-alum-wenting-zhang-presents-underline-js-project-to-ny-tech-meetup/)
+[`softpedia.com`](http://webscripts.softpedia.com/script/Text-Management/Text-Tools/underline-js-84277.html)
+[`lafermeduweb.net`](http://www.lafermeduweb.net/veille/underline-js-soulignez-a-la-perfection-vos-textes-sans-couper-les-lettres-565407442654482432.html)
+[`wykop.pl`](http://www.wykop.pl/wpis/11426174/https-github-com-wentin-underlinejs-fajna-bibliote/)
 
 [NY Tech Meetup video](http://embed.wirewax.com/8013554/7bafa8/)<br/>
 
