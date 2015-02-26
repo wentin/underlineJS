@@ -53,7 +53,7 @@ Underline.js is not designed to be the most useful javascript library. It is mor
 [`beautifulopen.com`](http://beautifulopen.com/2015/01/06/underline-js/)
 [`freebiesbug.com`](http://freebiesbug.com/code-stuff/underline-js-animate-text-underline/)
 [`jquery-plugins.net`](http://jquery-plugins.net/underlinejs-javascript-library-to-draw-and-animate-text-underline)
-`Note: underline.js doesn't have dependency on jquery`
+*Note: underline.js doesn't have dependency on jquery*
 [`decodering.com`](http://decodering.com/post/110635667154/underline-js-a-javascript-library-that-sets-out)
 [`ipixel.com.sg`](http://www.ipixel.com.sg/blog/freebies/underline-js-animate-text-underline/)
 [`freede.ru`](http://freede.ru/koding/animatsionnoe-podchyorkivanie-tekst-so-zvukom-pri-navedenii.html)
