@@ -9,7 +9,7 @@
 
 The project is currently under development.
 
-If you have 8 minutes and want to know what is the story behind creating underline.js, you can hear all about it in [`NY Tech Meetup video`](http://embed.wirewax.com/8013554/7bafa8/)
+If you have 8 minutes and want to know what is the story behind creating underline.js, you can hear all about it in this [`NY Tech Meetup presentation video`](http://embed.wirewax.com/8013554/7bafa8/)
 
 ### Features
 
