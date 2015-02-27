@@ -9,6 +9,8 @@
 
 The project is currently under development.
 
+If you have 8 minutes and want to know what is the story behind creating underline.js, you can know all about it in this [`NY Tech Meetup video`](http://embed.wirewax.com/8013554/7bafa8/)
+
 ### Features
 
 Underline.js has following features:
@@ -66,7 +68,6 @@ Underline.js is not designed to be the most useful javascript library. It is mor
 [`sumy.ua`](http://veselov.sumy.ua/1753-underlinejs-skript-dobavleniya-pravilnogo-podcherkivaniya.html)
 [`takana8.tumblr.com`](http://takana8.tumblr.com/post/110873944747/underline-js-a-javascript-library-that-sets-out)
 
-[`NY Tech Meetup video`](http://embed.wirewax.com/8013554/7bafa8/)
 
 
 ###Contact
