@@ -92,7 +92,7 @@ function GuitarString(ctx, startPoint, endPoint, strokeWidth, strokeColor, ratio
     this.waveInitX = (this.startPoint.x + this.endPoint.x)/2;
     this.waveInitY = this.startPoint.y - this.maxControlDistance;
     this.waveCount = 0;
-    this.damping = 0.95;
+    this.damping = 0.91;
 
 	this.thirdPoint = new Point((this.startPoint.x + this.endPoint.x)/2, this.startPoint.y);
     
