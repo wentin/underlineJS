@@ -71,6 +71,7 @@ Underline.js is not designed to be the most useful javascript library. It is mor
 [`lafermeduweb.net`](http://www.lafermeduweb.net/veille/underline-js-soulignez-a-la-perfection-vos-textes-sans-couper-les-lettres-565407442654482432.html)
 [`wykop.pl`](http://www.wykop.pl/wpis/11426174/https-github-com-wentin-underlinejs-fajna-bibliote/)
 [`sumy.ua`](http://veselov.sumy.ua/1753-underlinejs-skript-dobavleniya-pravilnogo-podcherkivaniya.html)
+[`us8`](http://us8.campaign-archive2.com/?u=9dc44712ae7c52996ea6e645b&id=f8356f478a&e=1d8514e3e4)
 [`takana8.tumblr.com`](http://takana8.tumblr.com/post/110873944747/underline-js-a-javascript-library-that-sets-out)
 
 
