@@ -62,6 +62,7 @@ Underline.js is not designed to be the most useful javascript library. It is mor
 *Note: underline.js doesn't have dependency on jquery*
 [`designsrazzi.com`](http://www.designsrazzi.com/free-jquery-plugins/)
 [`codegeekz.com`](http://codegeekz.com/15-handy-javascript-libraries-for-march-2015/)
+[`bashooka.com`](http://bashooka.com/coding/javascript-libraries-for-web-typography/)
 [`ninodezign.com`](http://ninodezign.com/10-funny-jquery-plugins-for-your-website/)
 [`hongkiat.com`](http://www.hongkiat.com/blog/web-typography-tools/)
 [`decodering.com`](http://decodering.com/post/110635667154/underline-js-a-javascript-library-that-sets-out)
