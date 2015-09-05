@@ -31,6 +31,7 @@
     container.style.padding = "0";
     container.style.visibility = "hidden";
     container.style.overflow = "hidden";
+    container.style.wordWrap = "normal";
 
     // Intentionally unprotected style definition.
     var small = document.createElement('span');
