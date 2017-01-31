@@ -15,6 +15,9 @@ var getElementStyles = function(element){
     var height = $this.getBoundingClientRect().height;
     var parentWidth = $this.parentNode.getBoundingClientRect().width;
 
+    var fontColor = window.getComputedStyle($this, null)
+            .getPropertyValue("color");
+
 
     var offsetLeft = $this.offsetLeft;
     var parentOffsetLeft = $this.parentNode.offsetLeft;
@@ -32,73 +35,75 @@ var getElementStyles = function(element){
         fontStyle: fontStyle,
         baselinePositionRatio: baselinePositionRatio,
         canvasLeft: canvasLeft,
-        textIndent: textIndent
+        textIndent: textIndent,
+        fontColor: fontColor
     }
 };
 
 window.requestAnimFrame = (function(callback) {
-	return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
-	function(callback) {
-	  window.setTimeout(callback, 1000 / 60);
-	};
+    return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+    function(callback) {
+      window.setTimeout(callback, 1000 / 60);
+    };
 })();
 
 var myUnderlines = [];
 var myMultipleUnderlines = [];
 window.onload = function() {
-	var underlineElements = document.querySelectorAll(".underline");
+    var underlineElements = document.querySelectorAll(".underline");
     for(var n = 0; n < underlineElements.length; n++) {
 
-    	var element = underlineElements[n];
+        var element = underlineElements[n];
 
-    	var underlineStyles = {
-    		'text-underline-color': '#000',
-    		'text-underline-position': 'auto', // could be ratio or todo: px 
-    		'text-underline-skip': true,
-    		'text-underline-width': 'auto' // could be auto or px or ratio
-    	}
+        var elementStyles = getElementStyles(element);
+
+        var underlineStyles = {
+            'text-underline-color': elementStyles.fontColor,
+            'text-underline-position': 'auto', // could be ratio or todo: px 
+            'text-underline-skip': true,
+            'text-underline-width': 'auto' // could be auto or px or ratio
+        }
 
 
-    	var elementStyles = getElementStyles(element);
-    	// single line or multiple line?
-		if (elementStyles.height > elementStyles.lineHeight) {
-			// multiple lines
-			// console.log('multiple lines');
-    		var myUnderline = new MultipleUnderline(element, underlineStyles, elementStyles);
-    		// myUnderline.update();
-    		// myUnderline.draw();
-    		myUnderlines.push(myUnderline);
-		} else {
-			// single line
-    		var myUnderline = new SingleUnderline(element, underlineStyles, elementStyles);
-    		myUnderlines.push(myUnderline);
-		}
+        // single line or multiple line?
+        if (elementStyles.height > elementStyles.lineHeight) {
+            // multiple lines
+            // console.log('multiple lines');
+            var myUnderline = new MultipleUnderline(element, underlineStyles, elementStyles);
+            // myUnderline.update();
+            // myUnderline.draw();
+            myUnderlines.push(myUnderline);
+        } else {
+            // single line
+            var myUnderline = new SingleUnderline(element, underlineStyles, elementStyles);
+            myUnderlines.push(myUnderline);
+        }
 
-		// if(window.device)
+        // if(window.device)
     }
 }
 
 
-function animate() {	
+function animate() {    
 
-	for(var i = 0; i < myUnderlines.length; i++) {
-	    var myUnderline = myUnderlines[i];
+    for(var i = 0; i < myUnderlines.length; i++) {
+        var myUnderline = myUnderlines[i];
 
-		// clear
-	    myUnderline.clear();
-	    
-		// update
-		myUnderline.update();
-		
-		// draw stuff
-	    myUnderline.draw();
-	}
+        // clear
+        myUnderline.clear();
+        
+        // update
+        myUnderline.update();
+        
+        // draw stuff
+        myUnderline.draw();
+    }
 
-	
-	// request new frame
-	requestAnimFrame(function() {
-	  animate();
-	});
+    
+    // request new frame
+    requestAnimFrame(function() {
+      animate();
+    });
 }
 animate();
 
